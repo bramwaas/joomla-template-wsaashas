@@ -1,0 +1,334 @@
+<style type="text/css">
+body
+{ 
+<?php if ($bgColor > " ") : ?>background-color: <?php echo $bgColor ?>; <?php endif; ?>/* #080810 */
+<?php if ($fgColor > " ") : ?>color: <?php echo $fgColor ?>; <?php endif; ?>
+}
+
+a,
+a:link,
+a:visited
+{
+<?php if ($linkColor > " ") : ?>color: <?php echo $linkColor ?>; <?php endif; ?>
+<?php if ($linkDecoration > " ") : ?>text-decoration: <?php echo $linkDecoration ?>; <?php endif; ?>
+}
+a,
+a:hover
+{
+<?php if ($linkHvColor > " ") : ?>color: <?php echo $linkHvColor ?>; <?php endif; ?>
+}
+#bg_img 
+{ 
+position: absolute ;
+<?php if ($bgTop > " ") : ?>padding-top: <?php echo $bgTop ?>%; <?php endif; ?>
+<?php if ($bgLeft > " ") : ?>left: <?php echo $bgLeft ?>%; <?php endif; ?> 
+<?php if ($bgWidth > " ") : ?>width: <?php echo $bgWidth; ?>%; <?php endif; ?> /* 100% bgTop */
+}
+#headerleft
+ { /* plaatje linksboven, of slider, of watanders voor de kop links */
+margin-left: <?php echo $hlMarginLeft + $marginLeftRight; ?>%; /* 2%; */
+margin-top: <?php echo $hlMarginTop ?>%; /* 1%; */
+<?php if ($hlMarginBottom > " ") : ?>margin-bottom: <?php echo $hlMarginBottom; ?>%;<?php endif; ?>	
+<?php if ($hlWidth > " ") : ?>width: <?php echo $hlWidth; ?>%;<?php else : ?>width: auto;<?php endif; ?> /* 25% */
+   /* height werkt niet als percentage hier nog geen oplossing voor gevonden */
+<?php if ($hlHeight > " ") : ?>height: <?php echo 10 * $hlHeight; ?>%;<?php else : ?>height: auto;<?php endif; ?> /* 25% */
+
+ }
+
+#wrapper
+{
+}
+
+#area
+{
+margin-left: <?php echo $marginLeftRight; ?>%; /* 2%; */
+width: <?php echo $areaWidth ; ?>%;
+}
+#rightcolumn
+{
+margin-right: <?php echo $marginLeftRight; ?>%;
+width: <?php echo $contentPosRight - (0.5 * $marginLeftRight); ?>%; 
+}
+
+#page_heading { /* pagina kop naast headerleft */
+    float: left;
+margin-left: <?php echo (0.5 * $marginLeftRight); ?>%; /* 1%; */
+    padding-top: 0;
+<?php if ($hlWidth > " ") : ?>width: <?php echo 100 - (2.5 * $marginLeftRight) - $hlWidth - $hlMarginLeft; ?>%; <?php endif; ?>/* 70%; */
+}
+#page_heading h1
+{
+<?php if ($phMarginTop > " ") : ?>margin-top: <?php echo $phMarginTop ?>%; <?php endif; ?>/* 2% */
+<?php if ($phWidth > " ") : ?>width: <?php echo $phWidth ?>%; <?php endif; ?>/* 45.7% (45.7%*70%=32% 32 + 2 + 25 + 1 = 60%) */
+}
+
+h2,
+#page_heading h1,
+#maincolumn h1,
+#maincolumn h2,
+div.moduletable_menu h3,
+div.module_menu h3,
+#maincolumn div.blog h1, /* titel blog */
+#maincolumn div.blog h2 /* sub-titel blog */
+ {
+<?php if ($fgColor > " ") : ?>color: <?php echo $fgColor ?>; <?php endif; ?> /* voorlopig de standaard pagina kleur */
+}
+#icons
+{   /* icons social media boven logo */
+position: absolute;
+<?php if ($iconsPosTop > " ") : ?>top: <?php echo $iconsPosTop; ?>%;  <?php endif; ?>    
+<?php if ($iconsPosLeft > " ") : ?>left: <?php echo $iconsPosLeft; ?>%; <?php endif; ?>
+<?php if ($iconsWidth > " ") : ?>width: <?php echo $iconsWidth; ?>%; <?php endif; ?> /* 93% * 40% = 37.2% */
+}
+
+#logo
+{   /* logo website rechts van het midden transparant, 480x96 bij breedte 1280px */
+position: absolute; 
+<?php if ($logoPosTop > " ") : ?>top: <?php echo 10 * $logoPosTop; ?>%;  <?php endif; ?>    
+<?php if ($logoPosLeft > " ") : ?>left: <?php echo $logoPosLeft; ?>%; <?php endif; ?>
+<?php if ($logoWidth > " ") : ?>width: <?php echo $logoWidth; ?>%; <?php endif; ?> /* 93% * 40% = 37.2% */
+}
+#footer
+{   /* footer onder aan de pagina */
+position: fixed;
+<?php if ($footerPosBottom > " ") : ?>bottom: <?php echo $footerPosBottom; ?>%;  <?php endif; ?>    
+<?php if ($footerPosLeft > " ") : ?>left: <?php echo $footerPosLeft; ?>%; <?php endif; ?>
+<?php if ($footerWidth > " ") : ?>width: <?php echo $footerWidth; ?>%; <?php endif; ?> /* 93% * 40% = 37.2% */
+}
+
+#logo img,
+#logo_img
+{
+width: 100%;
+}
+
+#maincolumn div.blog h1, /* titel blog */
+#maincolumn div.blog h2, /* sub-titel blog */
+div.items-leading, /* hoofd artikelen van voorpagina en blog 1.6 */
+div.cols-1 div.item, /* item in 1 koloms-rij */
+div.cols-1 + div.items-more /* items-more na 1 koloms rij */
+{
+float: right;
+margin-top: @contentPosTop%; /* 1.0% */
+width: <?php echo 100 - $marginArea - $contentPosLeft ; ?>%; /* 70%;  */
+}
+
+div.category-desc, /* beschrijving van de categorie komt voor alle items */
+div.items-more, /* geeft aan, dat er nog meer items zijn */
+div.item /* vervolgartikel blog */
+{
+ width: <?php echo $contentPosLeft; ?>%;  /* 23.5%; ((25 - 2) * 100) / 98 = 23,5 */
+}
+
+div.tag-category ul /* tag-list inline maken in plaats van opsomming */
+{
+    padding-left: 0;
+}
+
+div.tag-category ul li /* element  rij in tag-lijst en tag overzicht, tag-list inline maken in plaats van opsomming */
+{
+    display: inline-block;
+    position: static;
+    vertical-align: top;
+   max-width: <?php echo $tagListItemWidth; ?>%;
+<?php if ($marginArea > " ") : ?>
+margin-right: <?php echo ($marginArea); ?>%;
+margin-bottom: <?php echo ($marginArea); ?>%;
+<?php endif; ?>
+}
+div.tag-category ul.category.list-striped li /* element rij alleen in tag-lijst, vaste breedte */
+{
+width: <?php echo $tagListItemWidth; ?>%;
+}
+
+
+.tag-category ul li h3 /* item titel boven tag  (none of initial) */
+{
+<?php if ($tagItemTitleDisplay > " ") : ?>
+display: <?php echo $tagItemTitleDisplay; ?>;
+
+<?php endif; ?>
+
+}
+.tag-category fieldset
+{ /* tot joomla het zoekveld goed verbergt */
+display: none;
+}
+
+
+
+div.items-leading  div .videoWrapper,
+.videoWrapper 
+{ 
+    position: relative;
+    padding-bottom: 80%; /* iets hoger dan 75%: 4:3 */   
+<?php if ($itemVideoHeight > " ") : ?>
+	padding-bottom:<?php echo $itemVideoHeight; ?>%;
+<?php endif; ?>
+    /* padding-bottom: 56.25%; 16:9     */
+	width: 100%;
+	height: 1px; 	
+}
+.videoWrapper object,
+.videoWrapper embed,
+.videoWrapper iframe  {
+        position: absolute;
+        top: 0;
+        left: 0;
+width:100%;
+    <?php if ($itemWidth > " ") : ?>
+width: <?php echo $itemWidth; ?>%;   
+<?php endif; ?>
+
+
+height: 100%;
+}
+
+div.moduletable_menu ul li a,
+div.moduletable_menu ul li a:link,
+div.moduletable_menu ul li a:visited,
+div.module_menu ul li a,
+div.module_menu ul li a:link,
+div.module_menu ul li a:visited,
+div.moduletable_menu ul li ul li a:link,
+div.moduletable_menu ul li ul li a:visited,
+a.sublevel:link,
+a.sublevel:visited, 
+div.module_menu ul li ul li a:link,
+div.module_menu ul li ul li a:visited
+{ 
+<?php if ($menuColor > " ") : ?>color: <?php echo $menuColor; ?>; <?php endif; ?>
+<?php if ($menuDecoration > " ") : ?>text-decoration: <?php echo $menuDecoration; ?>; <?php endif; ?>
+}
+
+
+div.moduletable_menu,
+div.module_menu
+{
+<?php if ($menuMarginTop > " ") : ?>margin-top: <?php echo $menuMarginTop; ?>%; <?php endif; ?>/* 18.5% */
+}
+
+div.moduletable_menu ul,
+div.module_menu ul,
+ul.module_menu
+{ 
+<?php if ($menuLineHeight > " ") : ?>line-height: <?php echo $menuLineHeight; ?>em; <?php endif; ?>
+<?php if ($menuColor > " ") : ?>color: <?php echo $menuColor; ?>; <?php endif; ?>
+<?php if ($menuBgColor > " ") : ?>background-color: <?php echo $menuBgColor; ?>; <?php endif; ?>
+<?php if ($menuFontSize > " ") : ?>font-size: <?php echo $menuFontSize; ?>px; <?php endif; ?>   /* 12px */   
+<?php if ($menuDecoration > " ") : ?>text-decoration: <?php echo $menuDecoration; ?>; <?php endif; ?>
+<?php if ($menuDisplay == "inline") : ?>
+  padding-left: 0;
+  margin-left: 0;  
+<?php endif; ?>
+<?php if ($menuMarginLeft > " ") : ?>margin-left: <?php echo $menuMarginLeft; ?>%; <?php endif; ?>
+}
+ul.menu_menu li,
+ul.menu_menu li ul li,
+ul.menu_img li,
+ul.menu_img li ul li,
+div.module_menu ul li,
+div.module_menu ul li ul li,
+div.moduletable_menu ul li,
+div.moduletable_menu ul li ul li
+{
+<?php 
+
+switch ($menuDisplay) {
+    case "inline":
+        echo  "display: inline;";
+        break;
+    case "inline-block center":
+        echo  "display: inline-block;";
+        break;
+    case "inline-block left":
+        echo  "display: inline-block;";
+        break;
+    case "inline-block right":
+        echo  "display: inline-block;";
+        break;
+    case "block":
+        echo  "display: block; float: none;";
+        break;
+    default:
+        echo  "";
+}
+
+?>
+  }
+
+ul.menu_menu li a,
+ul.menu_menu li ul li a,
+ul.menu_img li a,
+ul.menu_img li ul li a,
+div.module_menu ul li a,
+div.module_menu ul li ul li a,
+div.moduletable_menu ul li a,
+div.moduletable_menu ul li ul li a
+{
+<?php 
+
+switch ($menuDisplay) {
+    case "block":
+        echo  "background: none; padding: 0; ";
+        break;
+    default:
+        echo  "";
+}
+
+?>
+  }
+
+div.moduletable_menu ul li.current a,
+div.moduletable_menu ul li ul li.current a:link,
+div.moduletable_menu ul li ul li.current a:visited,
+div.module_menu #current,
+div.module_menu ul li.current a,
+div.module_menu ul li.current a:link,
+div.module_menu ul li.current a:visited
+{
+<?php if ($menuActiveColor > " ") : ?>color: <?php echo $menuActiveColor ?>; <?php endif; ?>
+<?php if ($menuActiveDecoration > " ") : ?>text-decoration: <?php echo $menuActiveDecoration ?>; <?php endif; ?>
+}
+
+div.moduletable_menu ul li.active a,
+div.moduletable_menu ul li ul li.active a:link,
+div.moduletable_menu ul li ul li.active a:visited,
+div.module_menu ul li.active a,
+div.module_menu ul li.active a:link,
+div.module_menu ul li.active a:visited
+{ /* bovenliggende menuoptie van actieve menu alleen de kleur aanpassen*/
+<?php if ($menuActiveColor > " ") : ?>color: <?php echo $menuActiveColor ?>; <?php endif; ?>
+}
+
+div.moduletable_menu ul li a:hover,
+div.moduletable_menu ul li ul li a:hover,
+a.sublevel:hover, 
+div.module_menu ul li a:hover,
+div.module_menu ul li ul li a:hover
+{ 
+<?php if ($menuHvColor > " ") : ?>color: <?php echo $menuHvColor ?>; <?php endif; ?>
+<?php if ($menuHvDecoration > " ") : ?>text-decoration: <?php echo $menuHvDecoration ?>; <?php endif; ?>
+}
+
+<?php if ($breakpointMobile > " ") : ?>
+/* begin @media breakpointMobile */
+@media (max-width: <?php echo $breakpointMobile ?>px)  {
+#icons
+{   /* icons fb etc meer naar links en breder  */ 
+left: 0%;
+width: 100%; 
+<?php if ($this->countModules('headerleft') and $hlWidth > " " and $hlWidth < 40) : ?>
+left: <?php echo $hlWidth; ?>%;
+width: <?php echo 100 - $hlWidth; ?>%;
+<?php endif; ?>
+
+}
+ }
+/* einde @media breakpointMobile */
+<?php endif; ?>
+<!--- tot hier gekomen -->
+
+
+</style>
+

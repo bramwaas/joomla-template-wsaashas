@@ -1,0 +1,153 @@
+// standard variables for this template.
+// -------------------------20160421
+// colors
+// -------------------------
+@black:                 #000;
+@grayDarker:            #222;
+@grayDark:              #333;
+@gray:                  #555;
+@grayLight:             #999;
+@grayLighter:           #F5F5F5;
+@white:                 #fff;
+
+// Typography
+// -------------------------
+@sansFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
+@serifFontFamily:       Georgia, "Times New Roman", Times, serif;
+@monoFontFamily:        Menlo, Monaco, Consolas, "Courier New", monospace;
+
+@asBaseFontSize:          12px;
+@asBiggerFontSize:        @asBaseFontSize * 1.25;
+@asBigFontSize:        	  @asBiggerFontSize * 1.5;
+@asH1FontSize:		  @asBaseFontSize * 2;
+@asBaseFontFamily:        @sansFontFamily;
+@asBaseLineHeight:        @asBaseFontSize * 1.3;
+@asBiggerLineHeight:      @asBiggerFontSize * 1.3;
+@asBigLineHeight:	  28.5px;
+
+@altFontFamily:           @monoFontFamily;
+
+@headingsFontFamily:    'Telex', sans-serif; // empty to use BS default, @asBaseFontFamily
+@headingsFontWeight:    bold;    // instead of browser default, bold
+@headingsColor:         #317EAC; // empty to use BS default, @textColor
+
+
+// Scaffolding
+// -------------------------
+@asBodyBackgroundColor:   #080810;
+@asBodyBackgroundImage:	  url("../images/top_bg.png");
+@asBodyBackground:        #080810  url("../images/top_bg.png") 0% 0% repeat-x;
+@asTextColor:             @white;
+@asMainH1Color:           @grayLight;
+@asH1Color:               #666;
+
+@asSectionTbHBgColor:     #efefef;
+@asSectionTbHColor:	  @grayDark;
+@asSectionTbHBorderColor: @white;
+
+@asModMenuH1Color:        #eee;
+@asModMenuFontFamily:	  @sansFontFamily;
+@asFieldBorder:           1px solid #cccccc;
+@asModMenuUlBackgroundColor: @asBodyBackgroundColor;
+@asModMenuUlFontSize:     @asBaseFontSize;
+@asModMenuUlLineHeight:   @asBaseLineHeight;
+@asModMenuLinkColor:      #bbb;
+@asModMenuLinkColorHover: darken(@asModMenuLinkColor, 15%);
+@asModMenuLinkDecorationHover: underline;
+@asModMenuBackGround:	  url(../images/mw_menu_separator.png) no-repeat 0 8px; //
+@asModMenuPadding:        0 4px 0 8px; // top rechts bodem links padding-right:4px;   padding-left:8px;
+
+@asModMenuDecoration:     initial;
+@asModMenuMarginTop:      18.5%;
+@asModMenuMarginLeft:     0;
+@asModMenuDisplay:        inline;
+@asModMenuFloat:          left;
+@asModMenuActiveColor:    @asModMenuLinkColor;
+@asModMenuActiveDecoration: initial;
+
+@asModLangFloat:             right;
+
+
+
+
+// Dimensions
+// ----------------------------
+@breakpointMobile:        100000px; // maximum voor smalle schermen default dua heel groot. normaal 640
+@breakpointXLmin:         100000px; // minimum voor extra groot
+@iconsMobileLeft:         0%;
+@iconsMobileWidth:         100%;
+@asMarginStd:		  2%;
+@asMarginHalf:		  @asMarginStd / 2;
+
+@asPageHeadH1Width:	  45.7%;
+
+@hlMarginTop:             @asMarginHalf;
+@hlMarginLeft:            @asMarginStd;
+@asHeadLeftWidth:         25%;
+@hlHeight:                auto;
+@hlMarginBottom:          0; 	
+
+
+@phMarginTop:             @asMarginHalf;
+@asPageHeadWidth:	  70%;
+
+@bgWidth:                 100%;
+@bgLeft:                  0;
+@bgTop:                   0;
+
+@asLogoLeft:	 	  60%;
+@asLogoTop:		  2.8%;
+@asLogoWidth:		  100% - @asLogoLeft;
+@asLogoImgWidth:          100%;
+
+@iconsPosTop:             auto;    
+@iconsPosLeft:            auto;
+@iconsWidth:              auto; 
+
+@footerPosBottom:         auto;    
+@footerPosLeft:           auto;
+@footerWidth:             auto;
+
+@rightWidth:              auto;
+
+
+
+@areaWidth:               100%;
+
+
+@asVideoHeight:           80%;  // iets hoger dan 4x3 100 * 3 / 4% ;  100 * 9 / 16%; // 56.25%
+@asVideoHeightExtra:      25px;
+@asVideoItemWidth:        100%;
+
+@asBlogLeadingWidth:      75%;
+@asBlogItemWidth:         23.5%;
+@tagListItemWidth:        75%;
+@tagItemTitleDisplay:     initial;
+@tagItemSearchDisplay:    none;
+@asMinWidthItem:          256px;
+@asFullWidth:             720px;
+@asHalfWidth:		  @asFullWidth / 2;
+@as2ColFullWidth:   	  512px;
+@as2ColHalfWidth:	  @as2ColFullWidth / 2;
+@as3ColFullWidth:         360px;
+@as3ColHalfWidth:	  @as3ColFullWidth / 2;
+
+@asActionsLeft:           83%;
+@asActionsWidth:	  10%;
+
+@asInputLabelWidth:       36%;
+@asInputMargin:		  37%;
+@asInputWidth:		  62%;
+
+
+
+
+// Links
+// -------------------------
+@asLinkColor:             blue;
+@asLinkColorHover:        @asLinkColor; //darken(@linkColor, 15%);
+@asLinkDecoration:        underline;
+
+
+
+

@@ -1,0 +1,26 @@
+; Author A.H.C. Waasdorp
+; Copyright (C) 2015 A.H.C. Waasdorp. All rights reserved.
+; license GNU General Public License version 2 or later; see LICENSE.txt, see LICENSE.php
+; Note : All ini files need to be saved as UTF-8
+COM_TEMPLATES_BACKGROUND_FIELDSET_LABEL="Background"
+COM_TEMPLATES_DEVELOPER_FIELDSET_LABEL="Developer"
+TPL_WSA_BOOTSTRAP_DESCRIPTION="Basic Template with bootstrap Joomla 3"
+EXPLANATION0="First layer backgound (browserbackground)"
+EXPLANATION1="Second layer backgound (containerbackground)"
+EXPLANATION2="Third layer backgound (eg. logo)"
+COMPILE_LABEL="Compile LESS files" 
+COMPILE_DESCRIPTION="Create and compile LESS files."
+COMPRESS_CSS_LABEL="Minify CSS"
+COMPRESS_CSS_DESCRIPTION="Compress (minify) generated CSS file."
+BGIMAGE_LABEL="Background image:" 
+BGIMAGE_DESCRIPTION="Select a background image"
+BGSIZE_LABEL="Size / unit bgimage:"
+BGSIZE_DESCRIPTION="Size or unit of measure background image."
+BGWIDTH_LABEL="Width background image:"
+BGPOSITION_LABEL="Unit bg position:"
+BGTOP_LABEL="Margin top background image:"
+BGLEFT_LABEL="Margin left background image:"
+BGREPEAT_LABEL="Repeat bg image:"
+BGCOLOR_LABEL="Background color:"
+WSACUSTOMCSS_LABEL="Custom Less:"
+WSACUSTOMCSS_DESCRIPTION="Add custom css via custom less file" 

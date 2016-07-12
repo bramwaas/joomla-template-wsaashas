@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/2.5/template-install.dtd">
+<extension version="3.1" type="template" client="site" method="upgrade">
+	<name>asha-s</name>
+	<version>1.5.0 </version>
+	<creationDate>25-06-2016</creationDate>
+	<author>AHC Waasdorp</author>
+	<authorEmail>bram@waasdorpsoekhan.nl</authorEmail>
+	<authorUrl>http://www.waasdorpsoekhan.nl</authorUrl>
+	<copyright>A.H.C Waasdorp</copyright>
+	<license>GNU/GPL</license>
+	<description>Asha-s template ontwikkeld voor detailpaginas website Asha-s.com met veel opties om de lay-out vanuit het CMS aan te passen.</description>
+	<files>
+		<filename>templateDetails.xml</filename>
+		<filename>template_preview.png</filename>
+		<filename>template_thumbnail.png</filename>
+		<filename>index.php</filename>
+		<filename>include_link_rel_canonical.php</filename>
+		<filename>index.html</filename>
+		<filename>favicon_as.ico</filename>
+		<filename>favicon_ws.ico</filename>
+		<folder>css</folder>
+		<folder>fields</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+		<folder>language</folder>
+		<folder>less</folder>
+		<folder>rules</folder>
+	</files>
+	<positions>
+		<position>logo</position>
+        	<position>breadcrumb</position>
+	    	<position>headerleft</position>
+		<position>left</position>
+		<position>right</position>
+		<position>top</position>
+		<position>topright</position>
+		<position>user1</position>
+		<position>user2</position>
+		<position>user3</position>
+		<position>user4</position>
+		<position>footer</position>
+		<position>debug</position>
+		<position>syndicate</position>
+		<position>position-1</position>
+		<position>position-2</position>
+		<position>position-3</position>
+		<position>position-4</position>
+		<position>position-5</position>
+		<position>position-6</position>
+		<position>position-7</position>
+		<position>position-8</position>
+		<position>position-9</position>
+		<position>position-10</position>
+		<position>position-11</position>
+		<position>position-12</position>
+		<position>position-13</position>
+		<position>position-14</position>
+	</positions>
+	<languages folder="language">
+        	<language tag="en-GB">en-GB/en-GB.tpl_asha-s.ini</language>
+        	<language tag="en-GB">en-GB/en-GB.tpl_asha-s.sys.ini</language>
+         	<language tag="nl-NL">nl-NL/nl-NL.tpl_asha-s.ini</language>
+        	<language tag="nl-NL">nl-NL/nl-NL.tpl_asha-s.sys.ini</language>
+ 	</languages>
+	<config>
+		<fields name="params" addfieldpath="/templates/asha-s/fields" addrulepath="/templates/asha-s/rules">
+			<fieldset name="advanced">
+				<field name="explanation"  type="spacer" hr="false"
+					label="With these variables you can change the lay-out (of the style) of the template a little bit."
+					 />
+				<field name="gplusProfile" type="text" default="" 
+					label="G+Profile" 
+					description="Google+ profile"
+					/>
+				<field name="breakpointMobile"   class="validate-numeric" type="text" default="641"
+					label="Breakpoint Mobile:"
+					description="Breakpoint body width seen as mobile"
+					 />
+				<field name="breakpointXLmin"   class="validate-numeric" type="text" default="1200"
+					label="Breakpoint XL:"
+					description="Breakpoint body width seen extra large"
+					 />
+				<field name="hlMarginTop"  class="validate-numeric" type="text" default="1.0"
+					label="Margin top headerleft block:"
+					description="Margin top headerleft block as percentage"
+					 />
+				<field name="hlMarginLeft"  class="validate-numeric" type="text" default="0.0"
+					label="Margin left headerleft block:"
+					description="Margin left headerleft block as percentage"
+					 />
+				<field name="hlWidth"  class="validate-numeric" type="text" default="25"
+					label="Width headerleft block:"
+					description="Width headerleft block as percentage, 100 = full screen"
+					 />
+				<field name="hlHeight"  class="validate-numeric" type="text" default="25"
+					label="Heigh headerleft block:"
+					description="Height headerleft block as percentage, 100 = full screen"
+					 />
+				<field name="hlMarginBottom"  class="validate-numeric" type="text" default="0.0"
+					label="Margin bottom headerleft block:"
+					description="Margin bottom headerleft block as percentage"
+					 />
+				<field name="showTitle" type="checkbox" value="1" default="0"
+     				label="Show title" 
+					description="Show the title of the item" 
+					 />					 
+				<field name="phMarginTop"  class="validate-numeric" type="text" default="2.0"
+					label="Margin top title:"
+					description="Margin top title as percentage"
+					 />
+				<field name="phWidth"  class="validate-numeric" type="text" default="45.7"
+					label="Width title:"
+					description="Width title as percentage."
+					 />
+					 
+				<field name="background" type="list" default="bg_00.css"
+					label="Background:"	
+ 				    description="Background colors an character colors etc."
+				>
+					<option value="bg_00.css">Default</option>
+					<option value="bg_01.css">01</option>
+					<option value="bg_02.css">02</option>
+					<option value="bg_03.css">03</option>
+					<option value="bg_gray.css">Gray</option>
+                                        <option value="bg_soekhan_yellow_on_black.css">Yellow black Ruth</option>
+				</field>
+				<field name="fgColor"  type="text" default=""
+					label="Foreground color:"
+					description="If not empty overwrite color of most texts .  #RGB, #000000 = black, #FF0000 = red, #00FF00 = green, #0000FF = blue, #FFFFFF = white "
+					 />
+				<field name="bgImage" type="media" default="" 
+                                       	label="Background image:" description="Select a background image." />
+				<field name="bgWidth"   class="validate-numeric" type="text" default=""
+					label="Width background image:"
+					description="Width background image, 100 = full screen"
+					 />
+				<field name="bgTop"  class="validate-numeric" type="text" default=""
+					label="Margin top background image:"
+					description="Background image margin top"
+					 />	
+				<field name="bgLeft"  class="validate-numeric" type="text" default=""
+					label="Margin left background image:"
+					description="Background image margin left"
+					 />					 
+				<field name="bgColor"  type="text" default=""
+					label="Background color:"
+					description="If not empty overwrite color of background .  #RGB, #000000 = black, #FF0000 = red, #00FF00 = green, #0000FF = blue, #FFFFFF = white"
+					 />
+				<field name="bgImageMob" type="media" default="" 
+                                       	label="Background image mob:" description="Select a background image for mobile." />
+				<field name="bgWidthMob"   class="validate-numeric" type="text" default=""
+					label="Width background image:"
+					description="Width background image mobile, 100 = full screen"
+					 />
+				<field name="bgTopMob"  class="validate-numeric" type="text" default=""
+					label="Margin top background image:"
+					description="Background image margin top mobile"
+					 />	
+				<field name="bgLeftMob"  class="validate-numeric" type="text" default=""
+					label="Margin left background image:"
+					description="Background image margin left mobile"
+					 />					 
+
+				<field name="logo" type="media" default="/templates/asha-s/images/transparent_b1.png" 
+                                     directory=""   
+					label="Logo image:"
+					description="Select a logo image for the right upper corner"
+					/>
+				<field name="logoWidth"  class="validate-numeric" type="text" default="37.2"
+					label="Width logo:"
+					description="Width logo as percentage of pagewidth"
+					 />
+				<field name="logoPosLeft"  class="validate-numeric" type="text" default="60"
+					label="Left margin logo:"
+					description="Position left margin logo as percentage of width 0 = left edge, 100 = right edge"
+					 />
+				<field name="logoPosTop"  class="validate-numeric" type="text" default="2.8"
+					label="Top margin logo:"
+					description="Position top logo as percentage of height, 0 = top, 100 = (under) bottom"
+					 />
+				<field name="iconsWidth"  class="validate-numeric" type="text" default="24.5"
+					label="Width icons:"
+					description="Width icons social media as percentage of pagewidth"
+					 />
+				<field name="iconsPosLeft"  class="validate-numeric" type="text" default="75"
+					label="Left margin icons:"
+					description="Position left margin icons as percentage of width 0 = left edge, 100 = right edge"
+					 />
+				<field name="iconsPosTop"  class="validate-numeric" type="text" default="0.0"
+					label="Top margin icons:"
+					description="Position top icons as percentage of height, 0 = top, 100 = (under) bottom"
+					 />
+				<field name="contentPosTop"  class="validate-numeric" type="text" default="0"
+					label="Top margin content:"
+					description="Position top margin content"
+					/>
+				<field name="contentPosLeft"  class="validate-numeric" type="text" default="25"
+					label="Left margin main content:"
+					description="Width left content or position left margin main content as percentage 0 = left edge, 100 = right edge"
+					 />
+				<field name="contentPosRight"  class="validate-numeric" type="text" default=""
+					label="Right margin main content:"
+					description="Width right margin main content as percentage 0 = right edge, 100 = left edge"
+					 />
+				<field name="tagListItemWidth"  class="validate-numeric" type="text" default="33"
+					label="Width tag item in list:"
+					description="Width tag item in list as percentage"
+					 />
+				<field name="tagItemTitleDisplay" type="list" default=""
+					label="Display title article"	
+ 				    description="Display title article."
+				>
+					<option value="">Default</option>
+					<option value="initial">Yes</option>
+					<option value="none">No</option>
+				</field>
+				<field name="marginLeftRight"  class="validate-numeric" type="text" default="2.0"
+					label="Margins left and right:"
+					description="Margins left and right as percentage"
+					 />
+				<field name="itemPageWidth"  class="validate-numeric" type="text" default=""
+					label="Width single article:"
+					description="Width single article as percentage"
+					 />
+				<field name="itemVideoHeight"  class="validate-numeric" type="text" default="80"
+					label="Height % Video:"
+					description="Height / Width percentage iframe (of video)."
+					/>
+				<field name="expl-blog-lead"  type="spacer" hr="false"
+					label="Dimensions blog leading articles."
+					 />
+				<field name="itemLeadHeight"  class="validate-numeric" type="text" default=""
+					label="Row height leading:"
+					description="Row height leading articles."
+					/>
+				<field name="itemLeadWidth"  class="validate-numeric" type="text" default=""
+					label="Article width leading:"
+					description="Width leading article."
+					/>
+				<field name="itemLeadMargin"  class="validate-numeric" type="text" default=""
+					label="Margin leading:"
+					description="Margin leading articles."
+					/>
+				<field name="expl-blog-articles"  type="spacer" hr="false"
+					label="Dimensions blog other articles."
+					 />
+				<field name="itemHeight"  class="validate-numeric" type="text" default=""
+					label="Row height:"
+					description="Row height articles."
+					/>
+				<field name="itemWidth"  class="validate-numeric" type="text" default=""
+					label="Article width:"
+					description="Width article."
+					/>
+				<field name="itemMargin"  class="validate-numeric" type="text" default=""
+					label="Margin:"
+					description="Margin between articles."
+					/>
+				<field name="explanation2"  type="spacer" hr="false"
+					label="Color links and menuoptions #RGB or colorname. #RGB: #000000 = black, #FF0000 = red, #00FF00 = lime, #0000FF = blue, #FFFFFF = white.&lt;br /&gt;Names: yellow, fuchsia, red, aqua, lime, blue, olive, purple, maroon, teal, green, navy, white, black, gray, silver."
+					 />
+				<field name="linkColor"  type="text" default=""
+					label="Link color:"
+					description="If not empty overwrite color of links."
+					 />
+				<field name="linkDecoration" type="list" default=""
+					label="Underline link"	
+ 				    description="Underline link."
+				>
+					<option value="">Default</option>
+					<option value="underline">Yes</option>
+					<option value="none">No</option>
+				</field>
+				<field name="linkHvColor"  type="text" default=""
+					label="Link hover color:"
+					description="If not empty overwrite color of link where mouse hovers above."
+					 />
+				<field name="menuLineHeight"   class="validate-numeric" type="text" default=""
+					label="Line height"
+					description="Line height menu lines"
+					 />
+				<field name="menuMarginTop"  class="validate-numeric" type="text" default="18.5"
+					label="Margin top menu:"
+					description="Margin top menu as percentage."
+					 />
+				<field name="menuMarginLeft"  class="validate-numeric" type="text" default=""
+					label="Margin left menu:"
+					description="Margin left menu as percentage."
+					 />
+				<field name="menuColor"  type="text" default=""
+					label="Menutext color:"
+					description="If not empty overwrite color of menu text."
+					 />
+				<field name="menuBgColor"  type="text" default="transparent"
+					label="Menubg color:"
+					description="If not empty overwrite color of menu background, or make it transparent."
+					 />
+				<field name="menuFontSize"  class="validate-numeric" type="text" default=""
+					label="Menu text size:"
+					description="Menu text font size (pixels)."
+					 />
+				<field name="menuDisplay" type="list" default=""
+					label="Horizontal menu"	
+ 				    description="Underline menu text."
+				>
+					<option value="">Default</option>
+					<option value="inline">Horizontal</option>
+					<option value="inline-block center">Horizontal centered</option>
+					<option value="inline-block left">Horizontal left</option>
+					<option value="inline-block right">Horizontal right</option>
+					<option value="block">Vertical (down)</option>
+				</field>
+				<field name="menuDecoration" type="list" default=""
+					label="Underline menu text"	
+ 				    description="Underline menu text."
+				>
+					<option value="">Default</option>
+					<option value="underline">Yes</option>
+					<option value="none">No</option>
+				</field>
+				<field name="menuHvColor"  type="text" default=""
+					label="Menu hover color:"
+					description="If not empty overwrite color of menu text where mouse hovers above ."
+					 />
+				<field name="menuHvDecoration" type="list" default=""
+					label="Underline hovered menu"	
+ 				    description="Underline menu text where mouse hovers above."
+				>
+					<option value="">Default</option>
+					<option value="underline">Yes</option>
+					<option value="none">No</option>
+				</field>
+				<field name="menuActiveColor"  type="text" default=""
+					label="Active menu color:"
+					description="If not empty overwrite text color of active menu."
+					 />wsaCustomCSS
+				<field name="menuActiveDecoration" type="list" default=""
+					label="Underline active menu item"	
+ 				    description="Underline menu text of active menu item."
+				>
+					<option value="">Default</option>
+					<option value="underline">Yes</option>
+					<option value="none">No</option>
+				</field>
+				<field name="footerWidth"  class="validate-numeric" type="text" default="80.0"
+					label="Width footers:"
+					description="Width footer as percentage of pagewidth"
+					 />
+				<field name="footerPosLeft"  class="validate-numeric" type="text" default="5.0"
+					label="Left margin footer:"
+					description="Position left margin footer as percentage of width 0 = left edge, 100 = right edge"
+					 />
+				<field name="footerPosBottom"  class="validate-numeric" type="text" default="0.0"
+					label="Bottom margin footer:"
+					description="Position bottom footer as percentage of height, 0 = bottom"
+					 />
+			</fieldset>
+			<fieldset name="Developer" addfieldpath="/templates/asha-s/fields" addrulepath="/templates/asha-s/rules">
+				<field name="compile" type="radio"
+					class="btn-group btn-group-yesno"
+ 					label="COMPILE_LABEL" default="1"
+					description="COMPILE_DESCRIPTION" validate="wsa.compiler">
+  					<option value="1">JYES</option>
+  					<option value="0">JNO</option>
+				</field>
+				<field name="compress" type="radio"
+					class="btn-group btn-group-yesno"
+ 					label="COMPRESS_CSS_LABEL" default="1"
+					description="COMPRESS_CSS_DESCRIPTION" >
+  					<option value="1">JYES</option>
+  					<option value="0">JNO</option>
+				</field>
+			 	<field name="wsaCustomCSS" type="filelist" directory="images/less" hide_default="true"
+                   			label="WSACUSTOMCSS_LABEL" description="WSACUSTOMCSS_DESCRIPTION" />
+
+
+			</fieldset>
+		</fields>
+	</config>
+    <updateservers>
+	<server type="extension" priority="1" name="Asha S Template"><![CDATA[http://www.waasdorpsoekhan.nl/update/ashas/ashas.xml]]></server>
+	<server type="collection" priority="2"  name="WaasdorpSoekhan extensions"><![CDATA[http://www.waasdorpsoekhan.nl/update/waasdorpsoekhan_list.xml]]></server>
+    </updateservers>
+
+</extension>
+
