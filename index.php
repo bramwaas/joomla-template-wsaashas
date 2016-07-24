@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright  Copyright (C) 2011 - 2016 AHC Waasdorp. All rights reserved.
+ * @copyright  Copyright (C) 2011 - 2016, Amsterdam AHC Waasdorp. All rights reserved.
  * @license    GNU/GPL, see LICENSE
  * Joomla! is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
