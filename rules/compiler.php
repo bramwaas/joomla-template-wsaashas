@@ -280,6 +280,7 @@ $st_file =fopen($currentpath. '/../less/style' . $templateid . '.less', "w+");
 
 fwrite($st_file, "// style" . $templateid .  ".less \n");
 fwrite($st_file, "// generated " . date("c")  . "\n//\n");
+fwrite($st_file, '@import "twbs_variables.less";' . "\n");
 fwrite($st_file, '@import "system.less";' . "\n");
 fwrite($st_file, '@import "general.less";' . "\n");
 fwrite($st_file, '@import "magnificpopup.variables.less";' . "\n");
