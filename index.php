@@ -34,6 +34,7 @@
   7-2-2016 inline style verwijderd
   26-3-2016 attribute data-wsmodal toegevoeg voor start modal popup
   21-4-2016 magnific popup toegevoegd als JQUERY vervanger van MOOTOOLS modal 
+  30-7-2016 aanpassingen om icons netter te plaatsen, overbodige variabelen verwijderd
  */
 
 // no direct access
@@ -58,31 +59,11 @@ $templatestyleid =  $template->id;
 
 // get params
 $gplusProfile   = htmlspecialchars($this->params->get('gplusProfile'));
-$breakpointMobile = htmlspecialchars($this->params->get('breakpointMobile'));
 
-$hlMarginTop    = htmlspecialchars($this->params->get('hlMarginTop'));
-$hlMarginLeft   = htmlspecialchars($this->params->get('hlMarginLeft'));
-if ($hlMarginLeft > " " ) {} else { $hlMarginLeft = 0; }
-$hlWidth    	= htmlspecialchars($this->params->get('hlWidth'));
-$hlHeight    	= htmlspecialchars($this->params->get('hlHeight'));
-$hlMarginBottom = htmlspecialchars($this->params->get('hlMarginBottom'));
 $showTitle  	= htmlspecialchars($this->params->get('showTitle'));
-$phMarginTop    = htmlspecialchars($this->params->get('phMarginTop'));
-$phWidth    	= htmlspecialchars($this->params->get('phWidth'));
 $background    	= htmlspecialchars($this->params->get('background'));
-$fgColor    	= htmlspecialchars($this->params->get('fgColor'));
 $bgImage    	= htmlspecialchars($this->params->get('bgImage'));
-$bgWidth    	= htmlspecialchars($this->params->get('bgWidth'));
-$bgTop      	= htmlspecialchars($this->params->get('bgTop'));
-$bgLeft      	= htmlspecialchars($this->params->get('bgLeft'));
-$bgColor    	= htmlspecialchars($this->params->get('bgColor'));
 $logo      	= htmlspecialchars($this->params->get('logo'));
-$logoWidth    	= htmlspecialchars($this->params->get('logoWidth'));
-$logoPosLeft    = htmlspecialchars($this->params->get('logoPosLeft'));
-$logoPosTop    	= htmlspecialchars($this->params->get('logoPosTop'));
-$iconsWidth    	= htmlspecialchars($this->params->get('iconsWidth'));
-$iconsPosLeft   = htmlspecialchars($this->params->get('iconsPosLeft'));
-$iconsPosTop    = htmlspecialchars($this->params->get('iconsPosTop'));
 $contentPosLeft	= htmlspecialchars($this->params->get('contentPosLeft'));
 $contentPosRight	= htmlspecialchars($this->params->get('contentPosRight'));
 $contentPosTop  = htmlspecialchars($this->params->get('contentPosTop'));
