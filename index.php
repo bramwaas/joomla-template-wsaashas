@@ -64,58 +64,16 @@ $showTitle  	= htmlspecialchars($this->params->get('showTitle'));
 $background    	= htmlspecialchars($this->params->get('background'));
 $bgImage    	= htmlspecialchars($this->params->get('bgImage'));
 $logo      	= htmlspecialchars($this->params->get('logo'));
-$contentPosLeft	= htmlspecialchars($this->params->get('contentPosLeft'));
-$contentPosRight	= htmlspecialchars($this->params->get('contentPosRight'));
-$contentPosTop  = htmlspecialchars($this->params->get('contentPosTop'));
 $marginLeftRight	= htmlspecialchars($this->params->get('marginLeftRight'));
 if ($marginLeftRight > " " and $marginLeftRight > 0 and $marginLeftRight < 50) {} 
 	else { $marginLeftRight = 2; }
-$itemPageWidth  = htmlspecialchars($this->params->get('itemPageWidth'));
-if ($itemPageWidth > " " and $itemPageWidth < 100 and $itemPageWidth > 0) {}
-	else { $itemPageWidth = 100; }
-$tagListItemWidth    = htmlspecialchars($this->params->get('tagListItemWidth'));
-if ($tagListItemWidth > " " and $tagListItemWidth > 0 and $tagListItemWidth <= 100) { } 
-	else { $tagListItemWidth = 30; }
-$tagItemTitleDisplay   = htmlspecialchars($this->params->get('tagItemTitleDisplay'));
-
-$itemVideoHeight= htmlspecialchars($this->params->get('itemVideoHeight'));
-$itemLeadHeight = htmlspecialchars($this->params->get('itemLeadHeight'));
-$itemLeadWidth  = htmlspecialchars($this->params->get('itemLeadWidth'));
-$itemLeadMargin = htmlspecialchars($this->params->get('itemLeadMargin'));
-$itemHeight    	= htmlspecialchars($this->params->get('itemHeight'));
-$itemWidth    	= htmlspecialchars($this->params->get('itemWidth'));
-$itemMargin    	= htmlspecialchars($this->params->get('itemMargin'));
-$linkColor    	= htmlspecialchars($this->params->get('linkColor'));
-$linkDecoration = htmlspecialchars($this->params->get('linkDecoration'));
-$linkHvColor    = htmlspecialchars($this->params->get('linkHvColor'));
-$menuLineHeight = htmlspecialchars($this->params->get('menuLineHeight'));
-$menuMarginTop  = htmlspecialchars($this->params->get('menuMarginTop'));
-$menuMarginLeft = htmlspecialchars($this->params->get('menuMarginLeft'));
-$menuColor    	= htmlspecialchars($this->params->get('menuColor'));
-$menuBgColor   	= htmlspecialchars($this->params->get('menuBgColor'));
-$menuFontSize 	= htmlspecialchars($this->params->get('menuFontSize')); 
-$menuDisplay 	= htmlspecialchars($this->params->get('menuDisplay'));
-$menuLineHeight = htmlspecialchars($this->params->get('menuLineHeight'));
-$menuDecoration = htmlspecialchars($this->params->get('menuDecoration'));
-$menuHvColor    = htmlspecialchars($this->params->get('menuHvColor'));
-$menuHvDecoration  	= htmlspecialchars($this->params->get('menuHvDecoration'));
-$menuActiveColor  	= htmlspecialchars($this->params->get('menuActiveColor'));
-$menuActiveDecoration  	= htmlspecialchars($this->params->get('menuActiveDecoration'));
-$footerWidth    = htmlspecialchars($this->params->get('footericonsWidth'));
-$footerPosLeft  = htmlspecialchars($this->params->get('footerPosLeft'));
-$footerPosBottom	= htmlspecialchars($this->params->get('footerPosBottom'));
-
-if ($contentPosLeft > $marginLeftRight and $contentPosLeft < 100 )
-	{ $contentPosLeft = $contentPosLeft * 50 / (50 - $marginLeftRight);}
-	else
-	{ $contentPosLeft = 24; }
+$contentPosRight	= htmlspecialchars($this->params->get('contentPosRight'));
 if ($contentPosRight > (1.5 * $marginLeftRight) and $contentPosRight < 100 )
 	{ $contentPosRight = $contentPosRight * 50 / (50 - $marginLeftRight); }
 	else
 	{ $contentPosRight = 0; }
-$areaWidth = 100 - 2 * $marginLeftRight - $contentPosRight;
-$marginArea = $marginLeftRight * 50 / $areaWidth;
-$tagListItemWidth = $tagListItemWidth * 100 / $areaWidth;
+
+
 ?>
 <!DOCTYPE html >
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>"  
