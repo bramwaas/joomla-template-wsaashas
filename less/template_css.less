@@ -1,8 +1,58 @@
 // 
 // standard css for this template
 //css
-// --------------------- 20160624
+// --------------------- 20160801
 //
+a {
+ color: @asLinkColor;
+}
+a:link, a:visited {
+  text-decoration: @asLinkDecoration;
+  font-weight:normal;
+}
+a:hover {
+  color: @asLinkColorHover;
+  text-decoration: @asLinkDecoration;
+  font-weight:bold;
+}
+a.mainlevel:link, a.mainlevel:visited {
+  padding-left:5px;
+}
+a.readon {
+  margin-top:10px;
+  display:block;
+  float:left;
+  background:url(../images/mw_readon.png) top right no-repeat;
+  padding-right:20px;
+  line-height:14px;
+  height:16px;
+}
+
+a.sublevel:link,
+a.sublevel:visited, 
+div.module_menu ul li a,
+div.module_menu ul li a:link,
+div.module_menu ul li a:visited,
+div.module_menu ul li ul li a:link,
+div.module_menu ul li ul li a:visited,
+div.moduletable_menu ul li a,
+div.moduletable_menu ul li a:link,
+div.moduletable_menu ul li a:visited,
+div.moduletable_menu ul li ul li a:link,
+div.moduletable_menu ul li ul li a:visited
+{
+color: @asModMenuLinkColor;
+text-decoration: @asModMenuDecoration;
+}
+a.sublevel:hover,
+div.module_menu ul li a:hover,
+div.module_menu ul li ul li a:hover,
+div.moduletable_menu ul a:hover,
+div.moduletable_menu ul li.parent ul li a:hover
+{
+  color:@asModMenuLinkColorHover;
+  text-decoration:@asModMenuLinkDecorationHover;
+}
 body {
   font-family: @asBaseFontFamily;
   line-height: @asBaseLineHeight;
@@ -14,14 +64,363 @@ body {
   background-color: @asBodyBackgroundColor;
   
 }
-html {
-  height:100%;
-  margin-bottom:1px;
+div.blog div.item img {
+  width:100%;
 }
+div.center {
+  text-align:center;
+  width:100%;
+}
+div.cols-3 {
+  div.column-1 .b_full, div.column-2 .b_full, div.column-3 .b_full {
+    width:@as3ColFullWidth;
+    max-width:100%;
+  }
+div.column-1 .b_half, div.column-2 .b_half, div.column-3 .b_half {
+    width:@as3ColHalfWidth;
+  }
+}
+div.cols-1 div.item, /* item in 1 koloms-rij */
+div.cols-1 + div.items-more, /* items-more na 1 koloms rij */
+div.items-leading, /* hoofd artikelen van voorpagina en blog 1.6 */
+#maincolumn div.blog h1, /* titel blog */
+#maincolumn div.blog h2 /* sub-titel blog */
+ {
+  float:right;
+  position:relative;
+  margin-right:0px;
+//  width: @asBlogLeadingWidth;
+  color: @asTextColor;
+  margin-top:  @contentPosTop; /* 1.0% */
+  width: @contentWidth; /* 70%;  */
+}
+div.cols-2 div.column-1 .b_full, div.cols-2 div.column-2 .b_full, td[width="50%"].article_column  img.b_full {
+  width:@as2ColFullWidth;
+  max-width:100%;
+}
+div.cols-2 div.column-1 .b_half, div.cols-2 div.column-2 .b_half, td[width="50%"] img.b_half {
+  width:@as2ColHalfWidth;
+}
+div.componentheading {
+  padding-left:0px;
+}
+div.contact h3 {
+  display:none;
+}
+div.category-desc, /* beschrijving van de categorie komt voor alle items */
+div.item, /* vervolgartikel blog */
+div.items-more /* geeft aan, dat er nog meer items zijn */
+{
+  width: @asBlogItemWidth;
+  position:relative;
+  float:left;
+  clear:left;
+}
+div.items-leading div {
+  position:relative;
+}
+
+
+div.items-leading  div .videoWrapper,
+.videoWrapper {
+  position:relative;
+  padding-bottom: @asVideoHeight;
+  padding-top: @asVideoHeightExtra;
+  width:100%;
+  height:0;
+  object, embed, iframe {
+    position:absolute;
+    top:0;
+    left:0;
+    width: 100%;  
+    height:100%;
+  }
+}
+div.item-separator {
+  display:none;
+}
+div.module,
+div.moduletable {
+  margin-bottom:25px;
+}
+div.module_logo, 
+div.module_wb {
+  margin:0;
+  padding:0;
+  margin-bottom:15px;
+}
+div.module_logo div div div {
+  padding:6px 0 6px 0;
+   width:auto;
+}
+div.module_logo div div div div,
+div.module_menu div div div div, 
+div.module_wb div div div div {
+  background:none;
+  background:url(../images/transparant.png) 0 0 no-repeat;
+  padding:0;
+}
+div.module_menu,
+div.moduletable_menu  {
+  text-align:left;
+  margin-top:@asModMenuMarginTop; // $menuMarginTop; 18%
+}
+div.module_menu div div div {
+  width:auto;
+}
+div.module_menu h3,
+div.moduletable_menu h3  {
+  font-family:@sansFontFamily;
+  font-size:@asBaseFontSize;
+  font-weight:bold;
+  color:@asModMenuH1Color;
+  margin:-23px -4px 5px -5px;
+  padding-left:10px;
+  padding-bottom:2px;
+}
+div.module_menu ul,
+div.moduletable_menu ul,
+ul.module_menu {
+  background-color:@asModMenuUlBackgroundColor; 
+  color: @asModMenuLinkColor; 
+  float:left;
+  position:relative;
+  font-size: @asModMenuUlFontSize;  // 12 px
+  font-weight:normal;
+  text-decoration: @asModMenuDecoration; 
+  line-height: @asModMenuUlLineHeight; // $menuLineHeight; em; 
+  padding-left:0;
+  margin-left:@asModMenuMarginLeft; // default 0
+}
+div.module_menu ul li,
+div.module_menu ul li ul li,
+div.moduletable_menu ul li,
+div.moduletable_menu ul li ul li,
+ul.menu_menu li,
+ul.menu_menu li ul li,
+ul.menu_img li,
+ul.menu_img li ul li {
+ position:static;
+ white-space:nowrap;
+ float: @asModMenuFloat;  // left
+ display: @asModMenuDisplay;  // inline
+}
+div.module_menu ul li ul,
+div.moduletable_menu ul li ul {
+  font-size:12px;
+  font-weight:normal;
+  position:absolute;
+  left:0;
+  bottom:-1.3em;
+  z-index:2;
+}
+
+div.module_menu ul li.active a,
+div.module_menu ul li.active a:link,
+div.module_menu ul li.active a:visited,
+div.moduletable_menu ul li.active a,
+div.moduletable_menu ul li ul li.active a:link,
+div.moduletable_menu ul li ul li.active a:visited
+{ /* bovenliggende menuoptie van actieve menu alleen de kleur aanpassen*/
+  color: @asModMenuActiveColor; 
+}
+div.module_menu ul li a,
+div.moduletable_menu ul li a {
+  display:block;
+  margin-left:0;
+  background: @asModMenuBackGround;
+  padding: @asModMenuPadding;
+}
+div.module_menu ul li:first-child a,
+div.moduletable_menu ul li:first-child a {
+  background-image:none;
+  padding-left:0;
+}
+
+div.module_menu #current,
+div.module_menu ul li.current a,
+div.module_menu ul li.current a:link,
+div.module_menu ul li.current a:visited, 
+div.moduletable_menu li.current a,
+div.moduletable_menu ul li ul li.current a:link,
+div.moduletable_menu ul li ul li.current a:visited {
+  color: @asModMenuActiveColor; 
+  text-decoration: @asModMenuActiveDecoration; 
+  opacity:0.5;
+  filter:alpha(opacity=50);
+}
+
+
+div.module_wb div div div {
+  padding:5px 5px 15px 5px;
+  width:auto;
+}
+
+div.offline {
+  background:#fffebb;
+  width:100%;
+  position:absolute;
+  top:0;
+  left:0;
+  font-size:1.2em;
+  padding:5px;
+}
+div.tag-category ul /* tag-list inline maken in plaats van opsomming */
+{
+    padding-left: 0;
+}
+
+div.tag-category ul li /* element  rij in tag-lijst en tag overzicht, tag-list inline maken in plaats van opsomming */
+{
+    display: inline-block;
+    position: static;
+    vertical-align: top;
+   max-width: @tagListItemWidth;
+   margin-right: @marginArea;
+   margin-bottom: @marginArea;
+}
+div.tag-category ul.category.list-striped li /* element rij alleen in tag-lijst, vaste breedte */
+{
+width: @tagListItemWidth;
+}
+
 form {
   margin:0;
   padding:0;
 }
+form#searchForm input {
+  vertical-align:middle;
+}
+form#searchForm table {
+  border-collapse:collapse;
+}
+form#searchForm td {
+  padding:0;
+}
+h1 {
+  padding:0;
+  font-family:@sansFontFamily;
+  font-size:@asH1FontSize;
+  line-height:@asH1FontSize;
+  font-weight:bold;
+  vertical-align:bottom;
+  color:@asH1Color;
+  text-align:left;
+  width:100%;
+}
+h2, .contentheading {
+  padding:0;
+  font-family:@sansFontFamily;
+  font-size:@asBiggerFontSize;
+  font-weight:normal;
+  vertical-align:bottom;
+  color:@asMainH1Color;
+  text-align:left;
+  width:100%;
+}
+h4 {
+  font-family:@sansFontFamily;
+  color:@asMainH1Color;
+}
+html {
+  height:100%;
+  margin-bottom:1px;
+}
+input.button {
+  cursor:pointer;
+}
+img {
+  border:0 none;
+}
+legend {
+  margin:0;
+  font-weight:bold;
+  font-family:@sansFontFamily;
+  font-size:@asBiggerFontSize;
+  padding-left:0px;
+  margin-bottom:10px;
+  text-align:left;
+  padding:0 10px;
+}
+p {
+  margin-top:0;
+  margin-bottom:5px;
+}
+span.article_separator {
+  display:block;
+  height:20px;
+}
+span.listitem {
+  display:list-item;
+  font-size:12px;
+  list-style:disc;
+}
+span.pathway {
+  display:block;
+  margin:0 20px;
+  height:16px;
+  line-height:16px;
+  overflow:hidden;
+}
+table.contenttoc {
+  margin:5px;
+  border:@asFieldBorder;
+  padding:5px;
+  td {
+    padding:0 5px;
+  }
+}
+table.contentpaneopen, table.contentpane {
+  margin:0;
+  padding:0;
+  width:auto;
+}
+table.contentpaneopen fieldset {
+  border:0;
+  border-top:1px solid #dddddd;
+}
+table.contentpaneopen h3 {
+  margin-top:25px;
+  margin-top:25px;
+}
+table.contentpaneopen h4 {
+  font-family:@sansFontFamily;
+  color:@asMainH1Color;
+}
+table.nopad {
+  border-collapse:collapse;
+  padding:0;
+  margin:0;
+  td.middle_pad {
+    width:20px;
+  }
+}
+table.user1user2 div.moduletable {
+  margin-bottom:0px;
+}
+td.buttonheading {
+  img {
+    border:none;
+  }
+}
+td.sectiontableheader {
+  background:#efefef;
+  color:@asSectionTbHColor;
+  font-weight:bold;
+  padding:4px;
+  border-right:1px solid #ffffff;
+}
+td.greyline {
+  width:20px;
+  background:url(../images/mw_line_grey.png) 50% 0 repeat-y;
+}
+td.sectiontableentry0, td.sectiontableentry1, td.sectiontableentry2 {
+  padding:3px;
+}
+tr.sectiontableentry0 td, tr.sectiontableentry1 td, tr.sectiontableentry2 td {
+  padding:4px;
+}
+
 #bg_img {
   width:@bgWidth;
   position:absolute;
@@ -38,35 +437,10 @@ form {
   padding:0;
   padding-bottom:10%;
 }
-a {
- color: @asLinkColor;
-}
-a:link, a:visited {
-  text-decoration: @asLinkDecoration;
-  font-weight:normal;
-}
-a:hover {
-  color: @asLinkColorHover;
-  text-decoration: @asLinkDecoration;
-  font-weight:bold;
-}
-input.button {
-  cursor:pointer;
-}
-p {
-  margin-top:0;
-  margin-bottom:5px;
-}
-img {
-  border:0 none;
-}
+
 #page_bg {
   padding:0;
   margin-bottom:0;
-}
-div.center {
-  text-align:center;
-  width:100%;
 }
 .b_full {
   width:@asFullWidth;
@@ -75,22 +449,6 @@ div.center {
 .b_half {
   width:@asHalfWidth;
   max-width:50%;
-}
-div.cols-3 {
-  div.column-1 .b_full, div.column-2 .b_full, div.column-3 .b_full {
-    width:@as3ColFullWidth;
-    max-width:100%;
-  }
-  div.column-1 .b_half, div.column-2 .b_half, div.column-3 .b_half {
-    width:@as3ColHalfWidth;
-  }
-}
-div.cols-2 div.column-1 .b_full, div.cols-2 div.column-2 .b_full, td[width="50%"].article_column  img.b_full {
-  width:@as2ColFullWidth;
-  max-width:100%;
-}
-div.cols-2 div.column-1 .b_half, div.cols-2 div.column-2 .b_half, td[width="50%"] img.b_half {
-  width:@as2ColHalfWidth;
 }
 #headerleft {
   float:left;
@@ -131,8 +489,6 @@ position: absolute;
 
 }
 
-
-
 #logo {
  /* logo website rechts van het midden transparant, 480x96 bij breedte 1280px */
   position: absolute; 
@@ -155,15 +511,6 @@ width: @footerWidth;
 
 #search {
 }
-form#searchForm input {
-  vertical-align:middle;
-}
-form#searchForm table {
-  border-collapse:collapse;
-}
-form#searchForm td {
-  padding:0;
-}
 #mod_search_searchword {
   padding-left:3px;
 }
@@ -183,22 +530,6 @@ form#searchForm td {
   margin-right:@asMarginStd;
   width: @rightWidth;
 }
-div.items-leading  div .videoWrapper,
-.videoWrapper {
-  position:relative;
-  padding-bottom: @asVideoHeight;
-  padding-top: @asVideoHeightExtra;
-  width:100%;
-  height:0;
-  object, embed, iframe {
-    position:absolute;
-    top:0;
-    left:0;
-    width: 100%;  // breedte video binnen blok, onnodig om aan te passen.
-    height:100%;
-  }
-}
-
 
 #maincolumn {
   float:right;
@@ -241,70 +572,6 @@ div.items-leading  div .videoWrapper,
     padding-left:15px;
   }
 }
-table.nopad {
-  border-collapse:collapse;
-  padding:0;
-  margin:0;
-  td.middle_pad {
-    width:20px;
-  }
-}
-div.offline {
-  background:#fffebb;
-  width:100%;
-  position:absolute;
-  top:0;
-  left:0;
-  font-size:1.2em;
-  padding:5px;
-}
-span.pathway {
-  display:block;
-  margin:0 20px;
-  height:16px;
-  line-height:16px;
-  overflow:hidden;
-}
-div.componentheading {
-  padding-left:0px;
-}
-h1 {
-  padding:0;
-  font-family:@sansFontFamily;
-  font-size:@asH1FontSize;
-  line-height:@asH1FontSize;
-  font-weight:bold;
-  vertical-align:bottom;
-  color:@asH1Color;
-  text-align:left;
-  width:100%;
-}
-h2, .contentheading {
-  padding:0;
-  font-family:@sansFontFamily;
-  font-size:@asBiggerFontSize;
-  font-weight:normal;
-  vertical-align:bottom;
-  color:@asMainH1Color;
-  text-align:left;
-  width:100%;
-}
-table.contentpaneopen h3 {
-  margin-top:25px;
-  margin-top:25px;
-}
-table.contentpaneopen fieldset {
-  border:0;
-  border-top:1px solid #dddddd;
-}
-table.contentpaneopen h4 {
-  font-family:@sansFontFamily;
-  color:@asMainH1Color;
-}
-h4 {
-  font-family:@sansFontFamily;
-  color:@asMainH1Color;
-}
 #maincolumn h2, h3, .componentheading, table.moduletable th {
   margin:0;
   font-weight:bold;
@@ -313,17 +580,6 @@ h4 {
   padding-left:0px;
   margin-bottom:10px;
   text-align:left;
-}
-legend {
-  margin:0;
-  margin:0;
-  font-weight:bold;
-  font-family:@sansFontFamily;
-  font-size:@asBiggerFontSize;
-  padding-left:0px;
-  margin-bottom:10px;
-  text-align:left;
-  padding:0 10px;
 }
 .kol1_2 {
   clear:left;
@@ -378,22 +634,7 @@ legend {
 }
 .contact, .categories-list, .weblink-category, .contact_email {
 }
-div.contact h3 {
-  display:none;
-}
 
-ul.actions {
-  text-align:right;
-  display:block;
-  margin:0 0 0 auto;
-  position:absolute;
-  top:5px;
-  left:@asActionsLeft;
-  width:@asActionsWidth;
-  li {
-    display:inline;
-  }
-}
 .small {
   font-size:.90em;
   color:@asMainH1Color;
@@ -411,15 +652,6 @@ ul.actions {
   padding-bottom:5px;
   padding-top:0px;
   .small
-}
-a.readon {
-  margin-top:10px;
-  display:block;
-  float:left;
-  background:url(../images/mw_readon.png) top right no-repeat;
-  padding-right:20px;
-  line-height:14px;
-  height:16px;
 }
 
 .ol-foreground {
@@ -445,14 +677,7 @@ a.readon {
 }
 .ol-closefont {
 }
-a.mainlevel:link, a.mainlevel:visited {
-  padding-left:5px;
-}
 
-span.article_separator {
-  display:block;
-  height:20px;
-}
 .article_column {
   padding-right:5px;
 }
@@ -460,105 +685,15 @@ span.article_separator {
   border-left:1px dashed #e0e0e0;
   padding-left:10px;
 }
-td.buttonheading {
-  img {
-    border:none;
-  }
-}
-td.greyline {
-  width:20px;
-  background:url(../images/mw_line_grey.png) 50% 0 repeat-y;
-}
 #maindivider {
   border-top:1px solid #dddddd;
   margin-bottom:10px;
   overflow:hidden;
   height:1px;
 }
-table.blog span.article_separator {
-  display:block;
-  height:20px;
-}
 .contentpaneopen_edit {
   float:left;
 }
-table.contenttoc {
-  margin:5px;
-  border:@asFieldBorder;
-  padding:5px;
-  td {
-    padding:0 5px;
-  }
-}
-td.sectiontableheader {
-  background:#efefef;
-  color:@asSectionTbHColor;
-  font-weight:bold;
-  padding:4px;
-  border-right:1px solid #ffffff;
-}
-tr.sectiontableentry0 td, tr.sectiontableentry1 td, tr.sectiontableentry2 td {
-  padding:4px;
-}
-td.sectiontableentry0, td.sectiontableentry1, td.sectiontableentry2 {
-  padding:3px;
-}
-table.contentpaneopen, table.contentpane {
-  margin:0;
-  padding:0;
-  width:auto;
-}
-
-#maincolumn div.blog h1, /* titel blog */
-#maincolumn div.blog h2, /* sub-titel blog */
-div.items-leading, /* hoofd artikelen van voorpagina en blog 1.6 */
-div.cols-1 div.item, /* item in 1 koloms-rij */
-div.cols-1 + div.items-more /* items-more na 1 koloms rij */
- {
-  float:right;
-  position:relative;
-  margin-right:0px;
-//  width: @asBlogLeadingWidth;
-  color: @asTextColor;
-  margin-top:  @contentPosTop; /* 1.0% */
-  width: @contentWidth; /* 70%;  */
-}
-div.items-leading div {
-  position:relative;
-}
-div.category-desc, /* beschrijving van de categorie komt voor alle items */
-div.items-more, /* geeft aan, dat er nog meer items zijn */
-div.item /* vervolgartikel blog */
-{
-  width: @asBlogItemWidth;
-  position:relative;
-  float:left;
-  clear:left;
-}
-div.blog div.item img {
-  width:100%;
-}
-
-div.tag-category ul /* tag-list inline maken in plaats van opsomming */
-{
-    padding-left: 0;
-}
-
-div.tag-category ul li /* element  rij in tag-lijst en tag overzicht, tag-list inline maken in plaats van opsomming */
-{
-    display: inline-block;
-    position: static;
-    vertical-align: top;
-   max-width: @tagListItemWidth;
-   margin-right: @marginArea;
-   margin-bottom: @marginArea;
-}
-div.tag-category ul.category.list-striped li /* element rij alleen in tag-lijst, vaste breedte */
-{
-width: @tagListItemWidth;
-}
-
-
 .tag-category ul li h3 /* item titel boven tag  (none of initial) */
 {
 
@@ -570,13 +705,6 @@ display: @tagItemTitleDisplay;
 display: @tagItemSearchDisplay; 
 }
 
-
-
-
-
-div.item-separator {
-  display:none;
-}
 #maincolumn div.newsfeed li, table.contentpaneopen li {
   margin-bottom:5px;
   padding-left:0;
@@ -585,159 +713,6 @@ div.item-separator {
 .highlight {
   background-color:#fffebb;
 }
-table.user1user2 div.moduletable {
-  margin-bottom:0px;
-}
-div.moduletable, div.module {
-  margin-bottom:25px;
-}
-div.moduletable_menu h3, div.module_menu h3 {
-  font-family:@sansFontFamily;
-  font-size:@asBaseFontSize;
-  font-weight:bold;
-  color:@asModMenuH1Color;
-  margin:-23px -4px 5px -5px;
-  padding-left:10px;
-  padding-bottom:2px;
-}
-div.moduletable_menu,
-div.module_menu {
-  text-align:left;
-  margin-top:@asModMenuMarginTop; // $menuMarginTop; 18%
-}
-div.module_wb, div.module_logo {
-  margin:0;
-  padding:0;
-  margin-bottom:15px;
-}
-div.module_wb div div div {
-  padding:5px 5px 15px 5px;
-  width:auto;
-}
-div.module_logo div div div {
-  padding:6px 0 6px 0;
-   width:auto;
-}
-div.module_menu div div div {
-  width:auto;
-}
-div.module_wb div div div div, div.module_logo div div div div, div.module_menu div div div div {
-  background:none;
-  background:url(../images/transparant.png) 0 0 no-repeat;
-  padding:0;
-}
-div.moduletable_menu ul,
-div.module_menu ul,
-ul.module_menu {
-  background-color:@asModMenuUlBackgroundColor; 
-  color: @asModMenuLinkColor; 
-  float:left;
-  position:relative;
-  font-size: @asModMenuUlFontSize;  // 12 px
-  font-weight:normal;
-  text-decoration: @asModMenuDecoration; 
-  line-height: @asModMenuUlLineHeight; // $menuLineHeight; em; 
-  padding-left:0;
-  margin-left:@asModMenuMarginLeft; // default 0
-}
-
-ul.menu_menu li,
-ul.menu_menu li ul li,
-ul.menu_img li,
-ul.menu_img li ul li,
-div.module_menu ul li,
-div.module_menu ul li ul li,
-div.moduletable_menu ul li,
-div.moduletable_menu ul li ul li
-{
- position:static;
- white-space:nowrap;
- float: @asModMenuFloat;  // left
- display: @asModMenuDisplay;  // inline
-  }
-
-div.moduletable_menu ul li a,
-div.module_menu ul li a
- {
-  display:block;
-  margin-left:0;
-  background: @asModMenuBackGround;
-  padding: @asModMenuPadding;
-}
-
-
-div.moduletable_menu ul li.active a,
-div.moduletable_menu ul li ul li.active a:link,
-div.moduletable_menu ul li ul li.active a:visited,
-div.module_menu ul li.active a,
-div.module_menu ul li.active a:link,
-div.module_menu ul li.active a:visited
-{ /* bovenliggende menuoptie van actieve menu alleen de kleur aanpassen*/
-  color: @asModMenuActiveColor; 
-}
-
-div.moduletable_menu li.current a,
-div.moduletable_menu ul li ul li.current a:link,
-div.moduletable_menu ul li ul li.current a:visited,
-div.module_menu #current,
-div.module_menu ul li.current a,
-div.module_menu ul li.current a:link,
-div.module_menu ul li.current a:visited {
-  color: @asModMenuActiveColor; 
-  text-decoration: @asModMenuActiveDecoration; 
-  opacity:0.5;
-  filter:alpha(opacity=50);
-}
-
-
-div.moduletable_menu ul li:first-child a, div.module_menu ul li:first-child a {
-  background-image:none;
-  padding-left:0;
-}
-div.moduletable_menu ul li a,
-div.moduletable_menu ul li a:link,
-div.moduletable_menu ul li a:visited,
-div.module_menu ul li a,
-div.module_menu ul li a:link,
-div.module_menu ul li a:visited,
-div.moduletable_menu ul li ul li a:link,
-div.moduletable_menu ul li ul li a:visited,
-a.sublevel:link,
-a.sublevel:visited, 
-div.module_menu ul li ul li a:link,
-div.module_menu ul li ul li a:visited
-{
-color: @asModMenuLinkColor;
-text-decoration: @asModMenuDecoration;
-}
-
-div.moduletable_menu ul a:hover,
-div.module_menu ul li a:hover,
-a.sublevel:hover,
-div.module_menu ul li ul li a:hover,
-div.moduletable_menu ul li.parent ul li a:hover
-{
-  color:@asModMenuLinkColorHover;
-  text-decoration:@asModMenuLinkDecorationHover;
-}
-span.listitem {
-  display:list-item;
-  font-size:12px;
-  list-style:disc;
-}
-div.moduletable_menu ul li ul, div.module_menu ul li ul {
-  font-size:12px;
-  font-weight:normal;
-  position:absolute;
-  left:0;
-  bottom:-1.3em;
-  z-index:2;
-}
-
-div.moduletable_menu ul li ul li a:link, div.moduletable_menu ul li ul li a:visited, a.sublevel:link, a.sublevel:visited, div.module_menu ul li ul li a:link, div.module_menu ul li ul li a:visited {
-  color:@asModMenuLinkColor;
-}
-
 .mod-languages {
     float: @asModLangFloat;
 }
@@ -755,17 +730,13 @@ div.moduletable_menu ul li ul li a:link, div.moduletable_menu ul li ul li a:visi
 
 */
 
-/* begin @media @screen-xs-max (voor grotere browserbreedte dan @breakpointXLmin en kleinere dan  @screen-xs-max */
-@media (min-width: @breakpointXLmin) {
-
-}
 
 @media (max-width: @screen-xs-max )  { 
 #icons
 {   /* icons fb etc meer naar links en breder  */ 
 margin-top: -32px;
-left: 0; // @iconsMobileLeft;
-width: 100%; //  @iconsMobileWidth;
+left:  @iconsMobileLeft;
+width:   @iconsMobileWidth;
 }
 #bg_img {
   margin-top: 32px;
