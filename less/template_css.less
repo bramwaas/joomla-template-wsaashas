@@ -97,7 +97,10 @@ div.cols-3 {
     width:@as3ColFullWidth;
     max-width:100%;
   }
-
+  div.column-1 .b_half, div.column-2 .b_half, div.column-3 .b_half {
+    width:@as3ColHalfWidth;
+  }
+}
 div.cols-1 div.item, /* item in 1 koloms-rij */
 div.cols-1 + div.items-more, /* items-more na 1 koloms rij */
 div.items-leading, /* hoofd artikelen van voorpagina en blog 1.6 */
@@ -119,10 +122,7 @@ div.cols-2 div.column-1 .b_full, div.cols-2 div.column-2 .b_full, td[width="50%"
 div.cols-2 div.column-1 .b_half, div.cols-2 div.column-2 .b_half, td[width="50%"] img.b_half {
   width:@as2ColHalfWidth;
 }
-div.column-1 .b_half, div.column-2 .b_half, div.column-3 .b_half {
-    width:@as3ColHalfWidth;
-  }
-}
+
 div.componentheading {
   padding-left:0px;
 }
