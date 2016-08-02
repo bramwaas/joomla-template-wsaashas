@@ -269,9 +269,6 @@ if ($footerPosBottom > ' '  ) 	fwrite($tv_file, '@footerPosBottom:           '  
 if ($areaWidth > ' '  ) 	fwrite($tv_file, '@areaWidth:                 '  . $areaWidth .  "%;\n");
 if ($marginArea > ' '  ) 	fwrite($tv_file, '@marginArea:                '  . $marginArea .  "%;\n");
 if ($tagListItemWidth > ' '  ) {fwrite($tv_file, '@tagListItemWidth:          '  . $tagListItemWidth .  "%;\n");
-	if ($breakpointMobile > 100 and $breakpointMobile < 3000) $asMinWidthItem = $tagListItemWidth * $breakpointMobile / 100; 
-	if ($areaWidth > 0 and  $areaWidth < 100) $asMinWidthItem = $asMinWidthItem * $areaWidth / 100;
-				fwrite($tv_file, '@asMinWidthItem:            '  . $asMinWidthItem .  "px;\n");
 }
 
 fclose($tv_file);
