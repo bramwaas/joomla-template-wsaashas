@@ -35,6 +35,7 @@
   26-3-2016 attribute data-wsmodal toegevoeg voor start modal popup
   21-4-2016 magnific popup toegevoegd als JQUERY vervanger van MOOTOOLS modal 
   30-7-2016 aanpassingen om icons netter te plaatsen, overbodige variabelen verwijderd
+  2-8-2016 icons verplaatst boven wrapper
  */
 
 // no direct access
@@ -134,6 +135,11 @@ type: \'image\'
 <img id="bg_img" src="<?php echo $this->baseurl ?><?php echo $bgImage; ?>" alt="Background_image" />
 <?php endif; ?>
 <a  id="up"></a>
+<?php if(  $this->countModules('icons'))    : ?>
+  <div id="icons">
+    <jdoc:include type="modules" name="icons" />
+  /div>   
+<?php endif; ?>
   <div id="wrapper">
   <div id="headerleft">
   <?php if(  $this->countModules('headerleft'))    : ?>
@@ -184,11 +190,6 @@ type: \'image\'
            <?php endif; ?>
 	</div> <!-- einde rightcolumn -->
 	<?php endif; ?>
-      <?php if(  $this->countModules('icons'))    : ?>
-        <div id="icons">
-           <jdoc:include type="modules" name="icons" />
-		</div>   
-      <?php endif; ?>
    </div> <!-- einde wrapper -->
       <?php if(  $this->countModules('footer'))    : ?>
 	    <div id="footer">
