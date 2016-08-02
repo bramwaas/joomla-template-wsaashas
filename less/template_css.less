@@ -932,7 +932,7 @@ max-width: 100%;
 width: @asMinWidthItem;
 }
 #bg_img {
-  margin-top: 32px;
+  margin-top: @wsaIconsMobileTopMargin; // 32px;
 //  width:@bgWidth;
 //  position:absolute;
 //  left:@bgLeft;
@@ -942,8 +942,8 @@ width: @asMinWidthItem;
 #icons
 {   /* icons fb etc meer naar links en breder  */ 
 position: static;
-left: 0; //  @iconsMobileLeft;
-width: 100%; //  @iconsMobileWidth;
+left: @wsaIconsMobileLeft: // 0%  was @iconsMobileLeft;
+width: @wsaIconsMobileWidth: // 100% was  @iconsMobileWidth;
 }
 
 #wrapper {
