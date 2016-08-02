@@ -1,7 +1,7 @@
 // 
 // standard css for this template
 //css
-// --------------------- 20160802 Icons verplaatst
+// --------------------- 20160802 Icons verplaatst en mobile first
 //
 a {
  color: @asLinkColor;
@@ -301,19 +301,20 @@ div.tag-category ul /* tag-list inline maken in plaats van opsomming */
 {
     padding-left: 0;
 }
-
-div.tag-category ul li /* element  rij in tag-lijst en tag overzicht, tag-list inline maken in plaats van opsomming */
+div.tag-category ul li /* element  rij in tag-lijst en tag overzicht, tag-list inline maken in plaats van opsomming voor mobile */
 {
     display: inline-block;
     position: static;
     vertical-align: top;
-   max-width: @tagListItemWidth;
-   margin-right: @marginArea;
+   max-width: 100%;
+   width: @asMinWidthItem;
+   margin-right: @marginArea; 
    margin-bottom: @marginArea;
 }
-div.tag-category ul.category.list-striped li /* element rij alleen in tag-lijst, vaste breedte */
+div.tag-category ul.category.list-striped li /* element rij alleen in tag-lijst, vaste minimale breedte voor mobile */
 {
-width: @tagListItemWidth;
+max-width: 100%;
+width: @asMinWidthItem;
 }
 fieldset {
   border:@asFieldBorder;
@@ -691,12 +692,15 @@ display: @tagItemTitleDisplay;
   margin-left:@asMarginStd;
   width: @areaWidth;
 }
-#bg_img {
+#bg_img { /* ruimte boven bg_image creeren voor static Icons bij mobile, algemene grootte instellen */
+  margin-top: @wsaIconsMobileTopMargin; // 32px;
   width:@bgWidth;
   position:absolute;
   left:@bgLeft;
   top:@bgTop;
 }
+
+
 #component-contact table td {
   padding:2px 0;
 }
@@ -727,13 +731,14 @@ width: @footerWidth;
   margin-bottom: @hlMarginBottom; 	
   height: @hlHeight;
 }
-#icons {   /* icons social media boven logo */
-	position: absolute;
-  top: @iconsPosTop;    
-  left: @iconsPosLeft;
-  width: @iconsWidth; 
-  z-index: @wsazindex-icons;
+#icons
+{   /* icons fb etc  static voorkomt overlap met #wrapper voor mobile dus volle breedte beschikbaar  */ 
+position: static;
+top: @iconsPosTop;  
+left: @wsaIconsMobileLeft: // 0%  was @iconsMobileLeft;
+width: @wsaIconsMobileWidth: // 100% was  @iconsMobileWidth;
 }
+
 #leftcolumn div.module {
   padding:0 10px;
   table {
@@ -896,72 +901,27 @@ width: @footerWidth;
 */
 
 
-@media (max-width: @screen-xs-max )  {
+@media (min-width:@screen-sm-min )  { /* desktop (width >= 768px) */
 
-div.category-desc, /* beschrijving van de categorie komt voor alle items */
-div.items-more, /* geeft aan, dat er nog meer items zijn */
-div.item /* vervolgartikel blog */
+div.tag-category ul li, /* breedte items begrenzen bij desktop */
+div.tag-category ul.category.list-striped li /* width verruimen tot @tagListItemWidth bij desktop */
 {
-//   max-width: 100%;
-//   min-width: @asMinWidthItem;
+   max-width: @tagListItemWidth; // ipv 100%
+   width: auto;  // ipv @asMinWidthItem;
 }
-div.cols-1 div.item,
-div.cols-1 + div.items-more,
-div.items-leading, 
-#maincolumn div.blog h1,
-#maincolumn div.blog h2 {
-div {
-//   max-width: 100%;
-//   min-width: @asMinWidthItem;
-   }
-}	
-div.tag-category ul li /* element  rij in tag-lijst en tag overzicht, tag-list inline maken in plaats van opsomming */
-{
-    display: inline-block;
-    position: static;
-    vertical-align: top;
-   max-width: 100%;
-   width: @asMinWidthItem;
-   margin-right: @marginArea; 
-   margin-bottom: @marginArea;
+#bg_img { /* geen topmargin nodig bij absolute geplaatste icons desktop  */
+  margin-top: 0;
 }
-div.tag-category ul.category.list-striped li /* element rij alleen in tag-lijst, vaste breedte */
-{
-width: @tagListItemWidth;
-max-width: 100%;
-width: @asMinWidthItem;
+#icons { /* bij desktop icons social media absoluut geplaatst overlappen #wrapper in principe boven logo zindex om laag-volgorde te herstellen */
+  position: absolute;
+  top: @iconsPosTop;     
+  left: @iconsPosLeft;
+  width: @iconsWidth; 
+  z-index: @wsazindex-icons;
 }
-#bg_img {
-  margin-top: @wsaIconsMobileTopMargin; // 32px;
-//  width:@bgWidth;
-//  position:absolute;
-//  left:@bgLeft;
-//  top:@bgTop;
-}
-	
-#icons
-{   /* icons fb etc meer naar links en breder  */ 
-position: static;
-left: @wsaIconsMobileLeft: // 0%  was @iconsMobileLeft;
-width: @wsaIconsMobileWidth: // 100% was  @iconsMobileWidth;
-}
-
-#wrapper {
-//  margin-left:auto;
-//  margin-right:auto;
-//  margin-top: 32px;
-//  margin-bottom:0;
-//  position:relative;
-//  width:100%;
-//  padding:0;
-//  padding-bottom:10%;
-}
-
-
-
 
  }
-/* einde @media  @screen-xs-max */
+/* einde @media  @screen-sm-min  */
 
 
 /* =================================================================================== */
