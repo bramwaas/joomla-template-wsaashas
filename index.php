@@ -138,7 +138,7 @@ type: \'image\'
 <?php if(  $this->countModules('icons'))    : ?>
   <div id="icons">
     <jdoc:include type="modules" name="icons" />
-  /div>   
+  </div>   
 <?php endif; ?>
   <div id="wrapper">
   <div id="headerleft">
