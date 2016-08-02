@@ -11,7 +11,7 @@ v 21-4-2016
 v 25-6-2016 1.5.0 less compiler uit administrator/components/com_templates/models/template.php ipv FOF, omdat deze nieuwer is.
             wsaCustomCSS toegevoegd voor custom Css uit less bestand in dir images/less 
             ivm &tmpl=component  ook template.css maken bij standaard template
-
+v 2-8-2016 topmargin tbv verplaatste icons mobile
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
@@ -54,8 +54,9 @@ else
 
 // get params
 $gplusProfile   = htmlspecialchars($params['gplusProfile']);
-$breakpointMobile = htmlspecialchars($params['breakpointMobile']);
-$breakpointXLmin = htmlspecialchars($params['breakpointXLmin']);
+//$breakpointMobile = htmlspecialchars($params['breakpointMobile']);
+//$breakpointXLmin = htmlspecialchars($params['breakpointXLmin']);
+$wsaIconsMobileTopMargin   = htmlspecialchars($params['wsaIconsMobileTopMargin']);
 $hlMarginTop    = htmlspecialchars($params['hlMarginTop']);
 $hlMarginLeft   = htmlspecialchars($params['hlMarginLeft']);
 if ($hlMarginLeft > " " ) {} else { $hlMarginLeft = 0; }
@@ -190,10 +191,9 @@ fwrite($tv_file, "//  "  . "\n//\n");
 fwrite($tv_file, "//  "  . "\n//\n");
 fwrite($tv_file, "//  "  . "\n//\n");
 if ($gplusProfile > ' '  ) 	fwrite($tv_file, '@gplusProfile:              "'  . $gplusProfile .  "\";\n");
-if ($breakpointXLmin > ' '  ) 	fwrite($tv_file, '@breakpointXLmin:           '  . $breakpointXLmin .  "px;\n");
-if ($breakpointMobile > ' '  ) 	fwrite($tv_file, '@breakpointMobile:          '  . $breakpointMobile .  "px;\n");
-if ($iconsMobileLeft > ' '  ) 	fwrite($tv_file, '@iconsMobileLeft:           '  . $iconsMobileLeft .  "%;\n");
-if ($iconsMobileWidth > ' '  ) 	fwrite($tv_file, '@iconsMobileWidth:          '  . $iconsMobileWidth .  "%;\n");
+if ($wsaIconsMobileTopMargin > ' '  ) 	fwrite($tv_file, '@wsaIconsMobileTopMargin:           '  . $wsaIconsMobileTopMargin .  "px;\n");
+if ($wsaIconsMobileLeft > ' '  ) 	fwrite($tv_file, '@wsaIconsMobileLeft:           '  . $wsaIconsMobileLeft .  "%;\n");
+if ($wsaIconsMobileWidth > ' '  ) 	fwrite($tv_file, '@wsaIconsMobileWidth:          '  . $wsaIconsMobileWidth .  "%;\n");
 if ($hlMarginTop > ' '  ) 	fwrite($tv_file, '@hlMarginTop:               '  . $hlMarginTop .  "%;\n");
 if ($hlMarginLeft > ' '  ) 	fwrite($tv_file, '@hlMarginLeft:              '  . ($hlMarginLeft + $marginLeftRight) .  "%;\n");
 if ($hlWidth > ' '  ) {		fwrite($tv_file, '@asHeadLeftWidth:           '  . $hlWidth .  "%;\n");
