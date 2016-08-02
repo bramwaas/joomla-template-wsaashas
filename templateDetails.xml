@@ -74,13 +74,9 @@
 					label="G+Profile" 
 					description="Google+ profile"
 					/>
-				<field name="breakpointMobile"   class="validate-numeric" type="text" default="641"
-					label="Breakpoint Mobile:"
-					description="Breakpoint body width seen as mobile"
-					 />
-				<field name="breakpointXLmin"   class="validate-numeric" type="text" default="1200"
-					label="Breakpoint XL:"
-					description="Breakpoint body width seen extra large"
+				<field name="wsaIconsMobileTopMargin"   class="validate-numeric" type="text" default="32"
+					label="Background img Topmargin mobile:"
+					description="Background image topmargin to accomodate mobile icons"
 					 />
 				<field name="hlMarginTop"  class="validate-numeric" type="text" default="1.0"
 					label="Margin top headerleft block:"
