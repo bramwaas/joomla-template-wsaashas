@@ -1,7 +1,7 @@
 // 
 // standard css for this template
 //css
-// --------------------- 20160802 Icons verplaatst en mobile first
+// --------------------- 20160811 Enkele dingen met images oa .img-resposive .img-fluid
 //
 a {
  color: @asLinkColor;
@@ -118,9 +118,13 @@ div.items-leading, /* hoofd artikelen van voorpagina en blog 1.6 */
 div.cols-2 div.column-1 .b_full, div.cols-2 div.column-2 .b_full, td[width="50%"].article_column  img.b_full {
   width:@as2ColFullWidth;
   max-width:100%;
+  height: auto;
 }
 div.cols-2 div.column-1 .b_half, div.cols-2 div.column-2 .b_half, td[width="50%"] img.b_half {
   width:@as2ColHalfWidth;
+  max-width:100%;
+  height: auto;
+  
 }
 
 div.componentheading {
@@ -574,6 +578,14 @@ tr.sectiontableentry0 td, tr.sectiontableentry1 td, tr.sectiontableentry2 td {
   padding:0;
   width:@asInputWidth;
 }
+.img-fluid,
+.img-fluid-50,
+.img-responsive { /* van twbs 3.3.7 */
+  display: block;
+  max-width: 100%; 
+  height: auto; 
+}
+
 .kol1_2 {
   clear:left;
   padding:0;
@@ -648,7 +660,12 @@ tr.sectiontableentry0 td, tr.sectiontableentry1 td, tr.sectiontableentry2 td {
 .pollstableborder td {
   text-align:left;
 }
-
+.pull-right {
+  float: right !important;
+}
+.pull-left {
+  float: left !important;
+}
 .small {
   font-size:.90em;
   color:@asMainH1Color;
@@ -909,6 +926,10 @@ div.tag-category ul.category.list-striped li /* width verruimen tot @tagListItem
 {
    max-width: @tagListItemWidth; // ipv 100%
    width: auto;  // ipv @asMinWidthItem;
+}
+.img-fluid-50 { 
+  max-width: 50%; 
+  height: auto; 
 }
 #bg_img { /* geen topmargin nodig bij absolute geplaatste icons desktop  */
   margin-top: 0;
