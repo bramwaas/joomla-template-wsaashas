@@ -12,6 +12,7 @@ v 25-6-2016 1.5.0 less compiler uit administrator/components/com_templates/model
             wsaCustomCSS toegevoegd voor custom Css uit less bestand in dir images/less 
             ivm &tmpl=component  ook template.css maken bij standaard template
 v 2-8-2016 topmargin tbv verplaatste icons mobile
+v 21-8-2016 aantal twbs bestanden nav en mixins toegevoegd
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
@@ -277,7 +278,8 @@ $st_file =fopen($currentpath. '/../less/style' . $templateid . '.less', "w+");
 
 fwrite($st_file, "// style" . $templateid .  ".less \n");
 fwrite($st_file, "// generated " . date("c")  . "\n//\n");
-fwrite($st_file, '@import "twbs_variables.less";' . "\n");
+// standaard bootstrap variables.
+fwrite($st_file, '@import "twbs/variables.less";' . "\n");
 fwrite($st_file, '@import "system.less";' . "\n");
 fwrite($st_file, '@import "general.less";' . "\n");
 fwrite($st_file, '@import "magnificpopup.variables.less";' . "\n");
@@ -294,9 +296,20 @@ if ($background > ' '  )
 	fwrite($st_file, '@import "'  . $background .  "\";\n");
 }
 fwrite($st_file, '@import "style' . $templateid . '.var.less";' . "\n");
+// standaard bootstrap mixins en nav etc.
+fwrite($st_file, '@import "twbs/mixins/buttons.less";' . "\n");
+fwrite($st_file, '@import "twbs/mixins/clearfix.less";' . "\n");
+fwrite($st_file, '@import "twbs/mixins/gradients.less";' . "\n");
+fwrite($st_file, '@import "twbs/mixins/grid.less";' . "\n");
+fwrite($st_file, '@import "twbs/mixins/nav-divider.less";' . "\n");
+fwrite($st_file, '@import "twbs/mixins/reset-filter.less";' . "\n");
+fwrite($st_file, '@import "twbs/mixins/vendor-prefixes.less";' . "\n");
+fwrite($st_file, '@import "twbs/navbar.less";' . "\n");
+fwrite($st_file, '@import "twbs/navs.less";' . "\n");
+//mfp
 fwrite($st_file, '@import "magnificpopup.less";' . "\n");
+//asha-s specifiek
 fwrite($st_file, '@import "template_css.less";' . "\n");
-
 fwrite($st_file, "body {\n");
 if ($fgColor > ' '  ) fwrite($st_file, "color:  @asTextColor ;\n");
 if ($bg0Color > ' ' ) fwrite($st_file, "background-color:  @bg0Color;\n");
