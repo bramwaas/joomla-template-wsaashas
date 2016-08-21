@@ -3,7 +3,7 @@
 <extension version="3.1" type="template" client="site" method="upgrade">
 	<name>asha-s</name>
 	<version>1.5.2 </version>
-	<creationDate>02-08-2016</creationDate>
+	<creationDate>21-08-2016</creationDate>
 	<author>AHC Waasdorp</author>
 	<authorEmail>bram@waasdorpsoekhan.nl</authorEmail>
 	<authorUrl>http://www.waasdorpsoekhan.nl</authorUrl>

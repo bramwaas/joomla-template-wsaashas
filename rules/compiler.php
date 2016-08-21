@@ -302,6 +302,7 @@ fwrite($st_file, '@import "twbs/mixins/clearfix.less";' . "\n");
 fwrite($st_file, '@import "twbs/mixins/gradients.less";' . "\n");
 fwrite($st_file, '@import "twbs/mixins/grid.less";' . "\n");
 fwrite($st_file, '@import "twbs/mixins/nav-divider.less";' . "\n");
+fwrite($st_file, '@import "twbs/mixins/nav-vertical-align.less";' . "\n");
 fwrite($st_file, '@import "twbs/mixins/reset-filter.less";' . "\n");
 fwrite($st_file, '@import "twbs/mixins/vendor-prefixes.less";' . "\n");
 fwrite($st_file, '@import "twbs/navbar.less";' . "\n");
