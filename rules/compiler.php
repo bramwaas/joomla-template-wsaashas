@@ -299,17 +299,19 @@ fwrite($st_file, '@import "style' . $templateid . '.var.less";' . "\n");
 // standaard bootstrap mixins en nav etc.
 fwrite($st_file, '@import "twbs/mixins/buttons.less";' . "\n");
 fwrite($st_file, '@import "twbs/mixins/clearfix.less";' . "\n");
+fwrite($st_file, '@import "twbs/mixins/forms.less";' . "\n");
 fwrite($st_file, '@import "twbs/mixins/gradients.less";' . "\n");
 fwrite($st_file, '@import "twbs/mixins/grid.less";' . "\n");
 fwrite($st_file, '@import "twbs/mixins/nav-divider.less";' . "\n");
 fwrite($st_file, '@import "twbs/mixins/nav-vertical-align.less";' . "\n");
 fwrite($st_file, '@import "twbs/mixins/reset-filter.less";' . "\n");
 fwrite($st_file, '@import "twbs/mixins/vendor-prefixes.less";' . "\n");
+fwrite($st_file, '@import "twbs/forms.less";' . "\n");
 fwrite($st_file, '@import "twbs/navbar.less";' . "\n");
 fwrite($st_file, '@import "twbs/navs.less";' . "\n");
 //mfp
 fwrite($st_file, '@import "magnificpopup.less";' . "\n");
-//asha-s specifiek
+//template style asha-s specifiek
 fwrite($st_file, '@import "template_css.less";' . "\n");
 fwrite($st_file, "body {\n");
 if ($fgColor > ' '  ) fwrite($st_file, "color:  @asTextColor ;\n");
