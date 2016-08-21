@@ -297,6 +297,7 @@ if ($background > ' '  )
 }
 fwrite($st_file, '@import "style' . $templateid . '.var.less";' . "\n");
 // standaard bootstrap mixins en nav etc.
+fwrite($st_file, '@import "twbs/mixins/border-radius.less";' . "\n");
 fwrite($st_file, '@import "twbs/mixins/buttons.less";' . "\n");
 fwrite($st_file, '@import "twbs/mixins/clearfix.less";' . "\n");
 fwrite($st_file, '@import "twbs/mixins/forms.less";' . "\n");
