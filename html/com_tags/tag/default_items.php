@@ -119,7 +119,7 @@ echo "-->";
 in deze component niet wordt gevonden */
                   
                   if ($this->item->readmore OR 
-                           (strpos(json_decode($item->core_metadata)->xreference, 'wsa-leesmeer') !== false)
+                           (json_decode($item->core_params)->alternative_readmore > "")
    
                            )  :
                  
