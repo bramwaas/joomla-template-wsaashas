@@ -36,6 +36,7 @@
   21-4-2016 magnific popup toegevoegd als JQUERY vervanger van MOOTOOLS modal 
   30-7-2016 aanpassingen om icons netter te plaatsen, overbodige variabelen verwijderd
   2-8-2016 icons verplaatst boven wrapper
+  9-9-2016 sidebarrleft position-8 toegevoegd
  */
 
 // no direct access
@@ -140,7 +141,7 @@ type: \'image\'
     <jdoc:include type="modules" name="icons" />
   </div>   
 <?php endif; ?>
-  <div id="wrapper">
+  <div id="wrapper"><!-- class="container-content" -->
   <div id="headerleft">
   <?php if(  $this->countModules('headerleft'))    : ?>
              <jdoc:include type="modules" name="headerleft"  />
@@ -161,17 +162,20 @@ type: \'image\'
         <?php endif; ?>
   </div><!-- einde page_heading -->
   
-  <div id="area">
- 
-<!-- left column is onderdeel van maincolumn --> 
-             <div id="maincolumn"><!-- maincolumn -->
-             <?php if ($this->countModules('position-12')) : ?>
-		<jdoc:include type="modules" name="position-12" />
-	     <?php endif; ?>
+  	<div id="area"> <!--  class="row" -->
+	 	<?php if ($this->countModules('position-8')): ?>
+		<div id="sidebarleft">
+			<jdoc:include type="modules" name="position-8" style="well" /><!--End Position-8-->
+		</div><!--End Sidebar Left-->
+		<?php endif; ?>
+		<div id="maincolumn"><!-- maincolumn id="content" -->
+            <?php if ($this->countModules('position-12')) : ?>
+			<jdoc:include type="modules" name="position-12" />
+	     	<?php endif; ?>
   
-                   <jdoc:include type="component" />
-          <div class="clr"></div>
-           <?php if(  $this->countModules('position-3'))    : ?>
+            <jdoc:include type="component" />
+          	<div class="clr"></div>
+           	<?php if(  $this->countModules('position-3'))    : ?>
                <jdoc:include type="modules" name="position-3" />
             <?php endif; ?>
             <?php if(  $this->countModules('position-4'))    : ?>
