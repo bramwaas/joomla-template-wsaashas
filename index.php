@@ -167,8 +167,10 @@ type: \'image\'
 		<div id="sidebarleft">
 			<jdoc:include type="modules" name="position-8" style="well" /><!--End Position-8-->
 		</div><!--End Sidebar Left-->
-		<?php endif; ?>
+		<div id="maincolumn" class="maincolumncenter"><!-- maincolumn id="content" -->
+ 		<?php else : ?>
 		<div id="maincolumn"><!-- maincolumn id="content" -->
+		<?php endif; ?>
             <?php if ($this->countModules('position-12')) : ?>
 			<jdoc:include type="modules" name="position-12" />
 	     	<?php endif; ?>

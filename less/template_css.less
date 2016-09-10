@@ -942,6 +942,40 @@ div.tag-category ul.category.list-striped li /* width verruimen tot @tagListItem
   z-index: @wsazindex-icons;
 }
 
+
+#maincolumn.maincolumncenter { /* smaller als sidebarleft is gevuld */
+  float: rigth;
+  width: @contentWidth;  /* ipv 100% */
+  margin-top:@asMarginHalf;
+  margin-bottom:@asMarginHalf;
+  }
+  div.blog-featured, div.blog, div.newsfeed, div.item-page {
+    width:100%;
+    position:relative;
+    float:left;
+  }
+  .blog h1,
+  .blog h2,
+  .cols-1 .item, /* item in 1 koloms-rij */
+  .cols-1 + .items-more, /* items-more na 1 koloms rij */
+  .items-leading /* hoofd artikelen van voorpagina en blog 1.6 */
+  
+  {
+  float:right;
+  position:relative;
+  margin-right:0px;
+  width: 100%; /* ipv @contentWidth;  */
+  }
+}
+#sidebarleft {
+	float: left;
+	width: 100% -  @contentWidth - @asMarginHalf;
+	margin-top:@asMarginHalf;
+    margin-bottom:@asMarginHalf;
+ 
+}
+
+
  }
 /* einde @media  @screen-sm-min  */
 
