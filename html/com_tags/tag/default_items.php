@@ -7,6 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
    bw 30-8-2016:        toegevoegd leesmeer bw wsa-leesmeer in artikel metadata xreference, omdat readmore uit item
 in deze component niet wordt gevonden 
+   bw 19-10-2016 controle op leesmeer verbeterd omdat bij upgrade naar 3.6.3 (met display errors) bleek dat de oude versie een fout genereerde.(Notice: Trying to get property of non-object in /home/deb53453/domains/asha-s.com/public_html/templates/asha-s/html/com_tags/tag/default_items.php on line 121 als gevolg van $this->item->readmore ipv $this->item[0]->readmore)
 
  */
 
@@ -109,31 +110,21 @@ JFactory::getDocument()->addScriptDeclaration("
              
 
                   <?php
-                  /*
-                  echo "<!--";
-print_r($item);  
-echo "-->";
-       */           
-                  
-  /*                toegevoegd leesmeer bw wsa-leesmeer in artikel metadata xreference, omdat readmore uit item
-in deze component niet wordt gevonden */
-                  
-                  if ($this->item->readmore OR 
-                           (json_decode($item->core_params)->alternative_readmore > "")
-   
-                           )  :
-                 
+  /*   toegevoegd leesmeer bw als waarde van alternative_readmore is ingevuld, omdat readmore boolean waar ook op getest wordt uit item in deze component niet wordt gevonden */
+                  if ( (json_decode($item->core_params)->alternative_readmore > "")
+			or (isset($this->item[0]->readmore) and $this->item[0]->readmore)
+                              )  :
                   ?>
-            <p class="readmore"><a class="btn" href="<?php echo JRoute::_(TagsHelperRoute::getItemRoute($item->content_item_id, $item->core_alias, $item->core_catid, $item->core_language, $item->type_alias, $item->router)); ?>"><?php 
-                            if (json_decode($item->core_params)->alternative_readmore > "") :
+            <p class="readmore"><a class="btn" href="<?php echo JRoute::_(TagsHelperRoute::getItemRoute($item->content_item_id, $item->core_alias, $item->core_catid, $item->core_language, $item->type_alias, $item->router)); ?>">
+		<?php 
+                        if (json_decode($item->core_params)->alternative_readmore > "") :
                                	echo  JText::_(json_decode($item->core_params)->alternative_readmore); 
-                            else:                  
-              					echo  JText::_('COM_CONTENT_READ_MORE');
-              				endif; ?>
+                        else:                  
+              			echo  JText::_('COM_CONTENT_READ_MORE');
+			endif; ?>
               </a></p> 
                   
-<?php endif;
-                  
+<?php endif;  
  /*    toegevoeg leesmeer bw einde */              
                   ?>  
                   
