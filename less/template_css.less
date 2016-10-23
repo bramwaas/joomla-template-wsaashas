@@ -2,7 +2,8 @@
 // standard css for this template
 //css
 // --------------------- 20160914 Enkele dingen met images oa .img-resposive .img-fluid
-//
+// 20161023  als paginaclass cols-1 toegevoegd is in tag-itemlist (// tag-category tag_cols-1 cols-1)
+// zorgen voor 1 kolom display  vergelijkbaar met div.cols-1 div.item in blog lay-out. 
 a {
  color: @asLinkColor;
 }
@@ -320,6 +321,13 @@ div.tag-category ul.category.list-striped li /* element rij alleen in tag-lijst,
 {
 max-width: 100%;
 width: @asMinWidthItem;
+}
+div.tag-category.cols-1 ul li /* element  rij in tag-lijst en tag overzicht, tag-list block voor 1 kolom */
+{
+    display: block;
+   max-width: 100%;
+   width: auto;
+   margin-right: auto; 
 }
 fieldset {
   border:@asFieldBorder;
@@ -931,6 +939,11 @@ div.tag-category ul.category.list-striped li /* width verruimen tot @tagListItem
    max-width: @tagListItemWidth; // ipv 100%
    width: auto;  // ipv @asMinWidthItem;
 }
+div.tag-category.cols-1 ul li /* element  rij in tag-lijst en tag overzicht, tag-list block voor 1 kolom */
+{
+   max-width: 100%;
+}
+
 .img-fluid-50 { 
   max-width: 50%; 
   height: auto; 
