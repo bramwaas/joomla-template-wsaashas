@@ -4,6 +4,7 @@
 // --------------------- 20160914 Enkele dingen met images oa .img-resposive .img-fluid
 // 20161023  als paginaclass cols-1 toegevoegd is in tag-itemlist (// tag-category tag_cols-1 cols-1)
 // zorgen voor 1 kolom display  vergelijkbaar met div.cols-1 div.item in blog lay-out. 
+// overbodige category.liststriped onderdelen en div voor .tag-category verwijderd
 a {
  color: @asLinkColor;
 }
@@ -302,32 +303,6 @@ div.search input {
   width:145px;
   border:@asFieldBorder;
   margin:15px 0 10px 0;
-}
-div.tag-category ul /* tag-list inline maken in plaats van opsomming */
-{
-    padding-left: 0;
-}
-div.tag-category ul li /* element  rij in tag-lijst en tag overzicht, tag-list inline maken in plaats van opsomming voor mobile */
-{
-    display: inline-block;
-    position: static;
-    vertical-align: top;
-   max-width: 100%;
-   width: @asMinWidthItem;
-   margin-right: @marginArea; 
-   margin-bottom: @marginArea;
-}
-div.tag-category ul.category.list-striped li /* element rij alleen in tag-lijst, vaste minimale breedte voor mobile */
-{
-max-width: 100%;
-width: @asMinWidthItem;
-}
-div.tag-category.cols-1 ul li /* element  rij in tag-lijst en tag overzicht, tag-list block voor 1 kolom */
-{
-    display: block;
-   max-width: 100%;
-   width: auto;
-   margin-right: auto; 
 }
 fieldset {
   border:@asFieldBorder;
@@ -695,10 +670,34 @@ tr.sectiontableentry0 td, tr.sectiontableentry1 td, tr.sectiontableentry2 td {
 { /* tot joomla het zoekveld goed verbergt */
 display: @tagItemSearchDisplay; 
 }
+.tag-category ul /* tag-list inline maken in plaats van opsomming */
+{
+    padding-left: 0;
+}
+
+.tag-category ul li /* element  rij in tag-lijst en tag overzicht, tag-list inline maken in plaats van opsomming voor mobile */
+{
+    display: inline-block;
+    position: static;
+    vertical-align: top;
+   max-width: 100%;
+   width: @asMinWidthItem;
+   margin-right: @marginArea; 
+   margin-bottom: @marginArea;
+}
 .tag-category ul li h3 /* item titel boven tag  (none of initial) */
 {
 display: @tagItemTitleDisplay;
 }
+.tag-category.cols-1 ul li /* element  rij in tag-lijst en tag overzicht, tag-list block voor 1 kolom */
+{
+    display: block;
+   max-width: 100%;
+   width: auto;
+   margin-right: auto; 
+}
+
+
 .tool-title {
   padding:0;
   margin:0;
@@ -933,21 +932,21 @@ width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
 
 @media (min-width: @screen-sm-min )  { /* desktop (width >= 768px) */
 
-div.tag-category ul li, /* breedte items begrenzen bij desktop */
-div.tag-category ul.category.list-striped li /* width verruimen tot @tagListItemWidth bij desktop */
-{
-   max-width: @tagListItemWidth; // ipv 100%
-   width: auto;  // ipv @asMinWidthItem;
-}
-div.tag-category.cols-1 ul li /* element  rij in tag-lijst en tag overzicht, tag-list block voor 1 kolom */
-{
-   max-width: 100%;
-}
-
 .img-fluid-50 { 
   max-width: 50%; 
   height: auto; 
 }
+
+.tag-category ul li, /* breedte items begrenzen bij desktop */
+{
+   max-width: @tagListItemWidth; // ipv 100%
+   width: auto;  // ipv @asMinWidthItem;
+}
+.tag-category.cols-1 ul li /* element  rij in tag-lijst en tag overzicht, tag-list block voor 1 kolom */
+{
+   max-width: 100%;
+}
+
 #bg_img { /* geen topmargin nodig bij absolute geplaatste icons desktop  */
   margin-top: 0;
 }
