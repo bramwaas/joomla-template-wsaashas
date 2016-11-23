@@ -2,8 +2,8 @@
 <!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "https://www.joomla.org/xml/dtd/2.5/template-install.dtd">
 <extension version="3.1" type="template" client="site" method="upgrade">
 	<name>asha-s</name>
-	<version>1.5.6</version>
-	<creationDate>19-11-2016</creationDate>
+	<version>1.5.7</version>
+	<creationDate>23-11-2016</creationDate>
 	<author>AHC Waasdorp</author>
 	<authorEmail>bram@waasdorpsoekhan.nl</authorEmail>
 	<authorUrl>http://www.waasdorpsoekhan.nl</authorUrl>

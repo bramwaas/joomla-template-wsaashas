@@ -5,6 +5,10 @@
 // 20161023  als paginaclass cols-1 toegevoegd is in tag-itemlist (// tag-category tag_cols-1 cols-1)
 // zorgen voor 1 kolom display  vergelijkbaar met div.cols-1 div.item in blog lay-out. 
 // overbodige category.liststriped onderdelen en div voor .tag-category verwijderd
+// 20161123 paginaweergave class blog_inline gedefinieerd 
+// om items in blog als inline-block weer te kunnen geven daarbij lead-cols-2 om leading
+// items in twee kolommen weer te geven. 
+// tevens breedte voor items.cols-2 cols-3 en cols-4 vastgelegd (in # kolommen blogweergave)  
 a {
  color: @asLinkColor;
 }
@@ -994,6 +998,52 @@ width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
 
  }
 /* einde @media  @screen-sm-min  */
+@media (min-width: @screen-md-min )  { /* desktop (width >= 992px) */
+.blog_inline {
+	.items-leading 
+	 {
+		div { 
+			display: inline-block;
+			vertical-align: top;
+		}
+	}
+	
+}
+blog_inline {
+	.item-row {
+		.item {
+			display: inline-block;
+			vertical-align: top;
+		}
+		.item.cols-2 { 
+			width: 48.5%;
+			margin-right: 1%; 
+		}
+		.item.cols-3 { 
+			width: 32%;
+			margin-right: 1%; 
+		}
+		.item.cols-4 { 
+			width: 23.75%;
+			margin-right: 1%; 
+		}
+	}
+	
+}
+.blog_inline.lead-cols-2 {
+	.items-leading
+	 {
+		div { 
+			width: 48.5%;
+			margin-right: 1%; 
+		}
+	}
+	
+}
+
+
+}
+/* einde @media  @screen-md-min */
 
 
 /* =================================================================================== */
