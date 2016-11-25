@@ -8,7 +8,8 @@ g//
 // 20161123 paginaweergave class blog_inline gedefinieerd 
 // om items in blog als inline-block weer te kunnen geven daarbij lead-cols-2 om leading
 // items in twee kolommen weer te geven. 
-// tevens breedte voor items.cols-2 cols-3 en cols-4 vastgelegd (in # kolommen blogweergave)  
+// tevens breedte voor items.cols-2 cols-3 en cols-4 vastgelegd (in # kolommen blogweergave) 
+// 20161125 nog wat puntjes voor blog_inline kleiner schermbreedtes 
 a {
  color: @asLinkColor;
 }
@@ -36,25 +37,25 @@ a.readon {
 
 a.sublevel:link,
 a.sublevel:visited, 
-div.module_menu ul li a,
-div.module_menu ul li a:link,
-div.module_menu ul li a:visited,
-div.module_menu ul li ul li a:link,
-div.module_menu ul li ul li a:visited,
-div.moduletable_menu ul li a,
-div.moduletable_menu ul li a:link,
-div.moduletable_menu ul li a:visited,
-div.moduletable_menu ul li ul li a:link,
-div.moduletable_menu ul li ul li a:visited
+.module_menu ul li a,
+.module_menu ul li a:link,
+.module_menu ul li a:visited,
+.module_menu ul li ul li a:link,
+.module_menu ul li ul li a:visited,
+.moduletable_menu ul li a,
+.moduletable_menu ul li a:link,
+.moduletable_menu ul li a:visited,
+.moduletable_menu ul li ul li a:link,
+.moduletable_menu ul li ul li a:visited
 {
 color: @asModMenuLinkColor;
 text-decoration: @asModMenuDecoration;
 }
 a.sublevel:hover,
-div.module_menu ul li a:hover,
-div.module_menu ul li ul li a:hover,
-div.moduletable_menu ul a:hover,
-div.moduletable_menu ul li.parent ul li a:hover
+.module_menu ul li a:hover,
+.module_menu ul li ul li a:hover,
+.moduletable_menu ul a:hover,
+.moduletable_menu ul li.parent ul li a:hover
 {
   color:@asModMenuLinkColorHover;
   text-decoration:@asModMenuLinkDecorationHover;
@@ -70,9 +71,7 @@ body {
   background-color: @asBodyBackgroundColor;
   
 }
-div.blog div.item img {
-  width:100%;
-}
+
 div.caption {
   padding:0 10px 0 10px;
   img {
@@ -177,123 +176,6 @@ div.message {
   padding:3px 20px;
 }
 
-div.module,
-div.moduletable {
-  margin-bottom:25px;
-}
-
-div.module_logo, 
-div.module_wb {
-  margin:0;
-  padding:0;
-  margin-bottom:15px;
-}
-div.module_logo div div div {
-  padding:6px 0 6px 0;
-   width:auto;
-}
-div.module_logo div div div div,
-div.module_menu div div div div, 
-div.module_wb div div div div {
-  background:none;
-  background:url(../images/transparant.png) 0 0 no-repeat;
-  padding:0;
-}
-div.module_menu,
-div.moduletable_menu  {
-  text-align:left;
-  margin-top:@asModMenuMarginTop; // $menuMarginTop; 18%
-}
-div.module_menu div div div {
-  width:auto;
-}
-div.module_menu h3,
-div.moduletable_menu h3  {
-  font-family:@sansFontFamily;
-  font-size:@asBaseFontSize;
-  font-weight:bold;
-  color:@asModMenuH1Color;
-  margin:-23px -4px 5px -5px;
-  padding-left:10px;
-  padding-bottom:2px;
-}
-div.module_menu ul,
-div.moduletable_menu ul,
-ul.module_menu {
-  background-color:@asModMenuUlBackgroundColor; 
-  color: @asModMenuLinkColor; 
-  float:left;
-  position:relative;
-  font-size: @asModMenuUlFontSize;  // 12 px
-  font-weight:normal;
-  text-decoration: @asModMenuDecoration; 
-  line-height: @asModMenuUlLineHeight; // $menuLineHeight; em; 
-  padding-left:0;
-  margin-left:@asModMenuMarginLeft; // default 0
-}
-div.module_menu ul li,
-div.module_menu ul li ul li,
-div.moduletable_menu ul li,
-div.moduletable_menu ul li ul li,
-ul.menu_menu li,
-ul.menu_menu li ul li,
-ul.menu_img li,
-ul.menu_img li ul li {
- position:static;
- white-space:nowrap;
- float: @asModMenuFloat;  // left
- display: @asModMenuDisplay;  // inline
-}
-div.module_menu ul li ul,
-div.moduletable_menu ul li ul {
-  font-size:12px;
-  font-weight:normal;
-  position:absolute;
-  left:0;
-  bottom:-1.3em;
-  z-index:2;
-}
-
-div.module_menu ul li.active a,
-div.module_menu ul li.active a:link,
-div.module_menu ul li.active a:visited,
-div.moduletable_menu ul li.active a,
-div.moduletable_menu ul li ul li.active a:link,
-div.moduletable_menu ul li ul li.active a:visited
-{ /* bovenliggende menuoptie van actieve menu alleen de kleur aanpassen*/
-  color: @asModMenuActiveColor; 
-}
-div.module_menu ul li a,
-div.moduletable_menu ul li a {
-  display:block;
-  margin-left:0;
-  background: @asModMenuBackGround;
-  padding: @asModMenuPadding;
-}
-div.module_menu ul li:first-child a,
-div.moduletable_menu ul li:first-child a {
-  background-image:none;
-  padding-left:0;
-}
-
-div.module_menu #current,
-div.module_menu ul li.current a,
-div.module_menu ul li.current a:link,
-div.module_menu ul li.current a:visited, 
-div.moduletable_menu li.current a,
-div.moduletable_menu ul li ul li.current a:link,
-div.moduletable_menu ul li ul li.current a:visited {
-  color: @asModMenuActiveColor; 
-  text-decoration: @asModMenuActiveDecoration; 
-  opacity:0.5;
-  filter:alpha(opacity=50);
-}
-
-
-div.module_wb div div div {
-  padding:5px 5px 15px 5px;
-  width:auto;
-}
 
 div.offline {
   background:#fffebb;
@@ -539,7 +421,16 @@ tr.sectiontableentry0 td, tr.sectiontableentry1 td, tr.sectiontableentry2 td {
 .banneritem_menu {
   overflow:hidden;
 }
+.blog .item img {
+  width:100%;
+}
 .blog_inline {
+/* .blog_inline alegemen definities (gestuurd door blog tabblad paginaweergave paginaclass:  blog_inline)
+   heeft definities op alle breedtes, naarmate het scherm breder wordt krijgen meer 
+   spans hun eigenlijke breedte (99% / 12 * <spannr>) -1% en margin-right 1%.
+   (spannr wordt aangestuurd door blog tabblad blogweergave 12 / # kolommen tevens komt er dan een cols-nr in de div eronder )	
+   en komen meer breedtes voor items-leading beschikbaar (gestuurd door paginaweergave paginaclass: blog_inline lead-cols-2 )	
+*/	
 	.items-leading > div,
 	.items-row > div,
 	.items-row > div > div { 
@@ -553,11 +444,9 @@ tr.sectiontableentry0 td, tr.sectiontableentry1 td, tr.sectiontableentry2 td {
 
 	}
 
-	.span6, 
-	.span4,
-	.span3, .span2 { 
-			width: 48.5%;
-			margin-right: 1%; 
+	.span6, .span4, .span3, .span2 { 
+			width: 100%;
+			margin-right: 0px; 
 	}
 	
 }
@@ -630,6 +519,124 @@ tr.sectiontableentry0 td, tr.sectiontableentry1 td, tr.sectiontableentry2 td {
 .mod-languages {
     float: @asModLangFloat;
 }
+.module,
+.moduletable {
+  margin-bottom:25px;
+}
+
+.module_logo, 
+.module_wb {
+  margin:0;
+  padding:0;
+  margin-bottom:15px;
+}
+.module_logo div div div {
+  padding:6px 0 6px 0;
+   width:auto;
+}
+.module_logo div div div div,
+.module_menu div div div div, 
+.module_wb div div div div {
+  background:none;
+  background:url(../images/transparant.png) 0 0 no-repeat;
+  padding:0;
+}
+.module_menu,
+.moduletable_menu  {
+  text-align:left;
+  margin-top:@asModMenuMarginTop; // $menuMarginTop; 18%
+}
+.module_menu div div div {
+  width:auto;
+}
+.module_menu h3,
+.moduletable_menu h3  {
+  font-family:@sansFontFamily;
+  font-size:@asBaseFontSize;
+  font-weight:bold;
+  color:@asModMenuH1Color;
+  margin:-23px -4px 5px -5px;
+  padding-left:10px;
+  padding-bottom:2px;
+}
+.module_menu ul,
+.moduletable_menu ul,
+ul.module_menu {
+  background-color:@asModMenuUlBackgroundColor; 
+  color: @asModMenuLinkColor; 
+  float:left;
+  position:relative;
+  font-size: @asModMenuUlFontSize;  // 12 px
+  font-weight:normal;
+  text-decoration: @asModMenuDecoration; 
+  line-height: @asModMenuUlLineHeight; // $menuLineHeight; em; 
+  padding-left:0;
+  margin-left:@asModMenuMarginLeft; // default 0
+}
+.module_menu ul li,
+.module_menu ul li ul li,
+.moduletable_menu ul li,
+.moduletable_menu ul li ul li,
+ul.menu_menu li,
+ul.menu_menu li ul li,
+ul.menu_img li,
+ul.menu_img li ul li {
+ position:static;
+ white-space:nowrap;
+ float: @asModMenuFloat;  // left
+ display: @asModMenuDisplay;  // inline
+}
+.module_menu ul li ul,
+.moduletable_menu ul li ul {
+  font-size:12px;
+  font-weight:normal;
+  position:absolute;
+  left:0;
+  bottom:-1.3em;
+  z-index:2;
+}
+
+.module_menu ul li.active a,
+.module_menu ul li.active a:link,
+.module_menu ul li.active a:visited,
+.moduletable_menu ul li.active a,
+.moduletable_menu ul li ul li.active a:link,
+.moduletable_menu ul li ul li.active a:visited
+{ /* bovenliggende menuoptie van actieve menu alleen de kleur aanpassen*/
+  color: @asModMenuActiveColor; 
+}
+.module_menu ul li a,
+.moduletable_menu ul li a {
+  display:block;
+  margin-left:0;
+  background: @asModMenuBackGround;
+  padding: @asModMenuPadding;
+}
+.module_menu ul li:first-child a,
+.moduletable_menu ul li:first-child a {
+  background-image:none;
+  padding-left:0;
+}
+
+.module_menu #current,
+.module_menu ul li.current a,
+.module_menu ul li.current a:link,
+.module_menu ul li.current a:visited, 
+.moduletable_menu li.current a,
+.moduletable_menu ul li ul li.current a:link,
+.moduletable_menu ul li ul li.current a:visited {
+  color: @asModMenuActiveColor; 
+  text-decoration: @asModMenuActiveDecoration; 
+  opacity:0.5;
+  filter:alpha(opacity=50);
+}
+
+
+.module_wb div div div {
+  padding:5px 5px 15px 5px;
+  width:auto;
+}
+
 .modifydate {
   height:20px;
   vertical-align:bottom;
@@ -955,8 +962,29 @@ width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
 @media (max-width: 480px) {}
 
 */
+@media (min-width: @screen-xs-min) { /* groter dan (meeste) smartphones (width >= 480px) */
+// .blog_inline heeft definities op alle breedtes, zie algemen deel
+.blog_inline {
 
+	}
 
+	.span6, .span4,	.span3, .span2 { 
+		width: 48.5%;
+		margin-right: 1%; 
+	}
+	
+}
+.blog_inline.lead-cols-2 {
+	.items-leading 	 > div { 
+		width: 48.5%;
+		margin-right: 1%; 
+		
+	}
+	
+}
+	
+}
+/* einde @media  @screen-xs-min */
 @media (min-width: @screen-sm-min )  { /* desktop (width >= 768px) */
 
 .img-fluid-50 { 
@@ -1019,36 +1047,18 @@ width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
 }
 
 .blog_inline {
-	.items-leading > div,
-	.items-row > div,
-	.items-row > div > div { 
-		display: inline-block;
-		vertical-align: top;
-		float: none;
-	}
 
-	.item {
-		width: 100%;
-		
-	}
-
-	.span6 { 
-			width: 48.5%;
-			margin-right: 1%; 
-	}
 	.span4 { 
 			width: 32%;
-			margin-right: 1%; 
 	}
 	.span3, .span2 { 
 			width: 23.5%;
-			margin-right: 1%; 
 	}
 	
 }
-.blog_inline.lead-cols-2 {
+.blog_inline.lead-cols-3 {
 	.items-leading 	 > div { 
-		width: 48.5%;
+		width: 32%;
 		margin-right: 1%; 
 		
 	}
@@ -1063,12 +1073,10 @@ width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
 .blog_inline {
 	.cols-5 .span2	{ 
 			width: 18.7%;
-			margin-right: 1%; 
 		}
 	
 	.span2	{ 
 			width: 15.3%;
-			margin-right: 1%; 
 		}
 	
 }
