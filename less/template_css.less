@@ -1,4 +1,4 @@
-// 
+g// 
 // standard css for this template
 //css
 // --------------------- 20160914 Enkele dingen met images oa .img-resposive .img-fluid
@@ -107,6 +107,7 @@ div.cols-3 {
     width:@as3ColHalfWidth;
   }
 }
+
 div.cols-1 div.item, /* item in 1 koloms-rij */
 div.cols-1 + div.items-more, /* items-more na 1 koloms rij */
 div.items-leading, /* hoofd artikelen van voorpagina en blog 1.6 */
@@ -537,6 +538,28 @@ tr.sectiontableentry0 td, tr.sectiontableentry1 td, tr.sectiontableentry2 td {
 }
 .banneritem_menu {
   overflow:hidden;
+}
+.blog_inline {
+	.items-leading > div,
+	.items-row > div,
+	.items-row > div > div { 
+		display: inline-block;
+		vertical-align: top;
+		float: none;
+	}
+
+	.item {
+		width: 100%;
+
+	}
+
+	.span6, 
+	.span4,
+	.span3, .span2 { 
+			width: 48.5%;
+			margin-right: 1%; 
+	}
+	
 }
 
 .clr {
