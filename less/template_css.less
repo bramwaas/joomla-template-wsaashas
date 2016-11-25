@@ -848,7 +848,7 @@ width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
     color: @asMainH1Color;
     text-align:left;
   }
-  div.blog_inline div.items-leading {
+  .blog_inline .items-leading {
     width:100%;
     div {
       float:none;
@@ -963,17 +963,13 @@ width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
 
 */
 @media (min-width: @screen-xs-min) { /* groter dan (meeste) smartphones (width >= 480px) */
-// .blog_inline heeft definities op alle breedtes, zie algemen deel
 .blog_inline {
-
-	}
-
 	.span6, .span4,	.span3, .span2 { 
 		width: 48.5%;
 		margin-right: 1%; 
 	}
-	
 }
+	
 .blog_inline.lead-cols-2 {
 	.items-leading 	 > div { 
 		width: 48.5%;
@@ -1078,6 +1074,14 @@ width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
 	.span2	{ 
 			width: 15.3%;
 		}
+	.cols-8 .span1	{ 
+			width: 11.3%;
+		}
+	 .span1	{ 
+			width: 7.2%;
+		}
+	
+
 	
 }
 
