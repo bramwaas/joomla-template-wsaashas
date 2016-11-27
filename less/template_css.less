@@ -10,6 +10,7 @@ g//
 // items in twee kolommen weer te geven. 
 // tevens breedte voor items.cols-2 cols-3 en cols-4 vastgelegd (in # kolommen blogweergave) 
 // 20161125 nog wat puntjes voor blog_inline kleiner schermbreedtes 
+// 20161127 aantal overbodige zaken verwijderd en nieuwe versie 1.5.8
 a {
  color: @asLinkColor;
 }
@@ -425,7 +426,7 @@ tr.sectiontableentry0 td, tr.sectiontableentry1 td, tr.sectiontableentry2 td {
   width:100%;
 }
 .blog_inline {
-/* .blog_inline alegemen definities (gestuurd door blog tabblad paginaweergave paginaclass:  blog_inline)
+/* .blog_inline alegemene definities (gestuurd door blog tabblad paginaweergave paginaclass:  blog_inline)
    heeft definities op alle breedtes, naarmate het scherm breder wordt krijgen meer 
    spans hun eigenlijke breedte (99% / 12 * <spannr>) -1% en margin-right 1%.
    (spannr wordt aangestuurd door blog tabblad blogweergave 12 / # kolommen tevens komt er dan een cols-nr in de div eronder )	
@@ -524,23 +525,12 @@ tr.sectiontableentry0 td, tr.sectiontableentry1 td, tr.sectiontableentry2 td {
   margin-bottom:25px;
 }
 
-.module_logo, 
-.module_wb {
+.module_logo {
   margin:0;
   padding:0;
   margin-bottom:15px;
 }
-.module_logo div div div {
-  padding:6px 0 6px 0;
-   width:auto;
-}
-.module_logo div div div div,
-.module_menu div div div div, 
-.module_wb div div div div {
-  background:none;
-  background:url(../images/transparant.png) 0 0 no-repeat;
-  padding:0;
-}
+
 .module_menu,
 .moduletable_menu  {
   text-align:left;

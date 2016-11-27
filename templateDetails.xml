@@ -2,14 +2,14 @@
 <!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "https://www.joomla.org/xml/dtd/2.5/template-install.dtd">
 <extension version="3.1" type="template" client="site" method="upgrade">
 	<name>asha-s</name>
-	<version>1.5.7</version>
-	<creationDate>23-11-2016</creationDate>
+	<version>1.5.8</version>
+	<creationDate>27-11-2016</creationDate>
 	<author>AHC Waasdorp</author>
 	<authorEmail>bram@waasdorpsoekhan.nl</authorEmail>
 	<authorUrl>http://www.waasdorpsoekhan.nl</authorUrl>
 	<copyright>A.H.C Waasdorp, Amsterdam, 2011 - 2016</copyright>
 	<license>GNU/GPL</license>
-	<description>Asha-s template ontwikkeld voor detailpaginas website Asha-s.com met veel opties om de lay-out vanuit het CMS aan te passen.</description>
+	<description>TPL_WSA_ASHAS_DESCRIPTION</description>
 	<files>
 		<filename>templateDetails.xml</filename>
 		<filename>template_preview.png</filename>
@@ -373,6 +373,11 @@
                    			label="WSACUSTOMCSS_LABEL" description="WSACUSTOMCSS_DESCRIPTION" />
 
 
+			</fieldset>
+			<fieldset name="Documentation" >
+				<field name="explanation4"  type="spacer" hr="false"
+					label="WSA-DOCUMENTATION"
+ 					 />
 			</fieldset>
 		</fields>
 	</config>
