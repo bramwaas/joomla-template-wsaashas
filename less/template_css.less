@@ -440,14 +440,10 @@ tr.sectiontableentry0 td, tr.sectiontableentry1 td, tr.sectiontableentry2 td {
 		float: none;
 	}
 
-	.item {
-		width: 100%;
-
-	}
-
-	.span6, .span4, .span3, .span2 { 
+	.item, .span6, .span4, .span3, .span2 { 
 			width: 100%;
 			margin-right: 0px; 
+			margin-left: auto;
 	}
 	
 }
@@ -955,16 +951,17 @@ width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
 @media (min-width: @screen-xs-min) { /* groter dan (meeste) smartphones (width >= 480px) */
 .blog_inline {
 	.span6, .span4,	.span3, .span2 { 
-		width: 48.5%;
-		margin-right: 1%; 
+		width: @wsa02Col ;
+		margin-right: @wsaInnerMargin;
 	}
 }
 	
 .blog_inline.lead-cols-2 {
 	.items-leading 	 > div { 
-		width: 48.5%;
-		margin-right: 1%; 
-		
+		width: @wsa02Col;
+		margin-right: @wsaInnerMargin; 
+		margin-left: auto;
+
 	}
 	
 }
@@ -1035,20 +1032,20 @@ width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
 .blog_inline {
 
 	.span4 { 
-			width: 32%;
+			width:  @wsa03Col;
 	}
 	.span3, .span2 { 
-			width: 23.5%;
+			width:  @wsa04Col;
 	}
 	
 }
 .blog_inline.lead-cols-3 {
 	.items-leading 	 > div { 
-		width: 32%;
-		margin-right: 1%; 
+		width:  @wsa03Col;
+		margin-right: @wsaInnerMargin; 
+		margin-left: auto;
 		
 	}
-	
 }
 
 
@@ -1058,20 +1055,18 @@ width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
 
 .blog_inline {
 	.cols-5 .span2	{ 
-			width: 18.7%;
+			width: @wsa05Col ;
 		}
 	
 	.span2	{ 
-			width: 15.3%;
+			width: @wsa06Col ;
 		}
 	.cols-8 .span1	{ 
-			width: 11.3%;
+			width: @wsa08Col ;
 		}
 	 .span1	{ 
-			width: 7.2%;
+			width: @wsa12Col ;
 		}
-	
-
 	
 }
 
