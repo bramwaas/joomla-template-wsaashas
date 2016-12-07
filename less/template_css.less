@@ -12,8 +12,8 @@ g//
 // 20161125 nog wat puntjes voor blog_inline kleiner schermbreedtes 
 // 20161127 aantal overbodige zaken verwijderd en nieuwe versie 1.5.8
 // 20161207 box-sizing: border-box op html toegevoegd en box-sizing: inherit voor alle elementen
-// om te voorkomen dat border en padding meerkollommen lay-out verstoord. Extra ruimte uit kolombreedte
-// weer verwijderd.
+// om te voorkomen dat border en padding meerkolommen lay-out verstoord. Extra ruimte uit kolombreedte
+// weer verwijderd. Ook word-spacing -0.25em verkleind, omdat die ook nog ruimte in beslag nam.  
 a {
  color: @asLinkColor;
 }
@@ -440,10 +440,15 @@ tr.sectiontableentry0 td, tr.sectiontableentry1 td, tr.sectiontableentry2 td {
    (spannr wordt aangestuurd door blog tabblad blogweergave 12 / # kolommen tevens komt er dan een cols-nr in de div eronder )	
    en komen meer breedtes voor items-leading beschikbaar (gestuurd door paginaweergave paginaclass: blog_inline lead-cols-2 )	
 */	
+	.items-leading,
+	.items-row
+	{ word-spacing: -0.25em;}
+	
 	.items-leading > div,
 	.items-row > div,
 	.items-row > div > div { 
 		display: inline-block;
+		word-spacing:normal;
 		vertical-align: top;
 		float: none;
 	}
