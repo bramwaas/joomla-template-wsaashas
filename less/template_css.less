@@ -11,6 +11,9 @@ g//
 // tevens breedte voor items.cols-2 cols-3 en cols-4 vastgelegd (in # kolommen blogweergave) 
 // 20161125 nog wat puntjes voor blog_inline kleiner schermbreedtes 
 // 20161127 aantal overbodige zaken verwijderd en nieuwe versie 1.5.8
+// 20161207 box-sizing: border-box op html toegevoegd en box-sizing: inherit voor alle elementen
+// om te voorkomen dat border en padding meerkollommen lay-out verstoord. Extra ruimte uit kolombreedte
+// weer verwijderd.
 a {
  color: @asLinkColor;
 }
@@ -269,6 +272,11 @@ h4 {
 html {
   height:100%;
   margin-bottom:1px;
+  box-sizing: border-box;
+
+}
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 input.button {
   cursor:pointer;
