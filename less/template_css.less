@@ -14,7 +14,7 @@
 // 20161207 box-sizing: border-box op html toegevoegd en box-sizing: inherit voor alle elementen
 // om te voorkomen dat border en padding meerkolommen lay-out verstoord. Extra ruimte uit kolombreedte
 // weer verwijderd. Ook word-spacing -0.25em verkleind, omdat die ook nog ruimte in beslag nam. 
-// 20161214 bolg_inline veranderd in blog, deze claas is standaard voor blog lay-out, geen speciale pagina claas blog_inline meer nodig
+// 20161215 bolg_inline veranderd in blog, deze claas is standaard voor blog lay-out, geen speciale pagina claas blog_inline meer nodig
 // voor tags moet class blog worden toegevoegd in plaats van blog_inline.
 a {
  color: @asLinkColor;
@@ -119,13 +119,14 @@ div.items-leading, /* hoofd artikelen van voorpagina en blog 1.6 */
 #maincolumn div.blog h1, /* titel blog */
 #maincolumn div.blog h2 /* sub-titel blog */
  {
-  float:right;
+/* ongelijke rechts floatend anders oplossen */	 
+/*  float:right;
   position:relative;
-  margin-right:0px;
+  margin-right:0px; */
 //  width: @asBlogLeadingWidth;
   color: @asTextColor;
-  margin-top:  @contentPosTop; /* 1.0% */
-  width: @contentWidth; /* 70%;  */
+/*  margin-top:  @contentPosTop; /* 1.0% */
+  width: @contentWidth; *//* 70%;  */
 }
 div.cols-2 div.column-1 .b_full, div.cols-2 div.column-2 .b_full, td[width="50%"].article_column  img.b_full {
   width:@as2ColFullWidth;
