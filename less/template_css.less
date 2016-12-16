@@ -90,7 +90,7 @@ div.caption {
   }
 }
 div.category-desc, /* beschrijving van de categorie komt voor alle items */
-// div.item, /* vervolgartikel blog */
+.blog.leadingright div.item, /* vervolgartikel blog indien leadingright */
 div.items-more /* geeft aan, dat er nog meer items zijn */
 {
   width: @asBlogItemWidth;
@@ -119,7 +119,7 @@ div.items-leading, /* hoofd artikelen van voorpagina en blog 1.6 */
 #maincolumn div.blog h1, /* titel blog */
 #maincolumn div.blog h2 /* sub-titel blog */
  {
-/* ongelijke rechts floatend anders oplossen */	 
+/* ongelijke rechts floatend anders oplossen .blog.leadingright*/	 
 /*  float:right;
   position:relative;
   margin-right:0px; */
@@ -988,6 +988,17 @@ width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
 
 	}
 	
+}
+/* ongelijke rechts floatend  .blog.leadingright*/	 
+.blog.leadingright items-leading
+	{
+  float:right;
+  position:relative;
+  margin-right:0px; */
+ width: @asBlogLeadingWidth;
+  color: @asTextColor;
+/*  margin-top:  @contentPosTop; /* 1.0% */
+  width: @contentWidth; *//* 70%;  */
 }
 	
 }
