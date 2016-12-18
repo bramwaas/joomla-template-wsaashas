@@ -466,10 +466,6 @@ tr.sectiontableentry0 td, tr.sectiontableentry1 td, tr.sectiontableentry2 td {
 		float: none;
 	}
 	
-	&.leadingright{
-		.items-row, .span1, .span2, .span3, .span4, .span6 .span8, .span9, .span12
-		{width: auto;}
-	}
 		
 }
 
@@ -974,6 +970,28 @@ width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
 		width: @wsa02Col ;
 		margin-right: @wsaInnerMargin;
 	}
+
+	&.leadingright{ /* ongelijke rechts floatend  .blog.leadingright*/
+		.items-row, .span1, .span2, .span3, .span4, .span6 .span8, .span9, .span12
+		{
+		display: initial;
+		width: initial;
+		}
+     	.cols-1 div.item, /* item in 1 koloms-rij */
+     	.cols-1 + div.items-more, /* items-more na 1 koloms rij */
+     	h1, /* titel blog */
+     	h2, /* sub-titel blog */
+     	.items-leading
+		{
+  		float:right;
+  		position:relative;
+  		margin-right:0px; 
+  		width: @contentWidth;
+		}
+		
+	}
+	
+
 }
 	
 .blog.lead-cols-2 {
@@ -985,20 +1003,8 @@ width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
 	}
 	
 }
-/* ongelijke rechts floatend  .blog.leadingright*/
-.blog.leadingright {	 
-     .cols-1 div.item, /* item in 1 koloms-rij */
-     .cols-1 + div.items-more, /* items-more na 1 koloms rij */
-     h1, /* titel blog */
-     h2, /* sub-titel blog */
-     .items-leading
-	{
-  	float:right;
-  	position:relative;
-  	margin-right:0px; 
-  	width: @contentWidth;
-	}
-}
+
+
 	
 }
 /* einde @media  @screen-xs-min */
