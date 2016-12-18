@@ -421,20 +421,40 @@ tr.sectiontableentry0 td, tr.sectiontableentry1 td, tr.sectiontableentry2 td {
 .banneritem_menu {
   overflow:hidden;
 }
-.blog .item img {
-  width:100%;
+
+.blog,
+.blog-featured,
+.newsfeed,
+.item-page {
+    width:100%;
+    position:relative;
+    float:left;
 }
+
 .blog {
-/* .blog alegemene definities (gestuurd door blog tabblad paginaweergave paginaclass: (geen, class blog is standaard))
+/* .blog algemene definities (gestuurd door blog tabblad paginaweergave paginaclass: (geen, class blog is standaard))
    heeft definities op alle breedtes, naarmate het scherm breder wordt krijgen meer 
    spans hun eigenlijke breedte (99% / 12 * <spannr>) -1% en margin-right 1%.
    (spannr wordt aangestuurd door blog tabblad blogweergave 12 / # kolommen tevens komt er dan een cols-nr in de div eronder )	
    en komen meer breedtes voor items-leading beschikbaar (gestuurd door paginaweergave paginaclass: blog lead-cols-2 )	
 */	
+ 	.item img {
+  		width:100%;
+	}
+
+	.item, .span6, .span4, .span3, .span2, .span1,
+	.cat-list-row0, .cat-list-row1  { 
+			width: 100%;
+			margin-right: 0px; 
+			margin-left: auto;
+	}
+
 	.items-leading,
 	.items-row,
 	.list-striped
-	{ word-spacing: -0.25em;}
+	{ 	word-spacing: -0.25em;
+		width:100%;
+	}
 	
 	.items-leading > div,
 	.items-row > div,
@@ -446,12 +466,6 @@ tr.sectiontableentry0 td, tr.sectiontableentry1 td, tr.sectiontableentry2 td {
 		float: none;
 	}
 
-	.item, .span6, .span4, .span3, .span2, .span1,
-	.cat-list-row0, .cat-list-row1  { 
-			width: 100%;
-			margin-right: 0px; 
-			margin-left: auto;
-	}
 	
 }
 
@@ -840,21 +854,6 @@ width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
     color: @asMainH1Color;
     text-align:left;
   }
-  .blog,
-  .blog-featured,
-  .newsfeed,
-  .item-page {
-    width:100%;
-    position:relative;
-    float:left;
-  }
-  .blog .items-leading {
-    width:100%;
-    div {
-      float:none;
-      display:inline-block;
-    }
-  }
   div.contact h2 {
     padding-top:5px;
     padding-left:15px;
@@ -993,7 +992,6 @@ width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
   	float:right;
   	position:relative;
   	margin-right:0px; 
-  	width: @asBlogLeadingWidth;
   	width: @contentWidth;
 	}
 }
