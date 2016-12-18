@@ -113,14 +113,7 @@ div.cols-3 {
   }
 }
 
-div.cols-1 div.item, /* item in 1 koloms-rij */
-div.cols-1 + div.items-more, /* items-more na 1 koloms rij */
-div.items-leading,  /* hoofd artikelen van voorpagina en blog 1.6 breedtes anders opgelost alleen .blog.leadingright  breedte min 480px */
-#maincolumn div.blog h1, /* titel blog */
-#maincolumn div.blog h2 /* sub-titel blog */
- {
-  color: @asTextColor;
-}
+
 div.cols-2 div.column-1 .b_full, div.cols-2 div.column-2 .b_full, td[width="50%"].article_column  img.b_full {
   width:@as2ColFullWidth;
   max-width:100%;
@@ -828,15 +821,14 @@ width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
   width:100%;
   margin-top:@asMarginHalf;
   margin-bottom:@asMarginHalf;
-  div.item-page h1, div.item-page h2, div.blog div.items-leading h2, div.blog div.item h2 {
+  
+  .item-page h1,
+  .item-page h2,
+  .blog .items-leading h2,
+  .blog .item h2 {
     float:none;
     width:100%;
     margin-right:0;
-  }
-  div.blog-featured, div.blog, div.newsfeed, div.item-page {
-    width:100%;
-    position:relative;
-    float:left;
   }
   h1 {
     padding:0;
@@ -847,6 +839,14 @@ width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
     vertical-align:bottom;
     color: @asMainH1Color;
     text-align:left;
+  }
+  .blog,
+  .blog-featured,
+  .newsfeed,
+  .item-page {
+    width:100%;
+    position:relative;
+    float:left;
   }
   .blog .items-leading {
     width:100%;
@@ -982,19 +982,20 @@ width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
 	}
 	
 }
-/* ongelijke rechts floatend  .blog.leadingright*/	 
-.blog.leadingright .cols-1 div.item, /* item in 1 koloms-rij */
-.blog.leadingright .cols-1 + div.items-more, /* items-more na 1 koloms rij */
-.blog.leadingright h1, /* titel blog */
-.blog.leadingright h2, /* sub-titel blog */
-.blog.leadingright items-leading
+/* ongelijke rechts floatend  .blog.leadingright*/
+.blog.leadingright {	 
+     .cols-1 div.item, /* item in 1 koloms-rij */
+     .cols-1 + div.items-more, /* items-more na 1 koloms rij */
+     h1, /* titel blog */
+     h2, /* sub-titel blog */
+     .items-leading
 	{
-  float:right;
-  position:relative;
-  margin-right:0px; 
-  width: @asBlogLeadingWidth;
-  color: @asTextColor;
-  width: @contentWidth;
+  	float:right;
+  	position:relative;
+  	margin-right:0px; 
+  	width: @asBlogLeadingWidth;
+  	width: @contentWidth;
+	}
 }
 	
 }
