@@ -723,7 +723,7 @@ display: @tagItemSearchDisplay;
     vertical-align: top;
    max-width: 100%;
    width: @asMinWidthItem;
-   margin-right: @marginArea; 
+   margin-right: auto; 
    margin-bottom: @marginArea;
 }
 .tag-category ul li h3 /* item titel boven tag  (none of initial) */
@@ -1008,6 +1008,7 @@ width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
 .tag-category ul li, /* breedte items begrenzen bij desktop */
 {
    max-width: @tagListItemWidth; // ipv 100%
+   margin-right: @asMarginHalf;
    width: auto;  // ipv @asMinWidthItem;
 }
 .tag-category.cols-1 ul li /* element  rij in tag-lijst en tag overzicht, tag-list block voor 1 kolom */
