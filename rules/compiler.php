@@ -73,6 +73,11 @@ $bgImage    	= htmlspecialchars($params['bgImage']);
 $bgWidth    	= htmlspecialchars($params['bgWidth']);
 $bgTop      	= htmlspecialchars($params['bgTop']);
 $bgLeft      	= htmlspecialchars($params['bgLeft']);
+if ($bg0Image_lg > ' ' and strtolower(substr ( $bg0Image_lg , 0 , 7 )) == 'images/' )
+ {$bg0Image_lg = '/' . $bg0Image_lg;};
+$bg0Image_lg    	= htmlspecialchars($params['bg0Image_lg']);
+if ($bg0Image_lg > ' ') $bg0Image_lg = 'url("' . $bg0Image_lg . '")'; else $bg0Image_lg = 'none';
+ 	
 $bgImageMob    	= htmlspecialchars($params['bgImageMob']);
 if (! ($bgImageMob > ' '))  {$bgImageMob = $bgImage;}; 
 $bgWidthMob    	= htmlspecialchars($params['bgWidthMob']);
@@ -86,6 +91,11 @@ $logo      	= htmlspecialchars($params['logo']);
 $logoWidth    	= htmlspecialchars($params['logoWidth']);
 $logoPosLeft    = htmlspecialchars($params['logoPosLeft']);
 $logoPosTop    	= htmlspecialchars($params['logoPosTop']);
+$bg1Image_lg    	= htmlspecialchars($params['bg1Image_lg']);
+if ($bg1Image > ' ' and strtolower(substr ( $bg1Image , 0 , 7 )) == 'images/' ) 
+ {$bg1Image = '/' . $bg1Image;};
+if ($bg1Image_lg > ' ') $bg1Image_lg = 'url("' . $bg1Image_lg . '")'; else $bg1Image_lg = 'none';
+ 	
 $iconsWidth    	= htmlspecialchars($params['iconsWidth']);
 $iconsPosLeft   = htmlspecialchars($params['iconsPosLeft']);
 $iconsPosTop    = htmlspecialchars($params['iconsPosTop']);
