@@ -2,8 +2,8 @@
 <!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "https://www.joomla.org/xml/dtd/2.5/template-install.dtd">
 <extension version="3.1" type="template" client="site" method="upgrade">
 	<name>asha-s</name>
-	<version>1.5.10</version>
-	<creationDate>10-12-2016</creationDate>
+	<version>1.5.11</version>
+	<creationDate>30-12-2016</creationDate>
 	<author>AHC Waasdorp</author>
 	<authorEmail>bram@waasdorpsoekhan.nl</authorEmail>
 	<authorUrl>http://www.waasdorpsoekhan.nl</authorUrl>
@@ -129,6 +129,20 @@
 					 />
 				<field name="bgImage" type="media" default="" 
                                        	label="Background image:" description="Select a background image." />
+				<field name="bg0Image_lg" type="media" default="" 
+                                       	label="Background image:" description="Select a larger background image." />
+				<field name="bg0ImageW"  class="validate-numeric" type="text" default=""
+					label="BGIMAGEW_LABEL"
+					description="BGIMAGEW_DESCRIPTION"
+					 />	
+				<field name="bg0ImageH"  class="validate-numeric" type="text" default=""
+					label="BGIMAGEH_LABEL"
+					description="BGIMAGEH_DESCRIPTION"
+					 />	
+				<field name="bg0Image_lgW"  class="validate-numeric" type="text" default=""
+					label="BGIMAGELGW_LABEL"
+					description="BGIMAGELGW_DESCRIPTION"
+					 />	
 				<field name="bgWidth"   class="validate-numeric" type="text" default=""
 					label="Width background image:"
 					description="Width background image, 100 = full screen"
@@ -165,6 +179,20 @@
 					label="Logo image:"
 					description="Select a logo image for the right upper corner"
 					/>
+				<field name="bg1Image_lg" type="media" default="" 
+                                       	label="Background image:" description="Select a larger logo image." />
+				<field name="bg1ImageW"  class="validate-numeric" type="text" default=""
+					label="BGIMAGEW_LABEL"
+					description="BGIMAGEW_DESCRIPTION"
+					 />	
+				<field name="bg1ImageH"  class="validate-numeric" type="text" default=""
+					label="BGIMAGEH_LABEL"
+					description="BGIMAGEH_DESCRIPTION"
+					 />	
+				<field name="bg1Image_lgW"  class="validate-numeric" type="text" default=""
+					label="BGIMAGELGW_LABEL"
+					description="BGIMAGELGW_DESCRIPTION"
+					 />	
 				<field name="logoWidth"  class="validate-numeric" type="text" default="37.2"
 					label="Width logo:"
 					description="Width logo as percentage of pagewidth"
