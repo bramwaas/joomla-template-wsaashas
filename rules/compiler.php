@@ -13,6 +13,7 @@ v 25-6-2016 1.5.0 less compiler uit administrator/components/com_templates/model
             ivm &tmpl=component  ook template.css maken bij standaard template
 v 2-8-2016 topmargin tbv verplaatste icons mobile
 v 21-8-2016 aantal twbs bestanden nav en mixins toegevoegd
+v 30-12-2016 verschillende aanpassingen tbv srceset met 2 images normaal en groot _lg
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
@@ -70,14 +71,15 @@ $phWidth    	= htmlspecialchars($params['phWidth']);
 $background    	= htmlspecialchars($params['background']);
 $fgColor    	= htmlspecialchars($params['fgColor']);
 $bgImage    	= htmlspecialchars($params['bgImage']);
+if ($bgImage > ' ' and strtolower(substr ( $bgImage , 0 , 7 )) == 'images/' )
+ {$bgImage = '/' . $bgImage;};
 $bgWidth    	= htmlspecialchars($params['bgWidth']);
 $bgTop      	= htmlspecialchars($params['bgTop']);
 $bgLeft      	= htmlspecialchars($params['bgLeft']);
+$bg0Image_lg    	= htmlspecialchars($params['bg0Image_lg']);
 if ($bg0Image_lg > ' ' and strtolower(substr ( $bg0Image_lg , 0 , 7 )) == 'images/' )
  {$bg0Image_lg = '/' . $bg0Image_lg;};
-$bg0Image_lg    	= htmlspecialchars($params['bg0Image_lg']);
-if ($bg0Image_lg > ' ') $bg0Image_lg = 'url("' . $bg0Image_lg . '")'; else $bg0Image_lg = 'none';
- 	
+//if ($bg0Image_lg > ' ') $bg0Image_lg = 'url("' . $bg0Image_lg . '")'; else $bg0Image_lg = 'none';
 $bgImageMob    	= htmlspecialchars($params['bgImageMob']);
 if (! ($bgImageMob > ' '))  {$bgImageMob = $bgImage;}; 
 $bgWidthMob    	= htmlspecialchars($params['bgWidthMob']);
@@ -88,13 +90,15 @@ $bgLeftMob     	= htmlspecialchars($params['bgLeftMob']);
 if (! ($bgLeftMob > ' '))  {$bgLeftMob = $bgLeft;};
 $bgColor    	= htmlspecialchars($params['bgColor']);
 $logo      	= htmlspecialchars($params['logo']);
+if ($logo > ' ' and strtolower(substr ( $logo , 0 , 7 )) == 'images/' )
+ {$logo = '/' . $logo;};	
 $logoWidth    	= htmlspecialchars($params['logoWidth']);
 $logoPosLeft    = htmlspecialchars($params['logoPosLeft']);
 $logoPosTop    	= htmlspecialchars($params['logoPosTop']);
 $bg1Image_lg    	= htmlspecialchars($params['bg1Image_lg']);
 if ($bg1Image > ' ' and strtolower(substr ( $bg1Image , 0 , 7 )) == 'images/' ) 
  {$bg1Image = '/' . $bg1Image;};
-if ($bg1Image_lg > ' ') $bg1Image_lg = 'url("' . $bg1Image_lg . '")'; else $bg1Image_lg = 'none';
+//if ($bg1Image_lg > ' ') $bg1Image_lg = 'url("' . $bg1Image_lg . '")'; else $bg1Image_lg = 'none';
  	
 $iconsWidth    	= htmlspecialchars($params['iconsWidth']);
 $iconsPosLeft   = htmlspecialchars($params['iconsPosLeft']);
@@ -219,6 +223,7 @@ if ($fgColor > ' '  ) 	{	fwrite($tv_file, '@asTextColor:               '  . $fgC
 				fwrite($tv_file, '@asH1Color:                 '  . $fgColor .  ";\n");
 }
 if ($bgImage > ' '  ) 		fwrite($tv_file, '@bgImage:                   "'  . $bgImage .  "\"; // nog via HTML \n");
+if ($bg0Image_lg > ' '  ) 	fwrite($tv_file, '@bg0Image_lg:               "'  . $bg0Image_lg .  "\"; // nog via HTML \n");	
 if ($bgWidth > ' '  ) 		fwrite($tv_file, '@bgWidth:                   '  . $bgWidth .  "%;\n");
 if ($bgTop > ' '  ) 		fwrite($tv_file, '@bgTop:                     '  . $bgTop .  "%;\n");
 if ($bgLeft > ' '  ) 		fwrite($tv_file, '@bgLeft:                    '  . $bgLeft .  "%;\n");
@@ -229,6 +234,7 @@ if ($bgLeftMob > ' '  ) 	fwrite($tv_file, '@bgLeftMob:                 '  . $bgL
 
 if ($bgColor > ' '  ) 		fwrite($tv_file, '@asBodyBackgroundColor:     '  . $bgColor .  ";\n");
 if ($logo > ' '  ) 		fwrite($tv_file, '@logo:                      "'  . $logo .  "\"; // nog via HTML \n");
+if ($bg1Image_lg > ' '  ) 	fwrite($tv_file, '@bg1Image_lg:               "'  . $bg1Image_lg .  "\"; // nog via HTML \n");	
 if ($logoWidth > ' '  ) 	fwrite($tv_file, '@asLogoWidth:               '  . $logoWidth .  "%;\n");
 if ($logoPosLeft > ' '  ) 	fwrite($tv_file, '@asLogoLeft:                '  . $logoPosLeft .  "%;\n");
 if ($logoPosTop > ' '  ) 	fwrite($tv_file, '@asLogoTop:                 '  . (10 * $logoPosTop) .  "%;\n");
@@ -327,17 +333,17 @@ fwrite($st_file, '@import "template_css.less";' . "\n");
 fwrite($st_file, "body {\n");
 if ($fgColor > ' '  ) fwrite($st_file, "color:  @asTextColor ;\n");
 if ($bg0Color > ' ' ) fwrite($st_file, "background-color:  @bg0Color;\n");
-if ($bg0Image > ' ' ) fwrite($st_file, "background-image: url(@bg0Image);\n"); 
+//if ($bg0Image > ' ' ) fwrite($st_file, "background-image: url(@bg0Image);\n"); 
 if ($bg0Size > ' '  ) fwrite($st_file, "background-size: @bg0Size;\n");
-if ($bg0Repeat > ' ') fwrite($st_file, "background-repeat:  @bg0Repeat;\n");
+//if ($bg0Repeat > ' ') fwrite($st_file, "background-repeat:  @bg0Repeat;\n");
 if ($bg0Pos > ' '   ) fwrite($st_file, "background-position: @bg0Pos;\n");
 fwrite($st_file, "}\n");
 
 fwrite($st_file, "body>div.container {\n");
 if ($bg1Color > " " ) fwrite($st_file, "background-color:  @bg1Color;\n");
-if ($bg1Image > ' ' ) fwrite($st_file, "background-image: @bg1Image;\n"); 
+//if ($bg1Image > ' ' ) fwrite($st_file, "background-image: @bg1Image;\n"); 
 if ($bg1Size > ' '  ) fwrite($st_file, "background-size: @bg1Size;\n");
-if ($bg1Repeat > ' ') fwrite($st_file, "background-repeat:  @bg1Repeat;\n");
+//if ($bg1Repeat > ' ') fwrite($st_file, "background-repeat:  @bg1Repeat;\n");
 if ($bg1Pos > ' '   ) fwrite($st_file, "background-position: @bg1Pos;\n");
 fwrite($st_file, "}\n");
 
