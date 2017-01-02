@@ -3,7 +3,7 @@
  * @package Joomla.Site
  * @subpackage Templates.dna
  *
- * @copyright Copyright (C) Bram Waasdorp 2016. All rights reserved.
+ * @copyright Copyright (C) Bram Waasdorp 2015 - 2017. All rights reserved.
  * @license GNU General Public License version 2 or later; see LICENSE.txt
  */
 /* regel voor validatie type compiler, bedoeld om samenstellen en compileren Less bestanden uit te voeren vlak voor  de save  
@@ -79,7 +79,7 @@ $bgLeft      	= htmlspecialchars($params['bgLeft']);
 $bg0Image_lg    	= htmlspecialchars($params['bg0Image_lg']);
 if ($bg0Image_lg > ' ' and strtolower(substr ( $bg0Image_lg , 0 , 7 )) == 'images/' )
  {$bg0Image_lg = '/' . $bg0Image_lg;};
-//if ($bg0Image_lg > ' ') $bg0Image_lg = 'url("' . $bg0Image_lg . '")'; else $bg0Image_lg = 'none';
+$bg0Breakpoint    	= htmlspecialchars($params['bg0Breakpoint']);
 $bgImageMob    	= htmlspecialchars($params['bgImageMob']);
 if (! ($bgImageMob > ' '))  {$bgImageMob = $bgImage;}; 
 $bgWidthMob    	= htmlspecialchars($params['bgWidthMob']);
@@ -98,8 +98,8 @@ $logoPosTop    	= htmlspecialchars($params['logoPosTop']);
 $bg1Image_lg    	= htmlspecialchars($params['bg1Image_lg']);
 if ($bg1Image > ' ' and strtolower(substr ( $bg1Image , 0 , 7 )) == 'images/' ) 
  {$bg1Image = '/' . $bg1Image;};
-//if ($bg1Image_lg > ' ') $bg1Image_lg = 'url("' . $bg1Image_lg . '")'; else $bg1Image_lg = 'none';
- 	
+$bg1Breakpoint    	= htmlspecialchars($params['bg1Breakpoint']);
+ 
 $iconsWidth    	= htmlspecialchars($params['iconsWidth']);
 $iconsPosLeft   = htmlspecialchars($params['iconsPosLeft']);
 $iconsPosTop    = htmlspecialchars($params['iconsPosTop']);
@@ -224,6 +224,8 @@ if ($fgColor > ' '  ) 	{	fwrite($tv_file, '@asTextColor:               '  . $fgC
 }
 if ($bgImage > ' '  ) 		fwrite($tv_file, '@bgImage:                   "'  . $bgImage .  "\"; // nog via HTML \n");
 if ($bg0Image_lg > ' '  ) 	fwrite($tv_file, '@bg0Image_lg:               "'  . $bg0Image_lg .  "\"; // nog via HTML \n");	
+if ($bg0Breakpoint > ' '  ) fwrite($tv_file, '@bg0Breakpoint:             '  . $bg0Breakpoint .  "px;\n");
+
 if ($bgWidth > ' '  ) 		fwrite($tv_file, '@bgWidth:                   '  . $bgWidth .  "%;\n");
 if ($bgTop > ' '  ) 		fwrite($tv_file, '@bgTop:                     '  . $bgTop .  "%;\n");
 if ($bgLeft > ' '  ) 		fwrite($tv_file, '@bgLeft:                    '  . $bgLeft .  "%;\n");
@@ -233,8 +235,9 @@ if ($bgTopMob > ' '  ) 		fwrite($tv_file, '@bgTopMob:                  '  . $bgT
 if ($bgLeftMob > ' '  ) 	fwrite($tv_file, '@bgLeftMob:                 '  . $bgLeftMob .  "%;\n");
 
 if ($bgColor > ' '  ) 		fwrite($tv_file, '@asBodyBackgroundColor:     '  . $bgColor .  ";\n");
-if ($logo > ' '  ) 		fwrite($tv_file, '@logo:                      "'  . $logo .  "\"; // nog via HTML \n");
+if ($logo > ' '  ) 			fwrite($tv_file, '@logo:                      "'  . $logo .  "\"; // nog via HTML \n");
 if ($bg1Image_lg > ' '  ) 	fwrite($tv_file, '@bg1Image_lg:               "'  . $bg1Image_lg .  "\"; // nog via HTML \n");	
+if ($bg1Breakpoint > ' '  ) fwrite($tv_file, '@bg1Breakpoint:             '  . $bg1Breakpoint .  "px;\n");	
 if ($logoWidth > ' '  ) 	fwrite($tv_file, '@asLogoWidth:               '  . $logoWidth .  "%;\n");
 if ($logoPosLeft > ' '  ) 	fwrite($tv_file, '@asLogoLeft:                '  . $logoPosLeft .  "%;\n");
 if ($logoPosTop > ' '  ) 	fwrite($tv_file, '@asLogoTop:                 '  . (10 * $logoPosTop) .  "%;\n");

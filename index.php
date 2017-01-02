@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright  Copyright (C) 2011 - 2016, Amsterdam AHC Waasdorp. All rights reserved.
+ * @copyright  Copyright (C) 2011 - 2017, Amsterdam AHC Waasdorp. All rights reserved.
  * @license    GNU/GPL, see LICENSE
  * Joomla! is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
@@ -71,12 +71,16 @@ if ($bg1Image > ' ' and strtolower(substr ( $bg1Image , 0 , 7 )) == 'images/' )
 $bg0Image_lg    	= htmlspecialchars($this->params->get('bg0Image_lg'));
 if ($bg0Image_lg > ' ' and strtolower(substr ( $bg0Image_lg , 0 , 7 )) == 'images/' )
  {$bg0Image_lg = '/' . $bg0Image_lg;};
+ $bg0Breakpoint    	= htmlspecialchars($this->params->get('bg0Breakpoint'));
+ 
 $bg1Image     	= htmlspecialchars($this->params->get('logo'));
 if ($bg1Image > ' ' and strtolower(substr ( $bg1Image , 0 , 7 )) == 'images/' ) 
  {$bg1Image = '/' . $bg1Image;};
 $bg1Image_lg    	= htmlspecialchars($this->params->get('bg1Image_lg'));
 if ($bg1Image_lg > ' ' and strtolower(substr ( $bg1Image_lg , 0 , 7 )) == 'images/' ) 
  {$bg1Image_lg = '/' . $bg1Image_lg;};
+ $bg1Breakpoint    	= htmlspecialchars($this->params->get('bg1Breakpoint'));
+ 
 $bg0ImageW    	= htmlspecialchars($this->params->get('bg0ImageW'));
 $bg0ImageH    	= htmlspecialchars($this->params->get('bg0ImageH'));
 $bg0Image_lgW  	= htmlspecialchars($this->params->get('bg0Image_lgW'));
@@ -156,7 +160,9 @@ type: \'image\'
 	<?php if ($bg0ImageH > 0 ) : ?>height="<?php echo $bg0ImageH; ?>"<?php endif; ?>
 	<?php if ($bg0Image_lg > " " && $bg0ImageW > 0 && $bg0Image_lgW > 0 ) : ?>
 	srcset="<?php echo $bg0Image .' '. $bg0ImageW .'w,'. $bg0Image_lg .' ' . $bg0Image_lgW . 'w'  ; ?>"
-	sizes="<?php echo '(min-width: 768px) '.$bg0Image_lgW .'px,'. $bg0ImageW .'px'; ?>"
+		<?php if ($bg0Breakpoint > 0 ) : ?>
+	sizes="<?php echo '(min-width: ' . $bg0Breakpoint .'px) '.$bg0Image_lgW .'px,'. $bg0ImageW .'px'; ?>"
+		<?php endif; ?>
 	<?php endif; ?>
  />
 <?php endif; ?>
@@ -176,12 +182,14 @@ type: \'image\'
     <a href="<?php echo $this->baseurl ?>" title="Home" >
 	<?php if ($bg1Image > " ") : ?>	    
       <img id="logo_img" src="<?php echo $bg1Image; ?>" alt="Logo"
-	<?php if ($bg1ImageW > 0 ) : ?>width="<?php echo $bg1ImageW; ?>"<?php endif; ?>
-	<?php if ($bg1ImageH > 0 ) : ?>height="<?php echo $bg1ImageH; ?>"<?php endif; ?>
-	<?php if ($bg1Image_lg > " " && $bg1ImageW > 0 && $bg1Image_lgW > 0 ) : ?>
+	  <?php if ($bg1ImageW > 0 ) : ?>width="<?php echo $bg1ImageW; ?>"<?php endif; ?>
+	  <?php if ($bg1ImageH > 0 ) : ?>height="<?php echo $bg1ImageH; ?>"<?php endif; ?>
+	  <?php if ($bg1Image_lg > " " && $bg1ImageW > 0 && $bg1Image_lgW > 0 ) : ?>
 	srcset="<?php echo $bg1Image .' '. $bg1ImageW .'w,'. $bg1Image_lg .' ' . $bg1Image_lgW . 'w'  ; ?>"
-	sizes="<?php echo '(min-width: 768px) '.$bg1Image_lgW .'px,'. $bg1ImageW .'px'; ?>"
-	<?php endif; ?>
+		<?php if ($bg1Breakpoint > 0 ) : ?>
+	sizes="<?php echo '(min-width: ' . $bg1Breakpoint .'px) '.$bg1Image_lgW .'px,'. $bg1ImageW .'px'; ?>"
+		<?php endif; ?>
+	  <?php endif; ?>
  />
 	<?php endif; ?>
     </a>

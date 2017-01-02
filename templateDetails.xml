@@ -3,11 +3,11 @@
 <extension version="3.1" type="template" client="site" method="upgrade">
 	<name>asha-s</name>
 	<version>1.5.11</version>
-	<creationDate>30-12-2016</creationDate>
+	<creationDate>2-1-2017</creationDate>
 	<author>AHC Waasdorp</author>
 	<authorEmail>bram@waasdorpsoekhan.nl</authorEmail>
 	<authorUrl>http://www.waasdorpsoekhan.nl</authorUrl>
-	<copyright>A.H.C Waasdorp, Amsterdam, 2011 - 2016</copyright>
+	<copyright>A.H.C Waasdorp, Amsterdam, 2011 - 2017</copyright>
 	<license>GNU/GPL</license>
 	<description>TPL_WSA_ASHAS_DESCRIPTION</description>
 	<files>
@@ -143,6 +143,10 @@
 					label="BGIMAGELGW_LABEL"
 					description="BGIMAGELGW_DESCRIPTION"
 					 />	
+				<field name="bg0Breakpoint"  class="validate-numeric" type="text" default=""
+					label="BGBREAKPOINT_LABEL"
+					description="BGBREAKPOINT_DESCRIPTION"
+					 />	
 				<field name="bgWidth"   class="validate-numeric" type="text" default=""
 					label="Width background image:"
 					description="Width background image, 100 = full screen"
@@ -192,6 +196,10 @@
 				<field name="bg1Image_lgW"  class="validate-numeric" type="text" default=""
 					label="BGIMAGELGW_LABEL"
 					description="BGIMAGELGW_DESCRIPTION"
+					 />	
+				<field name="bg1Breakpoint"  class="validate-numeric" type="text" default=""
+					label="BGBREAKPOINT_LABEL"
+					description="BGBREAKPOINT_DESCRIPTION"
 					 />	
 				<field name="logoWidth"  class="validate-numeric" type="text" default="37.2"
 					label="Width logo:"
