@@ -86,7 +86,6 @@ $bg0Breakpoint_lg    	= htmlspecialchars($params['bg0Breakpoint_lg']);
 $bg0Image_sm    	= htmlspecialchars($params['bg0Image_sm']);
 if ($bg0Image_sm > ' ' and strtolower(substr ( $bg0Image_sm , 0 , 7 )) == 'images/' )
 {$bg0Image_sm = '/' . $bg0Image_sm;};
-if ($bg0Image_sm > ' ') $bg0Image_sm = 'url("' . $bg0Image_sm . '")'; else $bg0Image_sm = 'none';
 $bg0Breakpoint_sm    	= htmlspecialchars($params['bg0Breakpoint_sm']);
 
 $logo      	= htmlspecialchars($params['logo']);
@@ -102,7 +101,6 @@ $bg1Breakpoint_lg    	= htmlspecialchars($params['bg1Breakpoint_lg']);
 $bg1Image_sm    	= htmlspecialchars($params['bg1Image_sm']);
 if ($bg1Image_sm > ' ' and strtolower(substr ( $bg1Image_sm , 0 , 7 )) == 'images/' )
 {$bg1Image_sm = '/' . $bg1Image_sm;};
-if ($bg1Image_sm > ' ') $bg1Image_sm = 'url("' . $bg1Image_sm . '")'; else $bg1Image_sm = 'none';
 $bg1Breakpoint_sm    	= htmlspecialchars($params['bg1Breakpoint_sm']);
 
 $iconsWidth    	= htmlspecialchars($params['iconsWidth']);

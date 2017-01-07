@@ -166,7 +166,7 @@ type: \'image\'
 
 <body id="page_bg" >
 <?php if ($bg0Image > " " )
-{ echo "\n" . '<img id="img_bg0Image" src="' . $bg0Image . '" alt="Background image"';
+{ echo "\n" . '<img id="bg_img" src="' . $bg0Image . '" alt="Background image"';
 	if ($bg0ImageW > 0 ) {echo "\n\t" . 'width="' . $bg0ImageW .'"';}
 	if ($bg0ImageH > 0 ) {echo "\n\t" . 'height="' . $bg0ImageH . '"';}
 	if ($bg0ImageW > 0  && (($bg0Image_lg > " " && $bg0Image_lgW > 0) || ($bg0Image_sm > " " && $bg0Image_smW > 0))  )
@@ -198,7 +198,7 @@ type: \'image\'
     <div id="logo">
     <a href="<?php echo $this->baseurl ?>" title="Home" >
 <?php if ($bg1Image > " " )
-{ echo "\n\t" . '<img id="img_bg1Image" src="' . $bg1Image . '" alt="Logo"';
+{ echo "\n\t" . '<img id="logo_img" src="' . $bg1Image . '" alt="Logo"';
 	if ($bg1ImageW > 0 ) {echo "\n\t\t" . 'width="' . $bg1ImageW .'"';}
 	if ($bg1ImageH > 0 ) {echo "\n\t\t" . 'height="' . $bg1ImageH . '"';}
 	if ($bg1ImageW > 0  && (($bg1Image_lg > " " && $bg1Image_lgW > 0) || ($bg1Image_sm > " " && $bg1Image_smW > 0))  )
