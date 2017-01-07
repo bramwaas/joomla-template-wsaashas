@@ -38,6 +38,7 @@
   2-8-2016 icons verplaatst boven wrapper
   9-9-2016 sidebarrleft position-8 toegevoegd
   30-12-2016 Verschillende aanpassingen tbv srcset bg0Image_lg etc
+  7-1-2017 ook Image_sm
  */
 
 // no direct access
@@ -71,7 +72,11 @@ if ($bg1Image > ' ' and strtolower(substr ( $bg1Image , 0 , 7 )) == 'images/' )
 $bg0Image_lg    	= htmlspecialchars($this->params->get('bg0Image_lg'));
 if ($bg0Image_lg > ' ' and strtolower(substr ( $bg0Image_lg , 0 , 7 )) == 'images/' )
  {$bg0Image_lg = '/' . $bg0Image_lg;};
- $bg0Breakpoint    	= htmlspecialchars($this->params->get('bg0Breakpoint'));
+ $bg0Breakpoint_lg    	= htmlspecialchars($this->params->get('bg0Breakpoint_lg'));
+$bg0Image_sm    	= htmlspecialchars($this->params->get('bg0Image_sm'));
+ if ($bg0Image_sm > ' ' and strtolower(substr ( $bg0Image_sm , 0 , 7 )) == 'images/' )
+ {$bg0Image_sm = '/' . $bg0Image_sm;};
+ $bg0Breakpoint_sm    	= htmlspecialchars($this->params->get('bg0Breakpoint_sm'));
  
 $bg1Image     	= htmlspecialchars($this->params->get('logo'));
 if ($bg1Image > ' ' and strtolower(substr ( $bg1Image , 0 , 7 )) == 'images/' ) 
@@ -79,14 +84,20 @@ if ($bg1Image > ' ' and strtolower(substr ( $bg1Image , 0 , 7 )) == 'images/' )
 $bg1Image_lg    	= htmlspecialchars($this->params->get('bg1Image_lg'));
 if ($bg1Image_lg > ' ' and strtolower(substr ( $bg1Image_lg , 0 , 7 )) == 'images/' ) 
  {$bg1Image_lg = '/' . $bg1Image_lg;};
- $bg1Breakpoint    	= htmlspecialchars($this->params->get('bg1Breakpoint'));
+ $bg1Breakpoint_lg    	= htmlspecialchars($this->params->get('bg1Breakpoint_lg'));
+$bg1Image_sm    	= htmlspecialchars($this->params->get('bg1Image_sm'));
+ if ($bg1Image_sm > ' ' and strtolower(substr ( $bg1Image_sm , 0 , 7 )) == 'images/' )
+ {$bg1Image_sm = '/' . $bg1Image_sm;};
+ $bg1Breakpoint_sm    	= htmlspecialchars($this->params->get('bg1Breakpoint_sm'));
  
 $bg0ImageW    	= htmlspecialchars($this->params->get('bg0ImageW'));
 $bg0ImageH    	= htmlspecialchars($this->params->get('bg0ImageH'));
 $bg0Image_lgW  	= htmlspecialchars($this->params->get('bg0Image_lgW'));
+$bg0Image_smW  	= htmlspecialchars($this->params->get('bg0Image_smW'));
 $bg1ImageW    	= htmlspecialchars($this->params->get('bg1ImageW'));
 $bg1ImageH    	= htmlspecialchars($this->params->get('bg1ImageH'));
 $bg1Image_lgW  	= htmlspecialchars($this->params->get('bg1Image_lgW'));
+$bg1Image_smW  	= htmlspecialchars($this->params->get('bg1Image_smW'));
 
 $marginLeftRight	= htmlspecialchars($this->params->get('marginLeftRight'));
 if ($marginLeftRight > " " and $marginLeftRight > 0 and $marginLeftRight < 50) {} 
@@ -154,18 +165,24 @@ type: \'image\'
 </head>
 
 <body id="page_bg" >
-<?php if ($bg0Image > " ") : ?>
-<img id="bg_img" src="<?php echo $bg0Image; ?>" alt="Background image"
-	<?php if ($bg0ImageW > 0 ) : ?>width="<?php echo $bg0ImageW; ?>"<?php endif; ?>
-	<?php if ($bg0ImageH > 0 ) : ?>height="<?php echo $bg0ImageH; ?>"<?php endif; ?>
-	<?php if ($bg0Image_lg > " " && $bg0ImageW > 0 && $bg0Image_lgW > 0 ) : ?>
-	srcset="<?php echo $bg0Image .' '. $bg0ImageW .'w,'. $bg0Image_lg .' ' . $bg0Image_lgW . 'w'  ; ?>"
-		<?php if ($bg0Breakpoint > 0 ) : ?>
-	sizes="<?php echo '(min-width: ' . $bg0Breakpoint .'px) '.$bg0Image_lgW .'px,'. $bg0ImageW .'px'; ?>"
-		<?php endif; ?>
-	<?php endif; ?>
- />
-<?php endif; ?>
+<?php if ($bg0Image > " " )
+{ echo "\n" . '<img id="img_bg0Image" src="' . $bg0Image . '" alt="Background image"';
+	if ($bg0ImageW > 0 ) {echo "\n\t" . 'width="' . $bg0ImageW .'"';}
+	if ($bg0ImageH > 0 ) {echo "\n\t" . 'height="' . $bg0ImageH . '"';}
+	if ($bg0ImageW > 0  && (($bg0Image_lg > " " && $bg0Image_lgW > 0) || ($bg0Image_sm > " " && $bg0Image_smW > 0))  )
+	{echo "\n\t" . 'srcset="' . $bg0Image . ' ' . $bg0ImageW .'w'   ;
+	if ($bg0Image_lgW > 0) {echo ','. $bg0Image_lg .' ' . $bg0Image_lgW . 'w' ; }
+	if ($bg0Image_smW > 0) {echo ','. $bg0Image_sm .' ' . $bg0Image_smW . 'w' ; }
+	echo '"';
+	if ($bg0Breakpoint_lg > 0 || $bg0Breakpoint_sm > 0)
+		{echo "\n\t" . 'sizes="';
+		if ($bg0Breakpoint_sm > 0 ) {echo '(max-width: ' . $bg0Breakpoint_sm .'px) '.$bg0Image_smW .'px,'; }
+		if ($bg0Breakpoint_lg > 0 ) {echo '(min-width: ' . $bg0Breakpoint_lg .'px) '.$bg0Image_lgW .'px,'; }
+		echo $bg0ImageW .'px"'; 
+		}
+	} 
+ echo  ' />' . "\n";
+}?>
 <a  id="up"></a>
 <?php if(  $this->countModules('icons'))    : ?>
   <div id="icons">
@@ -180,18 +197,24 @@ type: \'image\'
     </div><!--einde headerleft-->  
     <div id="logo">
     <a href="<?php echo $this->baseurl ?>" title="Home" >
-	<?php if ($bg1Image > " ") : ?>	    
-      <img id="logo_img" src="<?php echo $bg1Image; ?>" alt="Logo"
-	  <?php if ($bg1ImageW > 0 ) : ?>width="<?php echo $bg1ImageW; ?>"<?php endif; ?>
-	  <?php if ($bg1ImageH > 0 ) : ?>height="<?php echo $bg1ImageH; ?>"<?php endif; ?>
-	  <?php if ($bg1Image_lg > " " && $bg1ImageW > 0 && $bg1Image_lgW > 0 ) : ?>
-	srcset="<?php echo $bg1Image .' '. $bg1ImageW .'w,'. $bg1Image_lg .' ' . $bg1Image_lgW . 'w'  ; ?>"
-		<?php if ($bg1Breakpoint > 0 ) : ?>
-	sizes="<?php echo '(min-width: ' . $bg1Breakpoint .'px) '.$bg1Image_lgW .'px,'. $bg1ImageW .'px'; ?>"
-		<?php endif; ?>
-	  <?php endif; ?>
- />
-	<?php endif; ?>
+<?php if ($bg1Image > " " )
+{ echo "\n\t" . '<img id="img_bg1Image" src="' . $bg1Image . '" alt="Logo"';
+	if ($bg1ImageW > 0 ) {echo "\n\t\t" . 'width="' . $bg1ImageW .'"';}
+	if ($bg1ImageH > 0 ) {echo "\n\t\t" . 'height="' . $bg1ImageH . '"';}
+	if ($bg1ImageW > 0  && (($bg1Image_lg > " " && $bg1Image_lgW > 0) || ($bg1Image_sm > " " && $bg1Image_smW > 0))  )
+	{echo "\n\t\t" . 'srcset="' . $bg1Image . ' ' . $bg1ImageW .'w'   ;
+	if ($bg1Image_lgW > 0) {echo ','. $bg1Image_lg .' ' . $bg1Image_lgW . 'w' ; }
+	if ($bg1Image_smW > 0) {echo ','. $bg1Image_sm .' ' . $bg1Image_smW . 'w' ; }
+	echo '"';
+	if ($bg1Breakpoint_lg > 0 || $bg1Breakpoint_sm > 0)
+		{echo "\n\t\t" . 'sizes="';
+		if ($bg1Breakpoint_sm > 0 ) {echo '(max-width: ' . $bg1Breakpoint_sm .'px) '.$bg1Image_smW .'px,'; }
+		if ($bg1Breakpoint_lg > 0 ) {echo '(min-width: ' . $bg1Breakpoint_lg .'px) '.$bg1Image_lgW .'px,'; }
+		echo $bg1ImageW .'px"'; 
+		}
+	} 
+ echo  ' />' . "\n";
+}?>
     </a>
     </div><!-- einde logo -->
     <div id="page_heading">

@@ -14,6 +14,7 @@ v 25-6-2016 1.5.0 less compiler uit administrator/components/com_templates/model
 v 2-8-2016 topmargin tbv verplaatste icons mobile
 v 21-8-2016 aantal twbs bestanden nav en mixins toegevoegd
 v 30-12-2016 verschillende aanpassingen tbv srceset met 2 images normaal en groot _lg
+v 7-1-2017 ook image_sm
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
@@ -70,6 +71,8 @@ $phMarginTop    = htmlspecialchars($params['phMarginTop']);
 $phWidth    	= htmlspecialchars($params['phWidth']);
 $background    	= htmlspecialchars($params['background']);
 $fgColor    	= htmlspecialchars($params['fgColor']);
+$bgColor    	= htmlspecialchars($params['bgColor']);
+
 $bgImage    	= htmlspecialchars($params['bgImage']);
 if ($bgImage > ' ' and strtolower(substr ( $bgImage , 0 , 7 )) == 'images/' )
  {$bgImage = '/' . $bgImage;};
@@ -79,16 +82,13 @@ $bgLeft      	= htmlspecialchars($params['bgLeft']);
 $bg0Image_lg    	= htmlspecialchars($params['bg0Image_lg']);
 if ($bg0Image_lg > ' ' and strtolower(substr ( $bg0Image_lg , 0 , 7 )) == 'images/' )
  {$bg0Image_lg = '/' . $bg0Image_lg;};
-$bg0Breakpoint    	= htmlspecialchars($params['bg0Breakpoint']);
-$bgImageMob    	= htmlspecialchars($params['bgImageMob']);
-if (! ($bgImageMob > ' '))  {$bgImageMob = $bgImage;}; 
-$bgWidthMob    	= htmlspecialchars($params['bgWidthMob']);
-if (! ($bgWidthMob > ' '))  {$bgWidthMob = $bgWidth;};
-$bgTopMob      	= htmlspecialchars($params['bgTopMob']);
-if (! ($bgTopMob > ' '))  {$bgTopMob = $bgTop;};
-$bgLeftMob     	= htmlspecialchars($params['bgLeftMob']);
-if (! ($bgLeftMob > ' '))  {$bgLeftMob = $bgLeft;};
-$bgColor    	= htmlspecialchars($params['bgColor']);
+$bg0Breakpoint_lg    	= htmlspecialchars($params['bg0Breakpoint_lg']);
+$bg0Image_sm    	= htmlspecialchars($params['bg0Image_sm']);
+if ($bg0Image_sm > ' ' and strtolower(substr ( $bg0Image_sm , 0 , 7 )) == 'images/' )
+{$bg0Image_sm = '/' . $bg0Image_sm;};
+if ($bg0Image_sm > ' ') $bg0Image_sm = 'url("' . $bg0Image_sm . '")'; else $bg0Image_sm = 'none';
+$bg0Breakpoint_sm    	= htmlspecialchars($params['bg0Breakpoint_sm']);
+
 $logo      	= htmlspecialchars($params['logo']);
 if ($logo > ' ' and strtolower(substr ( $logo , 0 , 7 )) == 'images/' )
  {$logo = '/' . $logo;};	
@@ -98,8 +98,13 @@ $logoPosTop    	= htmlspecialchars($params['logoPosTop']);
 $bg1Image_lg    	= htmlspecialchars($params['bg1Image_lg']);
 if ($bg1Image > ' ' and strtolower(substr ( $bg1Image , 0 , 7 )) == 'images/' ) 
  {$bg1Image = '/' . $bg1Image;};
-$bg1Breakpoint    	= htmlspecialchars($params['bg1Breakpoint']);
- 
+$bg1Breakpoint_lg    	= htmlspecialchars($params['bg1Breakpoint_lg']);
+$bg1Image_sm    	= htmlspecialchars($params['bg1Image_sm']);
+if ($bg1Image_sm > ' ' and strtolower(substr ( $bg1Image_sm , 0 , 7 )) == 'images/' )
+{$bg1Image_sm = '/' . $bg1Image_sm;};
+if ($bg1Image_sm > ' ') $bg1Image_sm = 'url("' . $bg1Image_sm . '")'; else $bg1Image_sm = 'none';
+$bg1Breakpoint_sm    	= htmlspecialchars($params['bg1Breakpoint_sm']);
+
 $iconsWidth    	= htmlspecialchars($params['iconsWidth']);
 $iconsPosLeft   = htmlspecialchars($params['iconsPosLeft']);
 $iconsPosTop    = htmlspecialchars($params['iconsPosTop']);
@@ -222,22 +227,24 @@ if ($fgColor > ' '  ) 	{	fwrite($tv_file, '@asTextColor:               '  . $fgC
 				fwrite($tv_file, '@asMainH1Color:             '  . $fgColor .  ";\n");
 				fwrite($tv_file, '@asH1Color:                 '  . $fgColor .  ";\n");
 }
-if ($bgImage > ' '  ) 		fwrite($tv_file, '@bgImage:                   "'  . $bgImage .  "\"; // nog via HTML \n");
-if ($bg0Image_lg > ' '  ) 	fwrite($tv_file, '@bg0Image_lg:               "'  . $bg0Image_lg .  "\"; // nog via HTML \n");	
-if ($bg0Breakpoint > ' '  ) fwrite($tv_file, '@bg0Breakpoint:             '  . $bg0Breakpoint .  "px;\n");
+if ($bgColor > ' '  ) 		fwrite($tv_file, '@asBodyBackgroundColor:     '  . $bgColor .  ";\n");
+
+if ($bgImage > ' '  ) 		fwrite($tv_file, '@bgImage:                   "'  . $bgImage .  "\";\n");
+if ($bg0Image_lg > ' '  ) 	fwrite($tv_file, '@bg0Image_lg:               "'  . $bg0Image_lg .  "\";\n");	
+if ($bg0Image_sm > ' '  ) 	fwrite($tv_file, '@bg0Image_sm:               "'  . $bg0Image_sm .  "\";\n");	
+if ($bg0Breakpoint_lg > ' '  ) fwrite($tv_file, '@bg0Breakpoint_lg:          '  . $bg0Breakpoint_lg .  "px;\n");
+if ($bg0Breakpoint_sm > ' '  ) fwrite($tv_file, '@bg0Breakpoint_sm:          '  . $bg0Breakpoint_sm .  "px;\n");
 
 if ($bgWidth > ' '  ) 		fwrite($tv_file, '@bgWidth:                   '  . $bgWidth .  "%;\n");
 if ($bgTop > ' '  ) 		fwrite($tv_file, '@bgTop:                     '  . $bgTop .  "%;\n");
 if ($bgLeft > ' '  ) 		fwrite($tv_file, '@bgLeft:                    '  . $bgLeft .  "%;\n");
-if ($bgImageMob > ' '  ) 	fwrite($tv_file, '@bgImageMob:                "'  . $bgImageMob .  "\"; // nog via HTML \n");
-if ($bgWidthMob > ' '  ) 	fwrite($tv_file, '@bgWidthMob:                '  . $bgWidthMob .  "%;\n");
-if ($bgTopMob > ' '  ) 		fwrite($tv_file, '@bgTopMob:                  '  . $bgTopMob .  "%;\n");
-if ($bgLeftMob > ' '  ) 	fwrite($tv_file, '@bgLeftMob:                 '  . $bgLeftMob .  "%;\n");
 
-if ($bgColor > ' '  ) 		fwrite($tv_file, '@asBodyBackgroundColor:     '  . $bgColor .  ";\n");
-if ($logo > ' '  ) 			fwrite($tv_file, '@logo:                      "'  . $logo .  "\"; // nog via HTML \n");
-if ($bg1Image_lg > ' '  ) 	fwrite($tv_file, '@bg1Image_lg:               "'  . $bg1Image_lg .  "\"; // nog via HTML \n");	
-if ($bg1Breakpoint > ' '  ) fwrite($tv_file, '@bg1Breakpoint:             '  . $bg1Breakpoint .  "px;\n");	
+if ($logo > ' '  ) 			fwrite($tv_file, '@logo:                      "'  . $logo .  "\";\n");
+if ($bg1Image_lg > ' '  ) 	fwrite($tv_file, '@bg1Image_lg:               "'  . $bg1Image_lg .  "\";\n");	
+if ($bg1Image_sm > ' '  ) 	fwrite($tv_file, '@bg1Image_sm:               "'  . $bg1Image_sm .  "\";\n");	
+if ($bg1Breakpoint_lg > ' '  ) fwrite($tv_file, '@bg1Breakpoint_lg:          '  . $bg1Breakpoint_lg .  "px;\n");	
+if ($bg1Breakpoint_sm > ' '  ) fwrite($tv_file, '@bg1Breakpoint_sm:          '  . $bg1Breakpoint_sm .  "px;\n");
+
 if ($logoWidth > ' '  ) 	fwrite($tv_file, '@asLogoWidth:               '  . $logoWidth .  "%;\n");
 if ($logoPosLeft > ' '  ) 	fwrite($tv_file, '@asLogoLeft:                '  . $logoPosLeft .  "%;\n");
 if ($logoPosTop > ' '  ) 	fwrite($tv_file, '@asLogoTop:                 '  . (10 * $logoPosTop) .  "%;\n");
