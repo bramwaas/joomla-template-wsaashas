@@ -16,6 +16,7 @@
 // weer verwijderd. Ook word-spacing -0.25em verkleind, omdat die ook nog ruimte in beslag nam. 
 // 20161215 bolg_inline veranderd in blog, deze claas is standaard voor blog lay-out, geen speciale pagina claas blog_inline meer nodig
 // voor tags moet class blog worden toegevoegd in plaats van blog_inline.
+// 20170108 height auto voor logo en backgroud afbeelding.
 a {
  color: @asLinkColor;
 }
@@ -765,6 +766,7 @@ padding-bottom: 100%;
 #bg_img { /* ruimte boven bg_image creeren voor static Icons bij mobile, algemene grootte instellen */
   margin-top: @wsaIconsMobileTopMargin; // 32px;
   width:@bgWidth;
+  height: auto;
   position:absolute;
   left:@bgLeft;
   top:@bgTop;
@@ -787,11 +789,6 @@ width: @footerWidth;
   }
 }
 
-#header_img {
-  img,  {
-    width:100%;
-  }
-}
 #headerleft {
   float:left;
   margin-top: @hlMarginTop;
@@ -825,6 +822,7 @@ width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
 }
 #logo img, #logo_img {
   width:@asLogoImgWidth;
+  height: auto;
 }
 #maincolumn {
   float:right;
