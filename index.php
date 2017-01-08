@@ -116,8 +116,10 @@ if ($contentPosRight > (1.5 * $marginLeftRight) and $contentPosRight < 100 )
 <?php $app = JFactory::getApplication(); ?>
 <head>
 <jdoc:include type="head" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <?php
+// Add extra metadata
+$doc->setMetaData( 'X-UA-Compatible', 'IE=edge', true ); // http-equiv = true 
+$doc->setMetaData( 'viewport', 'width=device-width, initial-scale=1.0' );
 // Add Stylesheets
 //JHtmlBootstrap::loadCss();
 // Load optional rtl Bootstrap css and Bootstrap bugfixes
