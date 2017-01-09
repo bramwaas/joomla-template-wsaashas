@@ -39,6 +39,7 @@
   9-9-2016 sidebarrleft position-8 toegevoegd
   30-12-2016 Verschillende aanpassingen tbv srcset bg0Image_lg etc
   7-1-2017 ook Image_sm
+  9-1-2017 defer javascripts
  */
 
 // no direct access
@@ -132,7 +133,7 @@ $doc->addStyleSheet('templates/' . $this->template . '/css/template.min.' . $tem
 //$doc->addStyleSheet('templates/' . $this->template . '/css/template.css');
 //$doc->addStyleSheet('templates/' . $this->template . '/css/' . $background);
 // javascript magnificPopup
-$doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/magnificpopup/MagnificPopupV1-1-0.js');
+$doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/magnificpopup/MagnificPopupV1-1-0.js' , 'text/javascript', true, false);
 // initialisatie magnificPopup.
 $doc->addScriptDeclaration('jQuery(document).ready(function() {
   jQuery(\'a[rel*="lightbox"], a[data-wsmodal]\').magnificPopup({
