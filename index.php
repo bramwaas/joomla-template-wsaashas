@@ -86,6 +86,7 @@ $bg1Image_lg    	= htmlspecialchars($this->params->get('bg1Image_lg'));
 if ($bg1Image_lg > ' ' and strtolower(substr ( $bg1Image_lg , 0 , 7 )) == 'images/' ) 
  {$bg1Image_lg = '/' . $bg1Image_lg;};
  $bg1Breakpoint_lg    	= htmlspecialchars($this->params->get('bg1Breakpoint_lg'));
+
 $bg1Image_sm    	= htmlspecialchars($this->params->get('bg1Image_sm'));
  if ($bg1Image_sm > ' ' and strtolower(substr ( $bg1Image_sm , 0 , 7 )) == 'images/' )
  {$bg1Image_sm = '/' . $bg1Image_sm;};
@@ -135,6 +136,8 @@ $doc->addStyleSheet('templates/' . $this->template . '/css/template.min.' . $tem
 // javascript magnificPopup
 $doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/magnificpopup/MagnificPopupV1-1-0.js' , 'text/javascript', true, false);
 // initialisatie magnificPopup.
+$doc->addScript($this->baseurl  . '/media/system/js/caption.js' , 'text/javascript', true, false);
+// defer caption.js.  	
 $doc->addScriptDeclaration('jQuery(document).ready(function() {
   jQuery(\'a[rel*="lightbox"], a[data-wsmodal]\').magnificPopup({
 type: \'image\'
