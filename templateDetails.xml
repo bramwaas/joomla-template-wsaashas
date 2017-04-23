@@ -2,8 +2,8 @@
 <!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "https://www.joomla.org/xml/dtd/2.5/template-install.dtd">
 <extension version="3.1" type="template" client="site" method="upgrade">
 	<name>asha-s</name>
-	<version>1.5.12</version>
-	<creationDate>14-1042017</creationDate>
+	<version>1.5.13</version>
+	<creationDate>23-104-2017</creationDate>
 	<author>AHC Waasdorp</author>
 	<authorEmail>bram@waasdorpsoekhan.nl</authorEmail>
 	<authorUrl>http://www.waasdorpsoekhan.nl</authorUrl>
@@ -412,9 +412,13 @@
   					<option value="0">JNO</option>
 				</field>
 			 	<field name="wsaCustomCSS" type="filelist" directory="images/less" hide_default="true"
-                   			label="WSACUSTOMCSS_LABEL" description="WSACUSTOMCSS_DESCRIPTION" />
-
-
+                   	label="WSACUSTOMCSS_LABEL" 
+                   	description="WSACUSTOMCSS_DESCRIPTION"
+                   	/>
+				<field name="wsaCssFilename"  type="text" default=""
+					label="WSA_CSS_FILENAME_LABEL"
+					description="WSA_CSS_FILENAME_DESCRIPTION"
+                   	/>
 			</fieldset>
 			<fieldset name="Documentation" >
 				<field name="explanation4"  type="spacer" hr="false"
