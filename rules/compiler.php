@@ -32,7 +32,7 @@ class WsaFormRuleCompiler extends JFormRule
 
 public function test(SimpleXMLElement $element, $value, $group = null, JRegistry $input = null, JForm $form = null)
     {
- $templateid =  JURI::getInstance ()->getVar('id');
+ $templatestyleid =  JURI::getInstance ()->getVar('id');
  $app = JFactory::getApplication();
  $currentpath = realpath(__DIR__ ) ;
  $home = JFactory::getApplication()->input->get('jform', '', 'array')['home'];
@@ -206,7 +206,7 @@ try
 /* opslaan style parameters in style.less bestanden */
 
 
-$tv_file =fopen($currentpath. '/../less/style' . $templateid . '.var.less', "w+");
+$tv_file =fopen($currentpath. '/../less/style' . $templatestyleid . '.var.less', "w+");
 
 
 /* less files creeeren en compileren naar .css */
@@ -307,9 +307,9 @@ if ($tagListItemWidth > ' '  ) {fwrite($tv_file, '@tagListItemWidth:          ' 
 
 fclose($tv_file);
 
-$st_file =fopen($currentpath. '/../less/style' . $templateid . '.less', "w+");
+$st_file =fopen($currentpath. '/../less/style' . $templatestyleid . '.less', "w+");
 
-fwrite($st_file, "// style" . $templateid .  ".less \n");
+fwrite($st_file, "// style" . $templatestyleid .  ".less \n");
 fwrite($st_file, "// generated  " . date("c")  . "\n//\n");
 fwrite($st_file, "// css        " . $wsaCssFilename  . "\n//\n");
 // standaard bootstrap variables.
@@ -329,7 +329,7 @@ if ($background > ' '  )
 	}
 	fwrite($st_file, '@import "'  . $background .  "\";\n");
 }
-fwrite($st_file, '@import "style' . $templateid . '.var.less";' . "\n");
+fwrite($st_file, '@import "style' . $templatestyleid . '.var.less";' . "\n");
 // standaard bootstrap mixins en nav etc.
 fwrite($st_file, '@import "twbs/mixins/border-radius.less";' . "\n");
 fwrite($st_file, '@import "twbs/mixins/buttons.less";' . "\n");
@@ -381,12 +381,12 @@ fclose($st_file);
 /* einde opslaam style parameters in style.les bestanden */
 /* les files compileren naar .css */
 
-$less->compileFile($currentpath. '/../less/style' . $templateid . '.less', $currentpath.'/../css/' . $wsaCssFilename);
+$less->compileFile($currentpath. '/../less/style' . $templatestyleid . '.less', $currentpath.'/../css/' . $wsaCssFilename);
 
 
 if ($home == 1 ) 
- {$less->compileFile($currentpath. '/../less/style' . $templateid . '.less', $currentpath.'/../css/template.min.'  . '.css');
-  $less->compileFile($currentpath. '/../less/style' . $templateid . '.less', $currentpath.'/../css/template'  . '.css');
+ {$less->compileFile($currentpath. '/../less/style' . $templatestyleid . '.less', $currentpath.'/../css/template.min.'  . '.css');
+  $less->compileFile($currentpath. '/../less/style' . $templatestyleid . '.less', $currentpath.'/../css/template'  . '.css');
  }
 /* einde les files compileren naar .css */
 /* "Compileren LESS geslaagd." "COM_TEMPLATES_COMPILE_SUCCESS" */
