@@ -40,6 +40,7 @@
   30-12-2016 Verschillende aanpassingen tbv srcset bg0Image_lg etc
   7-1-2017 ook Image_sm
   9-1-2017 defer javascripts
+  27-4-2017 naam CSS variabel
  */
 
 // no direct access
@@ -109,6 +110,14 @@ if ($contentPosRight > (1.5 * $marginLeftRight) and $contentPosRight < 100 )
 	{ $contentPosRight = $contentPosRight * 50 / (50 - $marginLeftRight); }
 	else
 	{ $contentPosRight = 0; }
+	
+$wsaCssFilename = strtolower(htmlspecialchars($this->params->get('wsaCssFilename')));
+if ($wsaCssFilename > " ")
+	{$path_parts = pathinfo($wsaCssFilename);
+	if (path_parts['extension'] <> 'css'){$wsaCssFilename = $wsaCssFilename . '.css';};
+}
+else
+{ $wsaCssFilename = 'template.min.' . $templatestyleid . '.css';}
 
 
 ?>
@@ -128,7 +137,7 @@ $doc->setMetaData( 'viewport', 'width=device-width, initial-scale=1.0' );
 ///JHtmlBootstrap::loadCss($includeMaincss = false, $this->direction);
 // Adjusting content width
 //$doc->addStyleSheet('http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700');
-$doc->addStyleSheet('templates/' . $this->template . '/css/template.min.' . $templatestyleid . '.css');
+$doc->addStyleSheet('templates/' . $this->template . '/css/' . $wsaCssFilename);
 //$doc->addStyleSheet('templates/system/css/system.css');
 //$doc->addStyleSheet('templates/system/css/general.css');
 //$doc->addStyleSheet('templates/' . $this->template . '/css/template.css');

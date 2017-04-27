@@ -15,6 +15,7 @@ v 2-8-2016 topmargin tbv verplaatste icons mobile
 v 21-8-2016 aantal twbs bestanden nav en mixins toegevoegd
 v 30-12-2016 verschillende aanpassingen tbv srceset met 2 images normaal en groot _lg
 v 7-1-2017 ook image_sm
+v 27-4-2017 andere naam css mogelijk
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
@@ -151,6 +152,14 @@ if ($wsaCustomCSS == '-1' ) {$wsaCustomCSS = '';};
 if ($wsaCustomCSS > ' ' and strtolower(substr ( $wsaCustomCSS , 0 , 7 )) == 'images/' ) 
  {$wsaCustomCSS = '/' . $wsaCustomCSS;}; 
 
+$wsaCssFilename = strtolower(htmlspecialchars($params['wsaCssFilename']));
+ if ($wsaCssFilename > " ")
+ {$path_parts = pathinfo($wsaCssFilename);
+ if (path_parts['extension'] <> 'css'){$wsaCssFilename = $wsaCssFilename . '.css';};
+ }
+ else
+ { $wsaCssFilename = 'template.min.' . $templatestyleid . '.css';}
+ 
 
 if ($contentPosLeft > $marginLeftRight and $contentPosLeft < 100 )
 	{ $contentPosLeft = $contentPosLeft * 50 / (50 - $marginLeftRight);}
@@ -301,7 +310,8 @@ fclose($tv_file);
 $st_file =fopen($currentpath. '/../less/style' . $templateid . '.less', "w+");
 
 fwrite($st_file, "// style" . $templateid .  ".less \n");
-fwrite($st_file, "// generated " . date("c")  . "\n//\n");
+fwrite($st_file, "// generated  " . date("c")  . "\n//\n");
+fwrite($st_file, "// css        " . $wsaCssFilename  . "\n//\n");
 // standaard bootstrap variables.
 fwrite($st_file, '@import "twbs/variables.less";' . "\n");
 fwrite($st_file, '@import "system.less";' . "\n");
@@ -371,7 +381,7 @@ fclose($st_file);
 /* einde opslaam style parameters in style.les bestanden */
 /* les files compileren naar .css */
 
- $less->compileFile($currentpath. '/../less/style' . $templateid . '.less', $currentpath.'/../css/template.min.' . $templateid . '.css');
+$less->compileFile($currentpath. '/../less/style' . $templateid . '.less', $currentpath.'/../css/' . $wsaCssFilename);
 
 
 if ($home == 1 ) 
