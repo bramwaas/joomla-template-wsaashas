@@ -1,62 +1,49 @@
-<?php
+<?php  defined( '_JEXEC' ) or die;
 /**
- * @copyright  Copyright (C) 2011 - 2017, Amsterdam AHC Waasdorp. All rights reserved.
+ * @copyright  Copyright (C) 2011 - 2018, Amsterdam AHC Waasdorp. All rights reserved.
  * @license    GNU/GPL, see LICENSE
  * Joomla! is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
  * is derivative of works licensed under the GNU General Public License or
  * other free or open source software licenses.
  * Bram Waasdorp Eerste versie 
-   12/10/2011 tbv website asha-s.com
-   25/12/2011
-   11/10/2012
-   11/11/2012
-   9/12/2012 titel grootte meer aanpasbaar gemaakt.
-  20/2/2013 extra positie slider toegevoegd na de kop
-  4/8/2013 aangepast naar versie 1.3 met nog een positie voor sociaal media icons en footer
+ * 12/10/2011 tbv website asha-s.com
+ * 9/12/2012 titel grootte meer aanpasbaar gemaakt.
+ * 20/2/2013 extra positie slider toegevoegd na de kop
+ * 4/8/2013 aangepast naar versie 1.3 met nog een positie voor sociaal media icons en footer
            volgorde modules zo gemaakt, dat sociaal media icons en footer het laats gelaten worden
            (in de bovenste laag komen) en daarom klikbaar zijn ook als ze met een ander element overlappen.
            Headerleft in module ipv plaatje binnen sjabloon
-     7/9/2013 behavior.modal voor lightbox toegevoegd al werkte dit al omdat de functionaliteit oom in de slider zit.
-     23/11/2013 publisher link toegevoeg
-     24/11/2013 footer fixed bottom gepositioneerd.
-	 24/2/2014 speciale css voor een-kolom blog (div.cols-1 div.item en div.cols-1 + div.items-more zelfde al items-leading )
-  25-5-2014 facebook metagegevens og: tijdelijk toegevoegd
-  5-11-2014 aanpassing voor tags (inline-block ipv standaard list li, width )
-  13-12-2014 diverse aanpassingen.
-  21-12-2014 aanpassingen voor menu rechts, overgenomen uit wsa3kol-front
-  15-2-2015 viewport meta toegevoegd nav problemen mobiele bruikbaarheid volgens google webmaster tools en breakpoint mobile
-  9-8-2015 doctype html voor html5
-  14-8-2015 verbeteringen voor prefixes og: en fb: in html5
-  14-11-2015 ga-tracker verwijderd.
-  6-1-2016 pos 12 toegevoegd 
-  22-01-2015 less toegevoegd overbodige bestanden verwijderd en css op juiste plaats gezet
-  7-2-2016 inline style verwijderd
-  26-3-2016 attribute data-wsmodal toegevoeg voor start modal popup
-  21-4-2016 magnific popup toegevoegd als JQUERY vervanger van MOOTOOLS modal 
-  30-7-2016 aanpassingen om icons netter te plaatsen, overbodige variabelen verwijderd
-  2-8-2016 icons verplaatst boven wrapper
-  9-9-2016 sidebarrleft position-8 toegevoegd
-  30-12-2016 Verschillende aanpassingen tbv srcset bg0Image_lg etc
-  7-1-2017 ook Image_sm
-  9-1-2017 defer javascripts
-  27-4-2017 naam CSS variabel
+  * 25-5-2014 facebook metagegevens og: tijdelijk toegevoegd
+  * 5-11-2014 aanpassing voor tags (inline-block ipv standaard list li, width )
+  * 21-12-2014 aanpassingen voor menu rechts, overgenomen uit wsa3kol-front
+  * 15-2-2015 viewport meta toegevoegd nav problemen mobiele bruikbaarheid volgens google webmaster tools en breakpoint mobile
+  * 9-8-2015 doctype html voor html5
+  * 14-8-2015 verbeteringen voor prefixes og: en fb: in html5
+  * 22-01-2015 less toegevoegd overbodige bestanden verwijderd en css op juiste plaats gezet
+  * 7-2-2016 inline style verwijderd
+  * 21-4-2016 magnific popup toegevoegd als JQUERY vervanger van MOOTOOLS modal 
+  * 30-12-2016 Verschillende aanpassingen tbv srcset bg0Image_lg etc
+  * 27-4-2017 naam CSS variabel
+  * 21-1-2018 v1.6.0 Namespaces tbv J4 and minmale version j3.8 divers commentaar opgeschoond
  */
 
-// no direct access
-/* defined( '_JEXEC' ) or die( 'Restricted access' ); */
- defined( '_JEXEC' ) or die;
-// heel behavior (3 JHTML's) en daarmee ook Mootols vervalt na in gebruik name magnificPopup
-//JHtml::_('behavior.framework', true);
-// Add modal behavior for links  attribuut data-wsmodal in plaats van class modal, 
-// omdat .modal speciale functie heeft in bootstrap 3
-// betekent wel wijziging aan alle artikelen daarom eerst beiden toevoegen.
-//JHTML::_('behavior.modal'); 
-//JHTML::_('behavior.modal', 'a[data-wsmodal]');
- 
+use Joomla\CMS\Factory;   // this is the same as use Joomla\CMS\Factory as Factory
+use Joomla\CMS\Language\Text;   // translations
+/** @var JDocumentHtml $this */
 
-$app      = JFactory::getApplication();
-$doc      = JFactory::getDocument();
+$app  = Factory::getApplication();
+$lang = Factory::getLanguage();
+
+// Detecting Active Variables
+$option   = $app->input->getCmd('option', '');
+$view     = $app->input->getCmd('view', '');
+$layout   = $app->input->getCmd('layout', '');
+$task     = $app->input->getCmd('task', '');
+$itemid   = $app->input->getCmd('Itemid', '');
+$sitename = $app->get('sitename');
+$menu     = $app->getMenu()->getActive();
+$pageclass = $menu->params->get('pageclass_sfx');
 
  // Get the template
 $template = $app->getTemplate(true);
@@ -124,30 +111,21 @@ else
 <!DOCTYPE html >
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>"  
   prefix="og: http://ogp.me/ns# fb: http://www.facebook.com/2008/fbml" lang="<?php echo $this->language; ?>" >
-<?php $app = JFactory::getApplication(); ?>
 <head>
 <jdoc:include type="head" />
 <?php
 // Add extra metadata
-$doc->setMetaData( 'X-UA-Compatible', 'IE=edge', true ); // http-equiv = true 
-$doc->setMetaData( 'viewport', 'width=device-width, initial-scale=1.0' );
+$this->setMetaData( 'X-UA-Compatible', 'IE=edge', true ); // http-equiv = true 
+$this->setMetaData( 'viewport', 'width=device-width, initial-scale=1.0' );
 // Add Stylesheets
-//JHtmlBootstrap::loadCss();
-// Load optional rtl Bootstrap css and Bootstrap bugfixes
-///JHtmlBootstrap::loadCss($includeMaincss = false, $this->direction);
-// Adjusting content width
-//$doc->addStyleSheet('http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700');
-$doc->addStyleSheet('templates/' . $this->template . '/css/' . $wsaCssFilename);
-//$doc->addStyleSheet('templates/system/css/system.css');
-//$doc->addStyleSheet('templates/system/css/general.css');
-//$doc->addStyleSheet('templates/' . $this->template . '/css/template.css');
-//$doc->addStyleSheet('templates/' . $this->template . '/css/' . $background);
+//$this->addStyleSheet('http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700');
+$this->addStyleSheet('templates/' . $this->template . '/css/' . $wsaCssFilename);
 // javascript magnificPopup
-$doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/magnificpopup/MagnificPopupV1-1-0.js' , 'text/javascript', true, false);
+$this->addScript($this->baseurl . '/templates/' . $this->template . '/js/magnificpopup/MagnificPopupV1-1-0.js' , 'text/javascript', true, false);
 // initialisatie magnificPopup.
-$doc->addScript($this->baseurl  . '/media/system/js/caption.js' , 'text/javascript', true, false);
+$this->addScript($this->baseurl  . '/media/system/js/caption.js' , 'text/javascript', true, false);
 // defer caption.js.  	
-$doc->addScriptDeclaration('jQuery(document).ready(function() {
+$this->addScriptDeclaration('jQuery(document).ready(function() {
   jQuery(\'a[rel*="lightbox"], a[data-wsmodal]\').magnificPopup({
 type: \'image\'
 , closeMarkup : \'<button title="%title%" type="button" class="mfp-close">&nbsp;</button>\'
@@ -155,8 +133,10 @@ type: \'image\'
 
 
 ?>
-
-<?php include("include_link_rel_canonical.php"); ?>
+<?php
+// tijdelijk uitgeschakeld eerst kijken of nog wel nodig in J4 dan eventueel aanpassen
+// include("include_link_rel_canonical.php");
+?>
 
 
 
@@ -179,7 +159,18 @@ type: \'image\'
 
 </head>
 
-<body id="page_bg" >
+<body id="page_bg"
+ data-itemid="<?php echo ($itemid ? 'itemid-' . $itemid : ''); ?>"
+ class="site-grid site <?php echo $option
+	. ' view-' . $view
+	. ($layout ? ' layout-' . $layout : ' no-layout')
+	. ($task ? ' task-' . $task : ' no-task')
+	. ($itemid ? ' itemid-' . $itemid : '')
+	. ' ' . $pageclass;
+	echo ($this->direction == 'rtl' ? ' rtl' : '');
+?>"
+
+>
 <?php if ($bg0Image > " " )
 { echo "\n" . '<img id="bg_img" src="' . $bg0Image . '" alt="Background image"';
 	if ($bg0ImageW > 0 ) {echo "\n\t" . 'width="' . $bg0ImageW .'"';}

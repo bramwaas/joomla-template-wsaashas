@@ -3,6 +3,7 @@
    wijs canonical pagina aan op basis van voorbeeld http://www.concept-br.de/blog/canonical-tag-for-joomla/
    nog experimenteel alleen voor category_blog
    bw 2014-01-10
+   bw 2018-01-21 nog niet compatible met J4
 */
 if(!class_exists('ContentHelperRoute')) require_once (JPATH_SITE . '/components/com_content/helpers/route.php');  
 $ilr_url = JURI::getInstance()->toString();
