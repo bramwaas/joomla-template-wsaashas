@@ -434,7 +434,7 @@
 		</fields>
 	</config>
     <updateservers>
-	<server type="extension" priority="1" name="Asha S Template"><![CDATA[http://www.waasdorpsoekhan.nl/update/ashas/ashas.xml]]></server>
+	<server type="extension" priority="1" name="Asha S Template"><![CDATA[https://www.waasdorpsoekhan.nl/update/ashas/ashas.xml]]></server>
     </updateservers>
 
 </extension>
