@@ -3,6 +3,7 @@
 	<name>joomla-template-wsaashas</name>
 	<comment></comment>
 	<projects>
+		<project>joomla-cms</project>
 	</projects>
 	<buildSpec>
 	</buildSpec>
