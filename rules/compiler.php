@@ -20,13 +20,12 @@ v 21-1-2018
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
-require 'less\less.php';
+require 'leafo/lessphp/lessc.inc.php';
+
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Uri\Uri;
 use Joomla\CMS\Form\FormRule;
-
-use WsaAshas\Less;
 
 
 class WsaFormRuleCompiler extends FormRule
@@ -51,15 +50,17 @@ if  (htmlspecialchars($params['compile']) == '1')
 
 { /* creeren en compileren */
 // less compiler uit administrator/components/com_templates/models/template.php vanaf 1.5.0 (26-6-2016)
-$less = new Less\JLess;
+$less = new WsaAshaLess;
 if ( htmlspecialchars($params["compress"]) == "1")
 {
  $less->setFormatter("compressed");
 }
 else
 {  // voor debug netter formatteren en commentaren behouden. 
- $less->setFormatter(null);
+$less->setFormatter("classic");
 // $less->setPreserveComments(true);
+//$formatter = new Formatter\JLessFormatterJoomla;
+//$this->setFormatter($formatter);
 }
 // einde less compiler uit template.php
 
@@ -419,5 +420,58 @@ return true;
 }
 /* eind WsaFormRuleCompiler */
 }
+class WsaAshaLess extends WsaAshasLessc
+{
+	/**
+	 * Constructor
+	 *
+	 * @param   string                 $fname      Filename to process
+	 * @param   Formatter\JLessFormatterJoomla  $formatter  Formatter object
+	 *
+	 * @since   3.4
+	 */
+	public function __construct($fname = null, $formatter = null)
+	{
+		parent::__construct($fname);
+		
+		if ($formatter === null)
+		{
+			$formatter = new WsaAshasLessFormatter;
+		}
+		
+		$this->setFormatter($formatter);
+	}
+	
+	/**
+	 * Override compile to reset $this->allParsedFiles array to allow
+	 * parsing multiple files/strings using same imports.
+	 * PR: https://github.com/leafo/lessphp/pull/607
+	 *
+	 * For documentation on this please see /vendor/leafo/lessc.inc.php
+	 *
+	 * @param   string  $string  LESS string to parse.
+	 * @param   string  $name    The sourceName used for error messages.
+	 *
+	 * @return  string  $out     The compiled css output.
+	 */
+	public function compile($string, $name = null)
+	{
+		$this->allParsedFiles = array();
+		
+		return parent::compile($string, $name);
+	}
+}
 
-?>
+class WsaAshasLessFormatter extends lessc_formatter_classic
+{
+	public $disableSingle = true;
+	
+	public $breakSelectors = true;
+	
+	public $assignSeparator = ': ';
+	
+	public $selectorSeparator = ',';
+	
+	public $indentChar = "\t";
+}
+
