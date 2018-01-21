@@ -8,9 +8,9 @@
  * bw 2018-01-21 binnen template gehaald omdat niet meer beschikbaar is in J4 
  *  namespace WsaAshas\Less toegevoegd
  */
+namespace WsaAshas\Less;
 
 defined('JPATH_PLATFORM') or die;
-namespace WsaAshas\Less;
 use WsaAshas\Less\Formatter;
 /**
  * Wrapper class for lessc

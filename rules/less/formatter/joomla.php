@@ -8,9 +8,9 @@
   * bw 2018-01-21 binnen template gehaald omdat niet meer beschikbaar is in J4 
   * namespace WsaAshas\Less\Formatter toegevoegd
 */
+namespace WsaAshas\Less\Formatter;
 
 defined('JPATH_PLATFORM') or die;
-namespace WsaAshas\Less\Formatter;
 
 /**
  * Formatter ruleset for Joomla formatted CSS generated via LESS
