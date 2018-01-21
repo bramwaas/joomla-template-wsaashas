@@ -20,6 +20,8 @@ v 21-1-2018
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
+require 'less\less.php';
+
 use Joomla\CMS\Factory;
 use Joomla\CMS\Uri\Uri;
 use Joomla\CMS\Form\FormRule;

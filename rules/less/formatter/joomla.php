@@ -9,6 +9,7 @@
   * namespace WsaAshas\Less\Formatter toegevoegd
 */
 namespace WsaAshas\Less\Formatter;
+require_once '..\..\leafo\lessc.inc.php';
 
 defined('JPATH_PLATFORM') or die;
 

@@ -11,6 +11,9 @@
 namespace WsaAshas\Less;
 
 defined('JPATH_PLATFORM') or die;
+require 'formatter\joomla.php';
+require_once '..\leafo\lessc.inc.php';
+
 use WsaAshas\Less\Formatter;
 /**
  * Wrapper class for lessc
