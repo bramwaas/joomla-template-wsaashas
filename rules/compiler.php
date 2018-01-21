@@ -3,7 +3,7 @@
  * @package Joomla.Site
  * @subpackage Templates.dna
  *
- * @copyright Copyright (C) Bram Waasdorp 2015 - 2017. All rights reserved.
+ * @copyright Copyright (C) Bram Waasdorp 2015 - 2018. All rights reserved.
  * @license GNU General Public License version 2 or later; see LICENSE.txt
  */
 /* regel voor validatie type compiler, bedoeld om samenstellen en compileren Less bestanden uit te voeren vlak voor  de save  
@@ -16,11 +16,18 @@ v 21-8-2016 aantal twbs bestanden nav en mixins toegevoegd
 v 30-12-2016 verschillende aanpassingen tbv srceset met 2 images normaal en groot _lg
 v 7-1-2017 ook image_sm
 v 27-4-2017 andere naam css mogelijk
+v 21-1-2018
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
- 
-class WsaFormRuleCompiler extends JFormRule
+use Joomla\CMS\Factory;
+use Joomla\CMS\Uri\Uri;
+use Joomla\CMS\Form\FormRule;
+
+use WsaAshas\Less;
+
+
+class WsaFormRuleCompiler extends FormRule
 /* voorbeeld eenvoudigste validatie dmv regexp
  uitgebreider gaat met functie test die ik hier wel ga gebruiken.
 {
@@ -30,19 +37,19 @@ class WsaFormRuleCompiler extends JFormRule
 
 { /* begin WsaFormRuleCompiler voert validatie wsa.compiler uit */
 
-public function test(SimpleXMLElement $element, $value, $group = null, JRegistry $input = null, JForm $form = null)
-    {
- $templatestyleid =  JURI::getInstance ()->getVar('id');
- $app = JFactory::getApplication();
+public function test(\SimpleXMLElement $element,  $value, string $group = null, \Joomla\Registry\Registry $input = null, \Joomla\CMS\Form\Form $form = null)
+{
+ $templatestyleid =  URI::getInstance ()->getVar('id');
+ $app = Factory::getApplication();
  $currentpath = realpath(__DIR__ ) ;
- $home = JFactory::getApplication()->input->get('jform', '', 'array')['home'];
- $params = JFactory::getApplication()->input->get('jform', '', 'array')['params'];
+ $home = Factory::getApplication()->input->get('jform', '', 'array')['home'];
+ $params = Factory::getApplication()->input->get('jform', '', 'array')['params'];
 
 if  (htmlspecialchars($params['compile']) == '1')
 
 { /* creeren en compileren */
 // less compiler uit administrator/components/com_templates/models/template.php vanaf 1.5.0 (26-6-2016)
-$less = new JLess;
+$less = new Less\JLess;
 if ( htmlspecialchars($params["compress"]) == "1")
 {
  $less->setFormatter("compressed");
