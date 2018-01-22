@@ -1,5 +1,5 @@
 <?php
-
+namespace Leafo\Less;
 /**
  * lessphp v0.5.0
  * http://leafo.net/lessphp
@@ -17,7 +17,7 @@
  * Converting LESS to CSS is a three stage process. The incoming file is parsed
  * by `lessc_parser` into a syntax tree, then it is compiled into another tree
  * representing the CSS structure by `lessc`. The CSS tree is fed into a
- * formatter, like `WsaAshaslessc_formatter` which then outputs CSS as a string.
+ * formatter, like `lessc_formatter` which then outputs CSS as a string.
  *
  * During the first compile, all values are *reduced*, which means that their
  * types are brought to the lowest form before being dump as strings. This
@@ -34,11 +34,11 @@
  *
  * The `lessc_parser` class is only concerned with parsing its input.
  *
- * The `WsaAshaslessc_formatter` takes a CSS tree, and dumps it to a formatted string,
+ * The `lessc_formatter` takes a CSS tree, and dumps it to a formatted string,
  * handling things like indentation.
- * naam class aangepast van lessc in WsaAshasLessc
+ * namespace toegevoegd class aangepast 
  */
-class WsaAshasLessc {
+class lessc {
 	static public $VERSION = "v0.5.0";
 
 	static public $TRUE = array("keyword", "true");
@@ -1856,7 +1856,7 @@ class WsaAshasLessc {
 	// inject array of unparsed strings into environment as variables
 	protected function injectVariables($args) {
 		$this->pushEnv();
-		$parser = new WsaAshaslessc_parser($this, __METHOD__);
+		$parser = new lessc_parser($this, __METHOD__);
 		foreach ($args as $name => $strValue) {
 			if ($name{0} != '@') $name = '@'.$name;
 			$parser->count = 0;
@@ -2032,7 +2032,7 @@ class WsaAshasLessc {
 	}
 
 	protected function makeParser($name) {
-		$parser = new WsaAshaslessc_parser($this, $name);
+		$parser = new lessc_parser($this, $name);
 		$parser->writeComments = $this->preserveComments;
 
 		return $parser;
@@ -2043,11 +2043,11 @@ class WsaAshasLessc {
 	}
 
 	protected function newFormatter() {
-		$className = "WsaAshaslessc_formatter_lessjs";
+		$className = "lessc_formatter_lessjs";
 		if (!empty($this->formatterName)) {
 			if (!is_string($this->formatterName))
 				return $this->formatterName;
-			$className = "WsaAshaslessc_formatter_$this->formatterName";
+			$className = "lessc_formatter_$this->formatterName";
 		}
 
 		return new $className;
@@ -2270,7 +2270,7 @@ class WsaAshasLessc {
 
 // responsible for taking a string of LESS code and converting it into a
 // syntax tree
-class WsaAshaslessc_parser {
+class lessc_parser {
 	static protected $nextBlockId = 0; // used to uniquely identify blocks
 
 	static protected $precedence = array(
@@ -3651,7 +3651,7 @@ class WsaAshaslessc_parser {
 
 }
 
-class WsaAshaslessc_formatter_classic {
+class lessc_formatter_classic {
 	public $indentChar = "  ";
 
 	public $break = "\n";
@@ -3746,7 +3746,7 @@ class WsaAshaslessc_formatter_classic {
 	}
 }
 
-class WsaAshaslessc_formatter_compressed extends WsaAshaslessc_formatter_classic {
+class lessc_formatter_compressed extends lessc_formatter_classic {
 	public $disableSingle = true;
 	public $open = "{";
 	public $selectorSeparator = ",";
@@ -3759,7 +3759,7 @@ class WsaAshaslessc_formatter_compressed extends WsaAshaslessc_formatter_classic
 	}
 }
 
-class WsaAshaslessc_formatter_lessjs extends WsaAshaslessc_formatter_classic {
+class lessc_formatter_lessjs extends lessc_formatter_classic {
 	public $disableSingle = true;
 	public $breakSelectors = true;
 	public $assignSeparator = ": ";

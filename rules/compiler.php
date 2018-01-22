@@ -2,7 +2,6 @@
 /**
  * @package Joomla.Site
  * @subpackage Templates.dna
- *
  * @copyright Copyright (C) Bram Waasdorp 2015 - 2018. All rights reserved.
  * @license GNU General Public License version 2 or later; see LICENSE.txt
  */
@@ -420,13 +419,13 @@ return true;
 }
 /* eind WsaFormRuleCompiler */
 }
-class WsaAshaLess extends WsaAshasLessc
+class WsaAshaLess extends Leafo\Less\lessc
 {
 	/**
 	 * Constructor
 	 *
 	 * @param   string                 $fname      Filename to process
-	 * @param   Formatter\JLessFormatterJoomla  $formatter  Formatter object
+	 * @param   WsaAshasLessFormatter  $formatter  Formatter object, or string formatter_name
 	 *
 	 * @since   3.4
 	 */
@@ -436,7 +435,7 @@ class WsaAshaLess extends WsaAshasLessc
 		
 		if ($formatter === null)
 		{
-			$formatter = new WsaAshasLessFormatter;
+		    $formatter = new WsaAshasLessFormatter;
 		}
 		
 		$this->setFormatter($formatter);
@@ -462,7 +461,7 @@ class WsaAshaLess extends WsaAshasLessc
 	}
 }
 
-class WsaAshasLessFormatter extends lessc_formatter_classic
+class WsaAshasLessFormatter extends Leafo\Less\lessc_formatter_classic
 {
 	public $disableSingle = true;
 	
