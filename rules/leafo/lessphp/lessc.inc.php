@@ -36,7 +36,7 @@ namespace Leafo\Less;
  *
  * The `lessc_formatter` takes a CSS tree, and dumps it to a formatted string,
  * handling things like indentation.
- * namespace toegevoegd class aangepast 
+ * 20180122 bw namespace toegevoegd standaard classes van \ voorzien aangepast 
  */
 class lessc {
 	static public $VERSION = "v0.5.0";
@@ -1001,7 +1001,7 @@ class lessc {
 			if($fsize/1024 < 32) {
 				if(is_null($mime)) {
 					if(class_exists('finfo')) { // php 5.3+
-						$finfo = new finfo(FILEINFO_MIME);
+						$finfo = new \finfo(FILEINFO_MIME);
 						$mime = explode('; ', $finfo->file($fullpath));
 						$mime = $mime[0];
 					} elseif(function_exists('mime_content_type')) { // PHP 5.2
@@ -1799,7 +1799,7 @@ class lessc {
 	/* environment functions */
 
 	protected function makeOutputBlock($type, $selectors = null) {
-		$b = new stdclass;
+		$b = new \stdclass;
 		$b->lines = array();
 		$b->children = array();
 		$b->selectors = $selectors;
@@ -1810,7 +1810,7 @@ class lessc {
 
 	// the state of execution
 	protected function pushEnv($block = null) {
-		$e = new stdclass;
+		$e = new \stdclass;
 		$e->parent = $this->env;
 		$e->store = array();
 		$e->block = $block;
@@ -1862,7 +1862,7 @@ class lessc {
 			$parser->count = 0;
 			$parser->buffer = (string)$strValue;
 			if (!$parser->propertyValue($value)) {
-				throw new Exception("failed to parse passed in variable $name: $strValue");
+				throw new \Exception("failed to parse passed in variable $name: $strValue");
 			}
 
 			$this->set($name, $value);
@@ -1908,7 +1908,7 @@ class lessc {
 
 	public function compileFile($fname, $outFname = null) {
 		if (!is_readable($fname)) {
-			throw new Exception('load error: failed to find '.$fname);
+			throw new \Exception('load error: failed to find '.$fname);
 		}
 
 		$pi = pathinfo($fname);
@@ -2019,7 +2019,7 @@ class lessc {
 
 		if ($str == null) {
 			if (empty($this->_parseFile)) {
-				throw new exception("nothing to parse");
+				throw new \Exception("nothing to parse");
 			}
 
 			$out = $this->compileFile($this->_parseFile);
@@ -2097,7 +2097,7 @@ class lessc {
 		if ($this->sourceLoc >= 0) {
 			$this->sourceParser->throwError($msg, $this->sourceLoc);
 		}
-		throw new exception($msg);
+		throw new \Exception($msg);
 	}
 
 	// compile file $in to file $out if $in is newer than $out
@@ -2366,7 +2366,7 @@ class lessc_parser {
 
 		// TODO report where the block was opened
 		if ( !property_exists($this->env, 'parent') || !is_null($this->env->parent) )
-			throw new exception('parse error: unclosed block');
+			throw new \Exception('parse error: unclosed block');
 
 		return $this->env;
 	}
@@ -2507,7 +2507,7 @@ class lessc_parser {
 		if ($this->literal('}', false)) {
 			try {
 				$block = $this->pop();
-			} catch (exception $e) {
+			} catch (\Exception $e) {
 				$this->seek($s);
 				$this->throwError($e->getMessage());
 			}
@@ -3551,14 +3551,14 @@ class lessc_parser {
 
 		// TODO this depends on $this->count
 		if ($this->peek("(.*?)(\n|$)", $m, $count)) {
-			throw new exception("$msg: failed at `$m[1]` $loc");
+			throw new \Exception("$msg: failed at `$m[1]` $loc");
 		} else {
-			throw new exception("$msg: $loc");
+			throw new \Exception("$msg: $loc");
 		}
 	}
 
 	protected function pushBlock($selectors=null, $type=null) {
-		$b = new stdclass;
+		$b = new \stdclass;
 		$b->parent = $this->env;
 
 		$b->type = $type;
