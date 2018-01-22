@@ -2047,7 +2047,7 @@ class lessc {
 		if (!empty($this->formatterName)) {
 			if (!is_string($this->formatterName))
 				return $this->formatterName;
-			$className = "lessc_formatter_$this->formatterName";
+			$className = "Leafo\Less\lessc_formatter_$this->formatterName";
 		}
 
 		return new $className;
