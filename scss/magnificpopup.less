@@ -318,7 +318,7 @@ img.mfp-img {
 .mfp-gallery .mfp-image-holder .mfp-figure {
   cursor: pointer; }
 
-@media screen and (max-width: 800px) and (orientation: landscape), screen and (max-height: 300px) {
+$media screen and (max-width: 800px) and (orientation: landscape), screen and (max-height: 300px) {
   /**
        * Remove all paddings around the image on small screen
        */
@@ -357,7 +357,7 @@ img.mfp-img {
     text-align: center;
     padding: 0; } }
 
-@media all and (max-width: 900px) {
+$media all and (max-width: 900px) {
   .mfp-arrow {
     -webkit-transform: scale(0.75);
     transform: scale(0.75); }
@@ -372,8 +372,8 @@ img.mfp-img {
     padding-right: 6px; } }
 /* added bram waasdorp 2060403 */
 .mfp-bg {
-  background: @mfp-background-color; 
-  opacity: @mfp-background-opacity;
+  background: $mfp-background-color; 
+  opacity: $mfp-background-opacity;
 }
 .mfp-iframe-scaler button.mfp-close,
 .mfp-image-holder button.mfp-close,
@@ -383,7 +383,7 @@ background: url(../images/magnificpopup/closebox.png) no-repeat right;
 height: 32px;
 width: 32px;
 line-height: 10px;
-top: @mfp-img-buttop; /* must be the same as margin top of image - 15 */
+top: $mfp-img-buttop; /* must be the same as margin top of image - 15 */
 right: 5px; /* must be the same as margin right of figure - 15 */
 padding-right: 5px;
 color: transparent;
@@ -399,12 +399,12 @@ div.mfp-figure:after {
 .mfp-iframe-scaler iframe ,
 .mfp-image-holder img.mfp-img 
 {
-margin: @mfp-img-margintopbottom auto;
+margin: $mfp-img-margintopbottom auto;
 padding:10px 10px;
 background: white;
 border-radius: 3px;
-box-shadow: @mfp-img-box-shadow; 
-max-height: calc(~"100vh -"  2 * @mfp-img-margintopbottom); /* work-around voor niet (goed) werken verticalFit in gallery */
+box-shadow: $mfp-img-box-shadow; 
+max-height: calc(~"100vh -"  2 * $mfp-img-margintopbottom); /* work-around voor niet (goed) werken verticalFit in gallery */
 }
 div.mfp-iframe-scaler button.mfp-close
 {
@@ -415,7 +415,7 @@ right: -15px;
    margin-left: 20px;
 }
 .mfp-bottom-bar { /* must be the same as margin bottom of image (36px title max 2 lines then slider can come in) */
-    margin-top: @mfp-img-margintopbottombar;
+    margin-top: $mfp-img-margintopbottombar;
     }
 /* modal weer zichtbaar maken in iframe popup
 voorbeeld

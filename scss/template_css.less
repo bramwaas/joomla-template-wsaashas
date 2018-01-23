@@ -18,15 +18,15 @@
 // voor tags moet class blog worden toegevoegd in plaats van blog_inline.
 // 20170108 height auto voor logo en backgroud afbeelding.
 a {
- color: @asLinkColor;
+ color: $asLinkColor;
 }
 a:link, a:visited {
-  text-decoration: @asLinkDecoration;
+  text-decoration: $asLinkDecoration;
   font-weight:normal;
 }
 a:hover {
-  color: @asLinkColorHover;
-  text-decoration: @asLinkDecoration;
+  color: $asLinkColorHover;
+  text-decoration: $asLinkDecoration;
   font-weight:bold;
 }
 a.mainlevel:link, a.mainlevel:visited {
@@ -55,8 +55,8 @@ a.sublevel:visited,
 .moduletable_menu ul li ul li a:link,
 .moduletable_menu ul li ul li a:visited
 {
-color: @asModMenuLinkColor;
-text-decoration: @asModMenuDecoration;
+color: $asModMenuLinkColor;
+text-decoration: $asModMenuDecoration;
 }
 a.sublevel:hover,
 .module_menu ul li a:hover,
@@ -64,29 +64,29 @@ a.sublevel:hover,
 .moduletable_menu ul a:hover,
 .moduletable_menu ul li.parent ul li a:hover
 {
-  color:@asModMenuLinkColorHover;
-  text-decoration:@asModMenuLinkDecorationHover;
+  color:$asModMenuLinkColorHover;
+  text-decoration:$asModMenuLinkDecorationHover;
 }
 body {
-  font-family: @asBaseFontFamily;
-  line-height: @asBaseLineHeight;
+  font-family: $asBaseFontFamily;
+  line-height: $asBaseLineHeight;
   margin: 0px 0px 0px 0px;
-  font-size: @asBaseFontSize;
-  color: @asTextColor;
-  background: @asBodyBackground;
-  background-image: @asBodyBackgroundImage;
-  background-color: @asBodyBackgroundColor;
+  font-size: $asBaseFontSize;
+  color: $asTextColor;
+  background: $asBodyBackground;
+  background-image: $asBodyBackgroundImage;
+  background-color: $asBodyBackgroundColor;
   
 }
 
 div.caption {
   padding:0 10px 0 10px;
   img {
-    border:@asFieldBorder;
+    border:$asFieldBorder;
   }
   p {
     font-size:.90em;
-    color:@asH1Color;
+    color:$asH1Color;
     text-align:center;
   }
 }
@@ -94,7 +94,7 @@ div.category-desc, /* beschrijving van de categorie komt voor alle items */
 .blog.leadingright div.item, /* vervolgartikel blog indien leadingright */
 div.items-more /* geeft aan, dat er nog meer items zijn */
 {
-  width: @asBlogItemWidth;
+  width: $asBlogItemWidth;
   position:relative;
   float:left;
   clear:left;
@@ -106,22 +106,22 @@ div.center {
 }
 div.cols-3 {
   div.column-1 .b_full, div.column-2 .b_full, div.column-3 .b_full {
-    width:@as3ColFullWidth;
+    width:$as3ColFullWidth;
     max-width:100%;
   }
   div.column-1 .b_half, div.column-2 .b_half, div.column-3 .b_half {
-    width:@as3ColHalfWidth;
+    width:$as3ColHalfWidth;
   }
 }
 
 
 div.cols-2 div.column-1 .b_full, div.cols-2 div.column-2 .b_full, td[width="50%"].article_column  img.b_full {
-  width:@as2ColFullWidth;
+  width:$as2ColFullWidth;
   max-width:100%;
   height: auto;
 }
 div.cols-2 div.column-1 .b_half, div.cols-2 div.column-2 .b_half, td[width="50%"] img.b_half {
-  width:@as2ColHalfWidth;
+  width:$as2ColHalfWidth;
   max-width:100%;
   height: auto;
   
@@ -141,10 +141,10 @@ div.items-leading div {
 div.items-leading  div .videoWrapper,
 .videoWrapper {
   position:relative;
-  padding-bottom: @asVideoHeight;
-  padding-top: @asVideoHeightExtra;
-  max-width: @asVideoItemWidth;
-  width: @wsaVideoAutoItemWidth;
+  padding-bottom: $asVideoHeight;
+  padding-top: $asVideoHeightExtra;
+  max-width: $asVideoItemWidth;
+  width: $wsaVideoAutoItemWidth;
   height:0;
   object, embed, iframe, .wsa_wrappedobject {
     position:absolute;
@@ -182,11 +182,11 @@ div.offline {
 }
 div.search input {
   width:145px;
-  border:@asFieldBorder;
+  border:$asFieldBorder;
   margin:15px 0 10px 0;
 }
 fieldset {
-  border:@asFieldBorder;
+  border:$asFieldBorder;
   margin-top:15px;
   padding:15px;
 }
@@ -224,22 +224,22 @@ form#searchForm td {
 }
 h1 {
   padding:0;
-  font-family:@sansFontFamily;
-  font-size:@asH1FontSize;
-  line-height:@asH1FontSize;
+  font-family:$sansFontFamily;
+  font-size:$asH1FontSize;
+  line-height:$asH1FontSize;
   font-weight:bold;
   vertical-align:bottom;
-  color:@asH1Color;
+  color:$asH1Color;
   text-align:left;
   width:100%;
 }
 h2, .contentheading {
   padding:0;
-  font-family:@sansFontFamily;
-  font-size:@asBiggerFontSize;
+  font-family:$sansFontFamily;
+  font-size:$asBiggerFontSize;
   font-weight:normal;
   vertical-align:bottom;
-  color:@asMainH1Color;
+  color:$asMainH1Color;
   text-align:left;
   width:100%;
 }
@@ -249,15 +249,15 @@ table.moduletable th,
 #maincolumn h2 {
   margin:0;
   font-weight:bold;
-  font-family:@sansFontFamily;
-  font-size:@asBigFontSize;
+  font-family:$sansFontFamily;
+  font-size:$asBigFontSize;
   padding-left:0px;
   margin-bottom:10px;
   text-align:left;
 }
 h4 {
-  font-family:@sansFontFamily;
-  color:@asMainH1Color;
+  font-family:$sansFontFamily;
+  color:$asMainH1Color;
 }
 html {
   height:100%;
@@ -279,8 +279,8 @@ img {
 legend {
   margin:0;
   font-weight:bold;
-  font-family:@sansFontFamily;
-  font-size:@asBiggerFontSize;
+  font-family:$sansFontFamily;
+  font-size:$asBiggerFontSize;
   padding-left:0px;
   margin-bottom:10px;
   text-align:left;
@@ -315,7 +315,7 @@ table.adminform textarea {
 }
 table.contenttoc {
   margin:5px;
-  border:@asFieldBorder;
+  border:$asFieldBorder;
   padding:5px;
   td {
     padding:0 5px;
@@ -335,8 +335,8 @@ table.contentpaneopen h3 {
   margin-top:25px;
 }
 table.contentpaneopen h4 {
-  font-family:@sansFontFamily;
-  color:@asMainH1Color;
+  font-family:$sansFontFamily;
+  color:$asMainH1Color;
 }
 table.contentpaneopen li,
 #maincolumn div.newsfeed li {
@@ -373,7 +373,7 @@ td.buttonheading {
 }
 td.sectiontableheader {
   background:#efefef;
-  color:@asSectionTbHColor;
+  color:$asSectionTbHColor;
   font-weight:bold;
   padding:4px;
   border-right:1px solid #ffffff;
@@ -383,8 +383,8 @@ td.greyline {
   background:url(../images/mw_line_grey.png) 50% 0 repeat-y;
 }
 td.key {
-  border-bottom:1px solid @asModMenuH1Color;
-  color:@asH1Color;
+  border-bottom:1px solid $asModMenuH1Color;
+  color:$asH1Color;
 }
 td.sectiontableentry0, td.sectiontableentry1, td.sectiontableentry2 {
   padding:3px;
@@ -396,11 +396,11 @@ tr.sectiontableentry0 td, tr.sectiontableentry1 td, tr.sectiontableentry2 td {
   padding-right:5px;
 }
 .b_full {
-  width:@asFullWidth;
+  width:$asFullWidth;
   max-width:100%;
 }
 .b_half {
-  width:@asHalfWidth;
+  width:$asHalfWidth;
   max-width:50%;
 }
 .bannerfooter_text {
@@ -493,9 +493,9 @@ tr.sectiontableentry0 td, tr.sectiontableentry1 td, tr.sectiontableentry2 td {
   background-color:#fffebb;
 }
 .inhoud {
-  margin:@asMarginHalf 0 0 @asInputMargin;
+  margin:$asMarginHalf 0 0 $asInputMargin;
   padding:0;
-  width:@asInputWidth;
+  width:$asInputWidth;
 }
 .img-fluid,
 .img-fluid-50,
@@ -532,12 +532,12 @@ tr.sectiontableentry0 td, tr.sectiontableentry1 td, tr.sectiontableentry2 td {
 }
 .label {
   padding:0;
-  margin:@asMarginHalf 0 0 0;
-  width:@asInputLabelWidth;
+  margin:$asMarginHalf 0 0 0;
+  width:$asInputLabelWidth;
   float:left;
 }
 .mod-languages {
-    float: @asModLangFloat;
+    float: $asModLangFloat;
 }
 .module,
 .moduletable {
@@ -553,17 +553,17 @@ tr.sectiontableentry0 td, tr.sectiontableentry1 td, tr.sectiontableentry2 td {
 .module_menu,
 .moduletable_menu  {
   text-align:left;
-  margin-top:@asModMenuMarginTop; // $menuMarginTop; 18%
+  margin-top:$asModMenuMarginTop; // $menuMarginTop; 18%
 }
 .module_menu div div div {
   width:auto;
 }
 .module_menu h3,
 .moduletable_menu h3  {
-  font-family:@sansFontFamily;
-  font-size:@asBaseFontSize;
+  font-family:$sansFontFamily;
+  font-size:$asBaseFontSize;
   font-weight:bold;
-  color:@asModMenuH1Color;
+  color:$asModMenuH1Color;
   margin:-23px -4px 5px -5px;
   padding-left:10px;
   padding-bottom:2px;
@@ -571,16 +571,16 @@ tr.sectiontableentry0 td, tr.sectiontableentry1 td, tr.sectiontableentry2 td {
 .module_menu ul,
 .moduletable_menu ul,
 ul.module_menu {
-  background-color:@asModMenuUlBackgroundColor; 
-  color: @asModMenuLinkColor; 
+  background-color:$asModMenuUlBackgroundColor; 
+  color: $asModMenuLinkColor; 
   float:left;
   position:relative;
-  font-size: @asModMenuUlFontSize;  // 12 px
+  font-size: $asModMenuUlFontSize;  // 12 px
   font-weight:normal;
-  text-decoration: @asModMenuDecoration; 
-  line-height: @asModMenuUlLineHeight; // $menuLineHeight; em; 
+  text-decoration: $asModMenuDecoration; 
+  line-height: $asModMenuUlLineHeight; // $menuLineHeight; em; 
   padding-left:0;
-  margin-left:@asModMenuMarginLeft; // default 0
+  margin-left:$asModMenuMarginLeft; // default 0
 }
 .module_menu ul li,
 .module_menu ul li ul li,
@@ -592,8 +592,8 @@ ul.menu_img li,
 ul.menu_img li ul li {
  position:static;
  white-space:nowrap;
- float: @asModMenuFloat;  // left
- display: @asModMenuDisplay;  // inline
+ float: $asModMenuFloat;  // left
+ display: $asModMenuDisplay;  // inline
 }
 .module_menu ul li ul,
 .moduletable_menu ul li ul {
@@ -612,14 +612,14 @@ ul.menu_img li ul li {
 .moduletable_menu ul li ul li.active a:link,
 .moduletable_menu ul li ul li.active a:visited
 { /* bovenliggende menuoptie van actieve menu alleen de kleur aanpassen*/
-  color: @asModMenuActiveColor; 
+  color: $asModMenuActiveColor; 
 }
 .module_menu ul li a,
 .moduletable_menu ul li a {
   display:block;
   margin-left:0;
-  background: @asModMenuBackGround;
-  padding: @asModMenuPadding;
+  background: $asModMenuBackGround;
+  padding: $asModMenuPadding;
 }
 .module_menu ul li:first-child a,
 .moduletable_menu ul li:first-child a {
@@ -634,8 +634,8 @@ ul.menu_img li ul li {
 .moduletable_menu li.current a,
 .moduletable_menu ul li ul li.current a:link,
 .moduletable_menu ul li ul li.current a:visited {
-  color: @asModMenuActiveColor; 
-  text-decoration: @asModMenuActiveDecoration; 
+  color: $asModMenuActiveColor; 
+  text-decoration: $asModMenuActiveDecoration; 
   opacity:0.5;
   filter:alpha(opacity=50);
 }
@@ -655,14 +655,14 @@ ul.menu_img li ul li {
   background-color:#f6f6f6;
 }
 .ol-background {
-  background-color:@asH1Color;
+  background-color:$asH1Color;
 }
 .ol-textfont {
-  font-family:@sansFontFamily;
+  font-family:$sansFontFamily;
   font-size:10px;
 }
 .ol-captionfont {
-  font-family: @sansFontFamily;
+  font-family: $sansFontFamily;
   font-size: 12px;
   color: #f6f6f6;
   font-weight: bold;
@@ -694,7 +694,7 @@ ul.menu_img li ul li {
 }
 .small {
   font-size:.90em;
-  color:@asMainH1Color;
+  color:$asMainH1Color;
   font-weight:normal;
   text-align:left;
 }
@@ -711,7 +711,7 @@ ul.menu_img li ul li {
 }
 .tag-category fieldset
 { /* tot joomla het zoekveld goed verbergt */
-display: @tagItemSearchDisplay; 
+display: $tagItemSearchDisplay; 
 }
 .tag-category ul /* tag-list inline maken in plaats van opsomming */
 {
@@ -724,13 +724,13 @@ display: @tagItemSearchDisplay;
     position: static;
     vertical-align: top;
    max-width: 100%;
-   width: @asMinWidthItem;
+   width: $asMinWidthItem;
    margin-right: auto; 
-   margin-bottom: @marginArea;
+   margin-bottom: $marginArea;
 }
 .tag-category ul li h3 /* item titel boven tag  (none of initial) */
 {
-display: @tagItemTitleDisplay;
+display: $tagItemTitleDisplay;
 }
 .tag-category.cols-1 ul li /* element  rij in tag-lijst en tag overzicht, tag-list block voor 1 kolom */
 {
@@ -761,16 +761,16 @@ padding-bottom: 100%;
   clear:left;
   padding:0;
   overflow:auto;
-  margin-left:@asMarginStd;
-  width: @areaWidth;
+  margin-left:$asMarginStd;
+  width: $areaWidth;
 }
 #bg_img { /* ruimte boven bg_image creeren voor static Icons bij mobile, algemene grootte instellen */
-  margin-top: @wsaIconsMobileTopMargin; // 32px;
-  width:@bgWidth;
+  margin-top: $wsaIconsMobileTopMargin; // 32px;
+  width:$bgWidth;
   height: auto;
   position:absolute;
-  left:@bgLeft;
-  top:@bgTop;
+  left:$bgLeft;
+  top:$bgTop;
 }
 
 
@@ -780,9 +780,9 @@ padding-bottom: 100%;
 #footer
 {   /* footer onder aan de pagina */
 position: fixed;
-bottom: @footerPosBottom;    
-left: @footerPosLeft;
-width: @footerWidth;
+bottom: $footerPosBottom;    
+left: $footerPosLeft;
+width: $footerWidth;
 }
 #form-login {
   #form-login-username label, #form-login-password label {
@@ -792,19 +792,19 @@ width: @footerWidth;
 
 #headerleft {
   float:left;
-  margin-top: @hlMarginTop;
-  margin-left:@hlMarginLeft;
+  margin-top: $hlMarginTop;
+  margin-left:$hlMarginLeft;
   padding-top:0;
-  width:@asHeadLeftWidth;
-  margin-bottom: @hlMarginBottom; 	
-  height: @hlHeight;
+  width:$asHeadLeftWidth;
+  margin-bottom: $hlMarginBottom; 	
+  height: $hlHeight;
 }
 #icons
 {   /* icons fb etc  static voorkomt overlap met #wrapper voor mobile dus volle breedte beschikbaar  */ 
 position: static;
-top: @iconsPosTop;  
-left: @wsaIconsMobileLeft; // 0%  was @iconsMobileLeft;
-width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
+top: $iconsPosTop;  
+left: $wsaIconsMobileLeft; // 0%  was $iconsMobileLeft;
+width: $wsaIconsMobileWidth; // 100% was  $iconsMobileWidth;
 }
 
 #leftcolumn div.module {
@@ -817,23 +817,23 @@ width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
 #logo {
  /* logo website rechts van het midden transparant, 480x96 bij breedte 1280px */
   position: absolute; 
-  left:@asLogoLeft;
-  top:@asLogoTop;
-  width:@asLogoWidth;
+  left:$asLogoLeft;
+  top:$asLogoTop;
+  width:$asLogoWidth;
 }
 #logo img, #logo_img {
-  width:@asLogoImgWidth;
+  width:$asLogoImgWidth;
   height: auto;
 }
 #maincolumn {
   float:right;
-  font-size:@asBiggerFontSize;
-  line-height:@asBiggerLineHeight;
+  font-size:$asBiggerFontSize;
+  line-height:$asBiggerLineHeight;
   margin-left:0;
   margin-right:0;
   width:100%;
-  margin-top:@asMarginHalf;
-  margin-bottom:@asMarginHalf;
+  margin-top:$asMarginHalf;
+  margin-bottom:$asMarginHalf;
   
   .item-page h1,
   .item-page h2,
@@ -846,11 +846,11 @@ width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
   h1 {
     padding:0;
     margin-top:0;
-    line-height:@asBiggerFontSize;
-    font-size:@asBiggerFontSize;
+    line-height:$asBiggerFontSize;
+    font-size:$asBiggerFontSize;
     font-weight:bold;
     vertical-align:bottom;
-    color: @asMainH1Color;
+    color: $asMainH1Color;
     text-align:left;
   }
   div.contact h2 {
@@ -875,15 +875,15 @@ width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
 }
 #page_heading {
   float:left;
-  margin-top: @phMarginTop;
-  margin-left:@asMarginHalf;
+  margin-top: $phMarginTop;
+  margin-left:$asMarginHalf;
   padding-top:0;  
-  width:@asPageHeadWidth;
+  width:$asPageHeadWidth;
 
   h1 {
-    width:@asPageHeadH1Width;
-    line-height:@asH1FontSize;
-    color: @asTextColor;
+    width:$asPageHeadH1Width;
+    line-height:$asH1FontSize;
+    color: $asTextColor;
     text-align:center;
   }
 }
@@ -897,8 +897,8 @@ width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
   clear:right;
   padding:0;
   overflow:auto;
-  margin-right:@asMarginStd;
-  width: @rightWidth;
+  margin-right:$asMarginStd;
+  width: $rightWidth;
 }
 #syndicate {
   float:left;
@@ -960,14 +960,14 @@ width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
 @media (max-width: 480px) {}
 
 */
-@media (min-width: @screen-xs-min) { /* groter dan (meeste) smartphones (width >= 480px) */
+@media (min-width: $screen-xs-min) { /* groter dan (meeste) smartphones (width >= 480px) */
 .blog {
 	.span6, .span4,	.span3, .span2, .span1,
 	&.cols-2 .cat-list-row0, &.cols-3 .cat-list-row0, &.cols-4 .cat-list-row0, &.cols-5 .cat-list-row0, &.cols-6 .cat-list-row0,
 	&.cols-2 .cat-list-row1, &.cols-3 .cat-list-row1, &.cols-4 .cat-list-row1, &.cols-5 .cat-list-row1, &.cols-6 .cat-list-row1
 	{ 
-		width: @wsa02Col ;
-		margin-right: @wsaInnerMargin;
+		width: $wsa02Col ;
+		margin-right: $wsaInnerMargin;
 	}
 
 	&.leadingright{ /* ongelijke rechts floatend  .blog.leadingright*/
@@ -985,7 +985,7 @@ width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
   		float:right;
   		position:relative;
   		margin-right:0px; 
-  		width: @contentWidth;
+  		width: $contentWidth;
 		}
 		
 	}
@@ -995,8 +995,8 @@ width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
 	
 .blog.lead-cols-2 {
 	.items-leading 	 > div { 
-		width: @wsa02Col;
-		margin-right: @wsaInnerMargin; 
+		width: $wsa02Col;
+		margin-right: $wsaInnerMargin; 
 		margin-left: auto;
 
 	}
@@ -1006,8 +1006,8 @@ width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
 
 	
 }
-/* einde @media  @screen-xs-min */
-@media (min-width: @screen-sm-min )  { /* desktop (width >= 768px) */
+/* einde @media  $screen-xs-min */
+@media (min-width: $screen-sm-min )  { /* desktop (width >= 768px) */
 
 .img-fluid-50 { 
   max-width: 50%; 
@@ -1016,9 +1016,9 @@ width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
 
 .tag-category ul li, /* breedte items begrenzen bij desktop */
 {
-   max-width: @tagListItemWidth; // ipv 100%
-   margin-right: @asMarginHalf;
-   width: auto;  // ipv @asMinWidthItem;
+   max-width: $tagListItemWidth; // ipv 100%
+   margin-right: $asMarginHalf;
+   width: auto;  // ipv $asMinWidthItem;
 }
 .tag-category.cols-1 ul li /* element  rij in tag-lijst en tag overzicht, tag-list block voor 1 kolom */
 {
@@ -1030,18 +1030,18 @@ width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
 }
 #icons { /* bij desktop icons social media absoluut geplaatst overlappen #wrapper in principe boven logo zindex om laag-volgorde te herstellen */
   position: absolute;
-  top: @iconsPosTop;     
-  left: @iconsPosLeft;
-  width: @iconsWidth; 
-  z-index: @wsazindex-icons;
+  top: $iconsPosTop;     
+  left: $iconsPosLeft;
+  width: $iconsWidth; 
+  z-index: $wsazindex-icons;
 }
 
 
 #maincolumn.maincolumncenter { /* smaller als sidebarleft is gevuld */
   float: rigth;
-  width: @contentWidth;  /* ipv 100% */
-  margin-top:@asMarginHalf;
-  margin-bottom:@asMarginHalf;
+  width: $contentWidth;  /* ipv 100% */
+  margin-top:$asMarginHalf;
+  margin-bottom:$asMarginHalf;
   
   div.blog-featured, div.blog, div.newsfeed, div.item-page {
     width:100%;
@@ -1058,14 +1058,14 @@ width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
   float:right;
   position:relative;
   margin-right:0px;
-  width: 100%; /* ipv @contentWidth;  */
+  width: 100%; /* ipv $contentWidth;  */
   }
 }
 #sidebarleft {
 	float: left;
-	width: 100% -  @contentWidth - @asMarginHalf;
-	margin-top:@asMarginHalf;
-    margin-bottom:@asMarginHalf;
+	width: 100% -  $contentWidth - $asMarginHalf;
+	margin-top:$asMarginHalf;
+    margin-bottom:$asMarginHalf;
  
 }
 
@@ -1074,19 +1074,19 @@ width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
 	.span4,
 	&.cols-3 .cat-list-row0,
 	&.cols-3 .cat-list-row1 { 
-			width:  @wsa03Col;
+			width:  $wsa03Col;
 	}
 	.span3, .span2, .span1,
 	&.cols-4 .cat-list-row0, &.cols-5 .cat-list-row0, &.cols-6 .cat-list-row0,
 	&.cols-4 .cat-list-row1, &.cols-5 .cat-list-row1, &.cols-6 .cat-list-row1 { 
-			width:  @wsa04Col;
+			width:  $wsa04Col;
 	}
 	
 }
 .blog.lead-cols-3 {
 	.items-leading 	 > div { 
-		width:  @wsa03Col;
-		margin-right: @wsaInnerMargin; 
+		width:  $wsa03Col;
+		margin-right: $wsaInnerMargin; 
 		margin-left: auto;
 		
 	}
@@ -1094,32 +1094,32 @@ width: @wsaIconsMobileWidth; // 100% was  @iconsMobileWidth;
 
 
  }
-/* einde @media  @screen-sm-min  */
-@media (min-width: @screen-md-min )  { /* desktop (width >= 992px) */
+/* einde @media  $screen-sm-min  */
+@media (min-width: $screen-md-min )  { /* desktop (width >= 992px) */
 
 .blog {
 	.cols-5 .span2,
 	&.cols-5 .cat-list-row0,
 	&.cols-5 .cat-list-row1 { 
-			width: @wsa05Col ;
+			width: $wsa05Col ;
 		}
 	
 	.span2,
 	&.cols-6 .cat-list-row0,
 	&.cols-6 .cat-list-row1 { 
-			width: @wsa06Col ;
+			width: $wsa06Col ;
 		}
 	.cols-8 .span1	{ 
-			width: @wsa08Col ;
+			width: $wsa08Col ;
 		}
 	 .span1	{ 
-			width: @wsa12Col ;
+			width: $wsa12Col ;
 		}
 	
 }
 
 }
-/* einde @media  @screen-md-min */
+/* einde @media  $screen-md-min */
 
 
 /* =================================================================================== */

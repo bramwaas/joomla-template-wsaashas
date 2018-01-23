@@ -8,20 +8,20 @@ bw 2011 11 13 Nieuw opgebouwd voor Asha-s.com
 29/9/2013 nieuw stijl rssfoto02
 31-1-2016 aangepast als less file om te includen na standaard template variabelen en voor style variabelen.
 */
-@asTextColor: #FCF63C;  // yellow
+$asTextColor: #FCF63C;  // yellow
 
-@asBodyBackgroundColor:   #000;
-@asBodyBackgroundImage:	  none;
-@asLinkColor:             @asTextColor;
-@asLinkColorHover:        @asLinkColor; // darken(@linkColor, 15%);
+$asBodyBackgroundColor:   #000;
+$asBodyBackgroundImage:	  none;
+$asLinkColor:             $asTextColor;
+$asLinkColorHover:        $asLinkColor; // darken($linkColor, 15%);
 
-@asModMenuUlBackgroundColor: @asBodyBackgroundColor;
+$asModMenuUlBackgroundColor: $asBodyBackgroundColor;
 
-@asModMenuLinkColor:	  #ee3;
-//@asModMenuBackGround:     @asBodyBackgroundColor;
-@asModMenuH1Color:		  @asTextColor; 
+$asModMenuLinkColor:	  #ee3;
+//$asModMenuBackGround:     $asBodyBackgroundColor;
+$asModMenuH1Color:		  $asTextColor; 
 
-@asPageHeadH1Width: 	  auto;
+$asPageHeadH1Width: 	  auto;
 
 /* rssfoto etc komt helemaal niet voor in template_css.less daarom alles hier opnemen */
 div.newsfeed_rssfoto01 ol li,
@@ -34,7 +34,7 @@ div.newsfeed_rsspicasa, div.newsfeed_rssfoto02,  div.newsfeed_rssfoto01, div.new
  .wrapper
  {
 
-margin-left: @asMarginStd;	
+margin-left: $asMarginStd;	
 }
 
 /* rss fotos van flickr en picasa met suffix _rssfoto */
