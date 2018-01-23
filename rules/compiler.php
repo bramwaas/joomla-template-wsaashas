@@ -15,12 +15,14 @@ v 21-8-2016 aantal twbs bestanden nav en mixins toegevoegd
 v 30-12-2016 verschillende aanpassingen tbv srceset met 2 images normaal en groot _lg
 v 7-1-2017 ook image_sm
 v 27-4-2017 andere naam css mogelijk
-v 21-1-2018
+v 23-1-2018 overgang naar scss
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
-require 'leafo/lessphp/lessc.inc.php';
-
+// scss compiler van leafo http://leafo.github.io/scssphp/
+require_once "leafo/scss.inc.php";
+use Leafo\ScssPhp\Compiler;
+use Leafo\ScssPhp\Server;
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Uri\Uri;
@@ -48,20 +50,20 @@ public function test(\SimpleXMLElement $element,  $value, string $group = null, 
 if  (htmlspecialchars($params['compile']) == '1')
 
 { /* creeren en compileren */
-// less compiler uit administrator/components/com_templates/models/template.php vanaf 1.5.0 (26-6-2016)
-$less = new WsaAshaLess;
+// initialisatie scss compiler 
+$scss = new Compiler();
 if ( htmlspecialchars($params["compress"]) == "1")
 {
- $less->setFormatter("compressed");
+$scss->setFormatter('Leafo\ScssPhp\Formatter\Crunched');
 }
 else
 {  // voor debug netter formatteren en commentaren behouden. 
-$less->setFormatter("classic");
-// $less->setPreserveComments(true);
-//$formatter = new Formatter\JLessFormatterJoomla;
-//$this->setFormatter($formatter);
+ $scss->setFormatter('Leafo\ScssPhp\Formatter\Expanded');
+// $scss->setLineNumberStyle(Compiler::LINE_COMMENTS);
 }
-// einde less compiler uit template.php
+$server = new Server($currentpath. '/../scss', null, $scss);
+//$server->serve();
+// einde initialisatie compiler// einde less compiler uit template.php
 
 
 
@@ -212,166 +214,167 @@ $iconsMobileWidth =  100 - $hlWidth;
 try
  { /*begin try */
 
-/* opslaan style parameters in style.less bestanden */
+/* opslaan style parameters in style.scss bestanden */
 
 
-$tv_file =fopen($currentpath. '/../less/style' . $templatestyleid . '.var.less', "w+");
+$tv_file =fopen($currentpath. '/../scss/style' . $templatestyleid . '.var.scss', "w+");
+	
 
 
-/* less files creeeren en compileren naar .css */
-
+/* scss files creeeren en compileren naar .css */
 fwrite($tv_file, "// style variables \n");
 fwrite($tv_file, "// generated " . date("c")  . "\n//\n");
 fwrite($tv_file, "//  "  . "\n//\n");
+fwrite($tv_file, "//  "  . "\n//\n");
+fwrite($tv_file, "//  "  . "\n//\n");	
 
-fwrite($tv_file, "//  "  . "\n//\n");
-fwrite($tv_file, "//  "  . "\n//\n");
-if ($gplusProfile > ' '  ) 	fwrite($tv_file, '@gplusProfile:              "'  . $gplusProfile .  "\";\n");
-if ($wsaIconsMobileTopMargin > ' '  ) 	fwrite($tv_file, '@wsaIconsMobileTopMargin:           '  . $wsaIconsMobileTopMargin .  "px;\n");
-if ($wsaIconsMobileLeft > ' '  ) 	fwrite($tv_file, '@wsaIconsMobileLeft:           '  . $wsaIconsMobileLeft .  "%;\n");
-if ($wsaIconsMobileWidth > ' '  ) 	fwrite($tv_file, '@wsaIconsMobileWidth:          '  . $wsaIconsMobileWidth .  "%;\n");
-if ($hlMarginTop > ' '  ) 	fwrite($tv_file, '@hlMarginTop:               '  . $hlMarginTop .  "%;\n");
-if ($hlMarginLeft > ' '  ) 	fwrite($tv_file, '@hlMarginLeft:              '  . ($hlMarginLeft + $marginLeftRight) .  "%;\n");
-if ($hlWidth > ' '  ) {		fwrite($tv_file, '@asHeadLeftWidth:           '  . $hlWidth .  "%;\n");
-				fwrite($tv_file, '@asPageHeadWidth:           '  . (100 - (2.5 * $marginLeftRight) - $hlWidth - $hlMarginLeft) .  "%;\n");}
-if ($hlHeight > ' '  ) 		fwrite($tv_file, '@hlHeight:                  '  . (10 * $hlHeight) .  "%;\n");
-if ($hlMarginBottom > ' '  ) 	fwrite($tv_file, '@hlMarginBottom:            '  . $hlMarginBottom .  "%;\n");
-if ($showTitle > ' '  ) 	fwrite($tv_file, '@showTitle:                 '  . $showTitle .  ";\n");
-if ($phMarginTop > ' '  ) 	fwrite($tv_file, '@phMarginTop:               '  . $phMarginTop .  "%;\n");
-if ($phWidth > ' '  ) 		fwrite($tv_file, '@asPageHeadH1Width:         '  . $phWidth .  "%;\n");
-if ($fgColor > ' '  ) 	{	fwrite($tv_file, '@asTextColor:               '  . $fgColor .  ";\n");
-				fwrite($tv_file, '@asMainH1Color:             '  . $fgColor .  ";\n");
-				fwrite($tv_file, '@asH1Color:                 '  . $fgColor .  ";\n");
+if ($gplusProfile > ' '  ) 	fwrite($tv_file, '$gplusProfile:              "'  . $gplusProfile .  "\";\n");
+if ($wsaIconsMobileTopMargin > ' '  ) 	fwrite($tv_file, '$wsaIconsMobileTopMargin:           '  . $wsaIconsMobileTopMargin .  "px;\n");
+if ($wsaIconsMobileLeft > ' '  ) 	fwrite($tv_file, '$wsaIconsMobileLeft:           '  . $wsaIconsMobileLeft .  "%;\n");
+if ($wsaIconsMobileWidth > ' '  ) 	fwrite($tv_file, '$wsaIconsMobileWidth:          '  . $wsaIconsMobileWidth .  "%;\n");
+if ($hlMarginTop > ' '  ) 	fwrite($tv_file, '$hlMarginTop:               '  . $hlMarginTop .  "%;\n");
+if ($hlMarginLeft > ' '  ) 	fwrite($tv_file, '$hlMarginLeft:              '  . ($hlMarginLeft + $marginLeftRight) .  "%;\n");
+if ($hlWidth > ' '  ) {		fwrite($tv_file, '$asHeadLeftWidth:           '  . $hlWidth .  "%;\n");
+				fwrite($tv_file, '$asPageHeadWidth:           '  . (100 - (2.5 * $marginLeftRight) - $hlWidth - $hlMarginLeft) .  "%;\n");}
+if ($hlHeight > ' '  ) 		fwrite($tv_file, '$hlHeight:                  '  . (10 * $hlHeight) .  "%;\n");
+if ($hlMarginBottom > ' '  ) 	fwrite($tv_file, '$hlMarginBottom:            '  . $hlMarginBottom .  "%;\n");
+if ($showTitle > ' '  ) 	fwrite($tv_file, '$showTitle:                 '  . $showTitle .  ";\n");
+if ($phMarginTop > ' '  ) 	fwrite($tv_file, '$phMarginTop:               '  . $phMarginTop .  "%;\n");
+if ($phWidth > ' '  ) 		fwrite($tv_file, '$asPageHeadH1Width:         '  . $phWidth .  "%;\n");
+if ($fgColor > ' '  ) 	{	fwrite($tv_file, '$asTextColor:               '  . $fgColor .  ";\n");
+				fwrite($tv_file, '$asMainH1Color:             '  . $fgColor .  ";\n");
+				fwrite($tv_file, '$asH1Color:                 '  . $fgColor .  ";\n");
 }
-if ($bgColor > ' '  ) 		fwrite($tv_file, '@asBodyBackgroundColor:     '  . $bgColor .  ";\n");
+if ($bgColor > ' '  ) 		fwrite($tv_file, '$asBodyBackgroundColor:     '  . $bgColor .  ";\n");
 
-if ($bgImage > ' '  ) 		fwrite($tv_file, '@bgImage:                   "'  . $bgImage .  "\";\n");
-if ($bg0Image_lg > ' '  ) 	fwrite($tv_file, '@bg0Image_lg:               "'  . $bg0Image_lg .  "\";\n");	
-if ($bg0Image_sm > ' '  ) 	fwrite($tv_file, '@bg0Image_sm:               "'  . $bg0Image_sm .  "\";\n");	
-if ($bg0Breakpoint_lg > ' '  ) fwrite($tv_file, '@bg0Breakpoint_lg:          '  . $bg0Breakpoint_lg .  "px;\n");
-if ($bg0Breakpoint_sm > ' '  ) fwrite($tv_file, '@bg0Breakpoint_sm:          '  . $bg0Breakpoint_sm .  "px;\n");
+if ($bgImage > ' '  ) 		fwrite($tv_file, '$bgImage:                   "'  . $bgImage .  "\";\n");
+if ($bg0Image_lg > ' '  ) 	fwrite($tv_file, '$bg0Image_lg:               "'  . $bg0Image_lg .  "\";\n");	
+if ($bg0Image_sm > ' '  ) 	fwrite($tv_file, '$bg0Image_sm:               "'  . $bg0Image_sm .  "\";\n");	
+if ($bg0Breakpoint_lg > ' '  ) fwrite($tv_file, '$bg0Breakpoint_lg:          '  . $bg0Breakpoint_lg .  "px;\n");
+if ($bg0Breakpoint_sm > ' '  ) fwrite($tv_file, '$bg0Breakpoint_sm:          '  . $bg0Breakpoint_sm .  "px;\n");
 
-if ($bgWidth > ' '  ) 		fwrite($tv_file, '@bgWidth:                   '  . $bgWidth .  "%;\n");
-if ($bgTop > ' '  ) 		fwrite($tv_file, '@bgTop:                     '  . $bgTop .  "%;\n");
-if ($bgLeft > ' '  ) 		fwrite($tv_file, '@bgLeft:                    '  . $bgLeft .  "%;\n");
+if ($bgWidth > ' '  ) 		fwrite($tv_file, '$bgWidth:                   '  . $bgWidth .  "%;\n");
+if ($bgTop > ' '  ) 		fwrite($tv_file, '$bgTop:                     '  . $bgTop .  "%;\n");
+if ($bgLeft > ' '  ) 		fwrite($tv_file, '$bgLeft:                    '  . $bgLeft .  "%;\n");
 
-if ($logo > ' '  ) 			fwrite($tv_file, '@logo:                      "'  . $logo .  "\";\n");
-if ($bg1Image_lg > ' '  ) 	fwrite($tv_file, '@bg1Image_lg:               "'  . $bg1Image_lg .  "\";\n");	
-if ($bg1Image_sm > ' '  ) 	fwrite($tv_file, '@bg1Image_sm:               "'  . $bg1Image_sm .  "\";\n");	
-if ($bg1Breakpoint_lg > ' '  ) fwrite($tv_file, '@bg1Breakpoint_lg:          '  . $bg1Breakpoint_lg .  "px;\n");	
-if ($bg1Breakpoint_sm > ' '  ) fwrite($tv_file, '@bg1Breakpoint_sm:          '  . $bg1Breakpoint_sm .  "px;\n");
+if ($logo > ' '  ) 			fwrite($tv_file, '$logo:                      "'  . $logo .  "\";\n");
+if ($bg1Image_lg > ' '  ) 	fwrite($tv_file, '$bg1Image_lg:               "'  . $bg1Image_lg .  "\";\n");	
+if ($bg1Image_sm > ' '  ) 	fwrite($tv_file, '$bg1Image_sm:               "'  . $bg1Image_sm .  "\";\n");	
+if ($bg1Breakpoint_lg > ' '  ) fwrite($tv_file, '$bg1Breakpoint_lg:          '  . $bg1Breakpoint_lg .  "px;\n");	
+if ($bg1Breakpoint_sm > ' '  ) fwrite($tv_file, '$bg1Breakpoint_sm:          '  . $bg1Breakpoint_sm .  "px;\n");
 
-if ($logoWidth > ' '  ) 	fwrite($tv_file, '@asLogoWidth:               '  . $logoWidth .  "%;\n");
-if ($logoPosLeft > ' '  ) 	fwrite($tv_file, '@asLogoLeft:                '  . $logoPosLeft .  "%;\n");
-if ($logoPosTop > ' '  ) 	fwrite($tv_file, '@asLogoTop:                 '  . (10 * $logoPosTop) .  "%;\n");
-if ($iconsWidth > ' '  ) 	fwrite($tv_file, '@iconsWidth:                '  . $iconsWidth .  "%;\n");
-if ($iconsPosLeft > ' '  ) 	fwrite($tv_file, '@iconsPosLeft:              '  . $iconsPosLeft .  "%;\n");
-if ($iconsPosTop > ' '  ) 	fwrite($tv_file, '@iconsPosTop:               '  . $iconsPosTop .  "%;\n");
-if ($contentPosLeft > ' '  ) {	fwrite($tv_file, '@asBlogItemWidth:           '  . $contentPosLeft .  "%;\n");} 
+if ($logoWidth > ' '  ) 	fwrite($tv_file, '$asLogoWidth:               '  . $logoWidth .  "%;\n");
+if ($logoPosLeft > ' '  ) 	fwrite($tv_file, '$asLogoLeft:                '  . $logoPosLeft .  "%;\n");
+if ($logoPosTop > ' '  ) 	fwrite($tv_file, '$asLogoTop:                 '  . (10 * $logoPosTop) .  "%;\n");
+if ($iconsWidth > ' '  ) 	fwrite($tv_file, '$iconsWidth:                '  . $iconsWidth .  "%;\n");
+if ($iconsPosLeft > ' '  ) 	fwrite($tv_file, '$iconsPosLeft:              '  . $iconsPosLeft .  "%;\n");
+if ($iconsPosTop > ' '  ) 	fwrite($tv_file, '$iconsPosTop:               '  . $iconsPosTop .  "%;\n");
+if ($contentPosLeft > ' '  ) {	fwrite($tv_file, '$asBlogItemWidth:           '  . $contentPosLeft .  "%;\n");} 
 else {$contentPosLeft = 0; }
-				fwrite($tv_file, '@contentWidth:              ' . (100 - $marginArea - $contentPosLeft)
+				fwrite($tv_file, '$contentWidth:              ' . (100 - $marginArea - $contentPosLeft)
  .  "%;\n") ; 
-if ($contentPosRight > ' '  ) 	fwrite($tv_file, '@contentPosRight:           '  . $contentPosRight .  "%;\n");
-if ($rightWidth > ' '  ) 	fwrite($tv_file, '@rightWidth:                '  . $rightWidth .  "%;\n");
+if ($contentPosRight > ' '  ) 	fwrite($tv_file, '$contentPosRight:           '  . $contentPosRight .  "%;\n");
+if ($rightWidth > ' '  ) 	fwrite($tv_file, '$rightWidth:                '  . $rightWidth .  "%;\n");
 
-if ($contentPosTop > ' '  ) 	fwrite($tv_file, '@contentPosTop:             '  . $contentPosTop .  "%;\n");
+if ($contentPosTop > ' '  ) 	fwrite($tv_file, '$contentPosTop:             '  . $contentPosTop .  "%;\n");
   
-if ($marginLeftRight > ' '  ) 	fwrite($tv_file, '@asMarginStd:               '  . $marginLeftRight .  "%;\n");
-if ($tagItemTitleDisplay > ' '  ) fwrite($tv_file, '@tagItemTitleDisplay:       '  . $tagItemTitleDisplay .  ";\n");
-if ($itemVideoHeight > ' '  ) 	fwrite($tv_file, '@asVideoHeight:             '  . $itemVideoHeight .  "%;\n");
-if ($itemLeadHeight > ' '  ) 	fwrite($tv_file, '@itemLeadHeight:            '  . $itemLeadHeight .  "%;\n");
-if ($itemLeadWidth > ' '  ) 	fwrite($tv_file, '@itemLeadWidth:             '  . $itemLeadWidth .  "%;\n");
-if ($itemLeadMargin > ' '  ) 	fwrite($tv_file, '@itemLeadMargin:            '  . $itemLeadMargin .  "%;\n");
-if ($itemHeight > ' '  ) 		fwrite($tv_file, '@itemHeight:                '  . $itemHeight .  "%;\n");
-if ($itemWidth > ' '  ) 		fwrite($tv_file, '@asItemWidth:               '  . $itemWidth .  "%;\n");
-if ($itemMargin > ' '  ) 		fwrite($tv_file, '@itemMargin:                '  . $itemMargin .  "%;\n");
-if ($linkColor > ' '  ) 		fwrite($tv_file, '@linkColor:                 '  . $linkColor .  ";\n");
-if ($linkDecoration > ' '  ) 	fwrite($tv_file, '@asLinkDecoration:          '  . $linkDecoration .  ";\n");
-if ($linkHvColor > ' '  ) 		fwrite($tv_file, '@asModMenuLinkColorHover:   '  . $linkHvColor .  ";\n");
-if ($menuLineHeight > ' '  ) 	fwrite($tv_file, '@menuLineHeight:            '  . $menuLineHeight .  "em;\n");
-if ($menuMarginTop > ' '  ) 	fwrite($tv_file, '@asModMenuMarginTop:        '  . $menuMarginTop .  "%;\n");
-if ($menuMarginLeft > ' '  ) 	fwrite($tv_file, '@asModMenuMarginLeft:       '  . $menuMarginLeft .  "%;\n");
-if ($menuColor > ' '  ) 	fwrite($tv_file, '@asModMenuLinkColor:        '  . $menuColor .  ";\n");
-if ($menuBgColor > ' '  ) 	fwrite($tv_file, '@asModMenuUlBackgroundColor: '  . $menuBgColor .  ";\n");
-if ($asModMenuBackGround > ' '  ) 	fwrite($tv_file, '@asModMenuBackGround:       '  . $asModMenuBackGround .  ";\n");
-if ($asModMenuPadding > ' '  )	fwrite($tv_file, '@asModMenuPadding:          '  . $asModMenuPadding .  ";\n");
-if ($menuFontSize > ' '  ) 	fwrite($tv_file, '@asModMenuUlFontSize:       '  . $menuFontSize .  "px;\n");
-if ($asModMenuDisplay > ' '  ) 	fwrite($tv_file, '@asModMenuDisplay:          '  . $asModMenuDisplay .  ";\n");
-if ($asModMenuFloat > ' '  ) 	fwrite($tv_file, '@asModMenuFloat:            '  . $asModMenuFloat .  ";\n");
-if ($menuLineHeight > ' '  ) 	fwrite($tv_file, '@asModMenuUlLineHeight:     '  . $menuLineHeight .  "em;\n");
-if ($menuDecoration > ' '  ) 	fwrite($tv_file, '@asModMenuDecoration:       '  . $menuDecoration .  ";\n");
-if ($menuHvColor > ' '  ) 	fwrite($tv_file, '@asModMenuLinkColorHover:   '  . $menuHvColor .  ";\n");
-if ($menuHvDecoration > ' '  ) 	fwrite($tv_file, '@menuHvDecoration:          '  . $menuHvDecoration .  ";\n");
-if ($menuActiveColor > ' '  ) 	fwrite($tv_file, '@asModMenuActiveColor:      '  . $menuActiveColor .  ";\n");
-if ($menuActiveDecoration > ' '  ) { fwrite($tv_file, '@asModMenuActiveDecoration: '  . $menuActiveDecoration .  ";\n");
-				fwrite($tv_file, '@asModMenuLinkDecorationHover: '  . $menuActiveDecoration .  ";\n");
+if ($marginLeftRight > ' '  ) 	fwrite($tv_file, '$asMarginStd:               '  . $marginLeftRight .  "%;\n");
+if ($tagItemTitleDisplay > ' '  ) fwrite($tv_file, '$tagItemTitleDisplay:       '  . $tagItemTitleDisplay .  ";\n");
+if ($itemVideoHeight > ' '  ) 	fwrite($tv_file, '$asVideoHeight:             '  . $itemVideoHeight .  "%;\n");
+if ($itemLeadHeight > ' '  ) 	fwrite($tv_file, '$itemLeadHeight:            '  . $itemLeadHeight .  "%;\n");
+if ($itemLeadWidth > ' '  ) 	fwrite($tv_file, '$itemLeadWidth:             '  . $itemLeadWidth .  "%;\n");
+if ($itemLeadMargin > ' '  ) 	fwrite($tv_file, '$itemLeadMargin:            '  . $itemLeadMargin .  "%;\n");
+if ($itemHeight > ' '  ) 		fwrite($tv_file, '$itemHeight:                '  . $itemHeight .  "%;\n");
+if ($itemWidth > ' '  ) 		fwrite($tv_file, '$asItemWidth:               '  . $itemWidth .  "%;\n");
+if ($itemMargin > ' '  ) 		fwrite($tv_file, '$itemMargin:                '  . $itemMargin .  "%;\n");
+if ($linkColor > ' '  ) 		fwrite($tv_file, '$linkColor:                 '  . $linkColor .  ";\n");
+if ($linkDecoration > ' '  ) 	fwrite($tv_file, '$asLinkDecoration:          '  . $linkDecoration .  ";\n");
+if ($linkHvColor > ' '  ) 		fwrite($tv_file, '$asModMenuLinkColorHover:   '  . $linkHvColor .  ";\n");
+if ($menuLineHeight > ' '  ) 	fwrite($tv_file, '$menuLineHeight:            '  . $menuLineHeight .  "em;\n");
+if ($menuMarginTop > ' '  ) 	fwrite($tv_file, '$asModMenuMarginTop:        '  . $menuMarginTop .  "%;\n");
+if ($menuMarginLeft > ' '  ) 	fwrite($tv_file, '$asModMenuMarginLeft:       '  . $menuMarginLeft .  "%;\n");
+if ($menuColor > ' '  ) 	fwrite($tv_file, '$asModMenuLinkColor:        '  . $menuColor .  ";\n");
+if ($menuBgColor > ' '  ) 	fwrite($tv_file, '$asModMenuUlBackgroundColor: '  . $menuBgColor .  ";\n");
+if ($asModMenuBackGround > ' '  ) 	fwrite($tv_file, '$asModMenuBackGround:       '  . $asModMenuBackGround .  ";\n");
+if ($asModMenuPadding > ' '  )	fwrite($tv_file, '$asModMenuPadding:          '  . $asModMenuPadding .  ";\n");
+if ($menuFontSize > ' '  ) 	fwrite($tv_file, '$asModMenuUlFontSize:       '  . $menuFontSize .  "px;\n");
+if ($asModMenuDisplay > ' '  ) 	fwrite($tv_file, '$asModMenuDisplay:          '  . $asModMenuDisplay .  ";\n");
+if ($asModMenuFloat > ' '  ) 	fwrite($tv_file, '$asModMenuFloat:            '  . $asModMenuFloat .  ";\n");
+if ($menuLineHeight > ' '  ) 	fwrite($tv_file, '$asModMenuUlLineHeight:     '  . $menuLineHeight .  "em;\n");
+if ($menuDecoration > ' '  ) 	fwrite($tv_file, '$asModMenuDecoration:       '  . $menuDecoration .  ";\n");
+if ($menuHvColor > ' '  ) 	fwrite($tv_file, '$asModMenuLinkColorHover:   '  . $menuHvColor .  ";\n");
+if ($menuHvDecoration > ' '  ) 	fwrite($tv_file, '$menuHvDecoration:          '  . $menuHvDecoration .  ";\n");
+if ($menuActiveColor > ' '  ) 	fwrite($tv_file, '$asModMenuActiveColor:      '  . $menuActiveColor .  ";\n");
+if ($menuActiveDecoration > ' '  ) { fwrite($tv_file, '$asModMenuActiveDecoration: '  . $menuActiveDecoration .  ";\n");
+				fwrite($tv_file, '$asModMenuLinkDecorationHover: '  . $menuActiveDecoration .  ";\n");
 }
-if ($footerWidth > ' '  ) 	fwrite($tv_file, '@footerWidth:               '  . $footerWidth .  "%;\n");
-if ($footerPosLeft > ' '  ) 	fwrite($tv_file, '@footerPosLeft:             '  . $footerPosLeft .  "%;\n");
-if ($footerPosBottom > ' '  ) 	fwrite($tv_file, '@footerPosBottom:           '  . $footerPosBottom .  "%;\n");
-if ($areaWidth > ' '  ) 	fwrite($tv_file, '@areaWidth:                 '  . $areaWidth .  "%;\n");
-if ($marginArea > ' '  ) 	fwrite($tv_file, '@marginArea:                '  . $marginArea .  "%;\n");
-if ($tagListItemWidth > ' '  ) {fwrite($tv_file, '@tagListItemWidth:          '  . $tagListItemWidth .  "%;\n");
+if ($footerWidth > ' '  ) 	fwrite($tv_file, '$footerWidth:               '  . $footerWidth .  "%;\n");
+if ($footerPosLeft > ' '  ) 	fwrite($tv_file, '$footerPosLeft:             '  . $footerPosLeft .  "%;\n");
+if ($footerPosBottom > ' '  ) 	fwrite($tv_file, '$footerPosBottom:           '  . $footerPosBottom .  "%;\n");
+if ($areaWidth > ' '  ) 	fwrite($tv_file, '$areaWidth:                 '  . $areaWidth .  "%;\n");
+if ($marginArea > ' '  ) 	fwrite($tv_file, '$marginArea:                '  . $marginArea .  "%;\n");
+if ($tagListItemWidth > ' '  ) {fwrite($tv_file, '$tagListItemWidth:          '  . $tagListItemWidth .  "%;\n");
 }
 
 fclose($tv_file);
 
-$st_file =fopen($currentpath. '/../less/style' . $templatestyleid . '.less', "w+");
+$st_file =fopen($currentpath. '/../scss/style' . $templatestyleid . '.scss', "w+");
+/* .scss file dat variabelen gebruikt */
 
 fwrite($st_file, "// style" . $templatestyleid .  ".less \n");
 fwrite($st_file, "// generated  " . date("c")  . "\n//\n");
 fwrite($st_file, "// css        " . $wsaCssFilename  . "\n//\n");
 // standaard bootstrap variables.
-fwrite($st_file, '@import "twbs/variables.less";' . "\n");
-fwrite($st_file, '@import "system.less";' . "\n");
-fwrite($st_file, '@import "general.less";' . "\n");
-fwrite($st_file, '@import "magnificpopup.variables.less";' . "\n");
-fwrite($st_file, '@import "template_variables.less";' . "\n");
-fwrite($st_file, '@import "flickr_badge.less";' . "\n");
-fwrite($st_file, '@import "joomla_update_icons.less";' . "\n");
+fwrite($st_file, '@import "twbs/variables.scss";' . "\n");
+fwrite($st_file, '@import "system.scss";' . "\n");
+fwrite($st_file, '@import "general.scss";' . "\n");
+fwrite($st_file, '@import "magnificpopup.variables.scss";' . "\n");
+fwrite($st_file, '@import "template_variables.scss";' . "\n");
+fwrite($st_file, '@import "flickr_badge.scss";' . "\n");
+fwrite($st_file, '@import "joomla_update_icons.scss";' . "\n");
 if ($background > ' '  )
 { 	
 	$pos1 = stripos($background, ".css");
 	if ($pos1 > 0)
 	{
-    $background = substr_replace($background, '.less', $pos1, 4) ;
+    $background = substr_replace($background, '.scss', $pos1, 4) ;
 	}
 	fwrite($st_file, '@import "'  . $background .  "\";\n");
 }
-fwrite($st_file, '@import "style' . $templatestyleid . '.var.less";' . "\n");
+fwrite($st_file, '@import "style' . $templatestyleid . '.var.scss";' . "\n");
 // standaard bootstrap mixins en nav etc.
-fwrite($st_file, '@import "twbs/mixins/border-radius.less";' . "\n");
-fwrite($st_file, '@import "twbs/mixins/buttons.less";' . "\n");
-fwrite($st_file, '@import "twbs/mixins/clearfix.less";' . "\n");
-fwrite($st_file, '@import "twbs/mixins/forms.less";' . "\n");
-fwrite($st_file, '@import "twbs/mixins/gradients.less";' . "\n");
-fwrite($st_file, '@import "twbs/mixins/grid.less";' . "\n");
-fwrite($st_file, '@import "twbs/mixins/nav-divider.less";' . "\n");
-fwrite($st_file, '@import "twbs/mixins/nav-vertical-align.less";' . "\n");
-fwrite($st_file, '@import "twbs/mixins/reset-filter.less";' . "\n");
-fwrite($st_file, '@import "twbs/mixins/tab-focus.less";' . "\n");
-fwrite($st_file, '@import "twbs/mixins/vendor-prefixes.less";' . "\n");
-fwrite($st_file, '@import "twbs/navbar.less";' . "\n");
-fwrite($st_file, '@import "twbs/navs.less";' . "\n");
+fwrite($st_file, '@import "twbs/mixins/border-radius.scss";' . "\n");
+fwrite($st_file, '@import "twbs/mixins/buttons.scss";' . "\n");
+fwrite($st_file, '@import "twbs/mixins/clearfix.scss";' . "\n");
+fwrite($st_file, '@import "twbs/mixins/forms.scss";' . "\n");
+fwrite($st_file, '@import "twbs/mixins/gradients.scss";' . "\n");
+fwrite($st_file, '@import "twbs/mixins/grid.scss";' . "\n");
+fwrite($st_file, '@import "twbs/mixins/nav-divider.scss";' . "\n");
+fwrite($st_file, '@import "twbs/mixins/nav-vertical-align.scss";' . "\n");
+fwrite($st_file, '@import "twbs/mixins/reset-filter.scss";' . "\n");
+fwrite($st_file, '@import "twbs/mixins/tab-focus.scss";' . "\n");
+fwrite($st_file, '@import "twbs/mixins/vendor-prefixes.scss";' . "\n");
+fwrite($st_file, '@import "twbs/navbar.scss";' . "\n");
+fwrite($st_file, '@import "twbs/navs.scss";' . "\n");
 //mfp
-fwrite($st_file, '@import "magnificpopup.less";' . "\n");
+fwrite($st_file, '@import "magnificpopup.scss";' . "\n");
 //template style asha-s specifiek
-fwrite($st_file, '@import "template_css.less";' . "\n");
+fwrite($st_file, '@import "template_css.scss";' . "\n");
 fwrite($st_file, "body {\n");
-if ($fgColor > ' '  ) fwrite($st_file, "color:  @asTextColor ;\n");
-if ($bg0Color > ' ' ) fwrite($st_file, "background-color:  @bg0Color;\n");
-//if ($bg0Image > ' ' ) fwrite($st_file, "background-image: url(@bg0Image);\n"); 
-if ($bg0Size > ' '  ) fwrite($st_file, "background-size: @bg0Size;\n");
-//if ($bg0Repeat > ' ') fwrite($st_file, "background-repeat:  @bg0Repeat;\n");
-if ($bg0Pos > ' '   ) fwrite($st_file, "background-position: @bg0Pos;\n");
+if ($fgColor > ' '  ) fwrite($st_file, "color:  $asTextColor ;\n");
+if ($bg0Color > ' ' ) fwrite($st_file, "background-color:  $bg0Color;\n");
+//if ($bg0Image > ' ' ) fwrite($st_file, "background-image: url($bg0Image);\n"); 
+if ($bg0Size > ' '  ) fwrite($st_file, "background-size: $bg0Size;\n");
+//if ($bg0Repeat > ' ') fwrite($st_file, "background-repeat:  $bg0Repeat;\n");
+if ($bg0Pos > ' '   ) fwrite($st_file, "background-position: $bg0Pos;\n");
 fwrite($st_file, "}\n");
 
 fwrite($st_file, "body>div.container {\n");
-if ($bg1Color > " " ) fwrite($st_file, "background-color:  @bg1Color;\n");
-//if ($bg1Image > ' ' ) fwrite($st_file, "background-image: @bg1Image;\n"); 
-if ($bg1Size > ' '  ) fwrite($st_file, "background-size: @bg1Size;\n");
-//if ($bg1Repeat > ' ') fwrite($st_file, "background-repeat:  @bg1Repeat;\n");
-if ($bg1Pos > ' '   ) fwrite($st_file, "background-position: @bg1Pos;\n");
+if ($bg1Color > " " ) fwrite($st_file, "background-color:  $bg1Color;\n");
+//if ($bg1Image > ' ' ) fwrite($st_file, "background-image: $bg1Image;\n"); 
+if ($bg1Size > ' '  ) fwrite($st_file, "background-size: $bg1Size;\n");
+//if ($bg1Repeat > ' ') fwrite($st_file, "background-repeat:  $bg1Repeat;\n");
+if ($bg1Pos > ' '   ) fwrite($st_file, "background-position: $bg1Pos;\n");
 fwrite($st_file, "}\n");
 
 if ($bg1Image > ' ' || $bg1Color > " ") 
@@ -383,24 +386,22 @@ fwrite($st_file, "border-style: none;\n");
 fwrite($st_file, "}\n");
 }
 
-if ($wsaCustomCSS > ' ') fwrite($st_file, '@import "'.JPATH_ROOT.'/images/less/'.$wsaCustomCSS.'";'. "\n");
+if ($wsaCustomCSS > ' ') fwrite($st_file, '@import "'.JPATH_ROOT.'/images/scss/'.$wsaCustomCSS.'";'. "\n");
 
 fclose($st_file);
 
 /* einde opslaam style parameters in style.les bestanden */
-/* les files compileren naar .css */
-
-$less->compileFile($currentpath. '/../less/style' . $templatestyleid . '.less', $currentpath.'/../css/' . $wsaCssFilename);
-
-
+/* scss files compileren naar .css */
+$server->compileFile($currentpath. '/../scss/style' . $templatestyleid . '.scss', $currentpath.'/../css/' . $wsaCssFilename);
 if ($home == 1 ) 
- {$less->compileFile($currentpath. '/../less/style' . $templatestyleid . '.less', $currentpath.'/../css/template.min.'  . '.css');
-  $less->compileFile($currentpath. '/../less/style' . $templatestyleid . '.less', $currentpath.'/../css/template'  . '.css');
- }
+ {/* niet kunnen vinden van templatestyleid bij root (lijkt inmiddels opgelost te zijn)*/ 
+  $server->compileFile($currentpath. '/../scss/style' . $templatestyleid . '.scss', $currentpath.'/../css/template.min.'  . '.css');
+  /* ivm &tmpl=component */
+  $server->compileFile($currentpath. '/../scss/style' . $templatestyleid . '.scss', $currentpath.'/../css/template'  . '.css');
+}
 /* einde les files compileren naar .css */
-/* "Compileren LESS geslaagd." "COM_TEMPLATES_COMPILE_SUCCESS" */
-$app->enqueueMessage("Compile LESS succes.", 'message');
-
+/* "Compileren SCSS geslaagd." "COM_TEMPLATES_COMPILE_SUCCESS" */
+$app->enqueueMessage("Compile SCSS succes.", 'message');
 
 /* end try */
 }
@@ -419,58 +420,3 @@ return true;
 }
 /* eind WsaFormRuleCompiler */
 }
-class WsaAshaLess extends Leafo\Less\lessc
-{
-	/**
-	 * Constructor
-	 *
-	 * @param   string                 $fname      Filename to process
-	 * @param   WsaAshasLessFormatter  $formatter  Formatter object, or string formatter_name
-	 *
-	 * @since   3.4
-	 */
-	public function __construct($fname = null, $formatter = null)
-	{
-		parent::__construct($fname);
-		
-		if ($formatter === null)
-		{
-		    $formatter = new WsaAshasLessFormatter;
-		}
-		
-		$this->setFormatter($formatter);
-	}
-	
-	/**
-	 * Override compile to reset $this->allParsedFiles array to allow
-	 * parsing multiple files/strings using same imports.
-	 * PR: https://github.com/leafo/lessphp/pull/607
-	 *
-	 * For documentation on this please see /vendor/leafo/lessc.inc.php
-	 *
-	 * @param   string  $string  LESS string to parse.
-	 * @param   string  $name    The sourceName used for error messages.
-	 *
-	 * @return  string  $out     The compiled css output.
-	 */
-	public function compile($string, $name = null)
-	{
-		$this->allParsedFiles = array();
-		
-		return parent::compile($string, $name);
-	}
-}
-
-class WsaAshasLessFormatter extends Leafo\Less\lessc_formatter_classic
-{
-	public $disableSingle = true;
-	
-	public $breakSelectors = true;
-	
-	public $assignSeparator = ': ';
-	
-	public $selectorSeparator = ',';
-	
-	public $indentChar = "\t";
-}
-
