@@ -181,7 +181,7 @@ if ($contentPosRight > (1.5 * $marginLeftRight) and $contentPosRight < 100 )
 	else
 	{ $contentPosRight = 0; }
 $areaWidth = 100 - 2 * $marginLeftRight - $contentPosRight;
-$marginArea = $marginLeftRight * 50 / $areaWidth;
+$wsaMarginArea = $marginLeftRight * 50 / $areaWidth;
 $tagListItemWidth = $tagListItemWidth * 100 / $areaWidth;
 $rightWidth = $contentPosRight - (0.5 * $marginLeftRight);
 switch ($menuDisplay) {
@@ -271,7 +271,7 @@ if ($iconsPosLeft > ' '  ) 	fwrite($tv_file, '$iconsPosLeft:              '  . $
 if ($iconsPosTop > ' '  ) 	fwrite($tv_file, '$iconsPosTop:               '  . $iconsPosTop .  "%;\n");
 if ($contentPosLeft > ' '  ) {	fwrite($tv_file, '$asBlogItemWidth:           '  . $contentPosLeft .  "%;\n");} 
 else {$contentPosLeft = 0; }
-				fwrite($tv_file, '$contentWidth:              ' . (100 - $marginArea - $contentPosLeft)
+				fwrite($tv_file, '$contentWidth:              ' . (100 - $wsaMarginArea - $contentPosLeft)
  .  "%;\n") ; 
 if ($contentPosRight > ' '  ) 	fwrite($tv_file, '$contentPosRight:           '  . $contentPosRight .  "%;\n");
 if ($rightWidth > ' '  ) 	fwrite($tv_file, '$rightWidth:                '  . $rightWidth .  "%;\n");
@@ -312,7 +312,7 @@ if ($footerWidth > ' '  ) 	fwrite($tv_file, '$footerWidth:               '  . $f
 if ($footerPosLeft > ' '  ) 	fwrite($tv_file, '$footerPosLeft:             '  . $footerPosLeft .  "%;\n");
 if ($footerPosBottom > ' '  ) 	fwrite($tv_file, '$footerPosBottom:           '  . $footerPosBottom .  "%;\n");
 if ($areaWidth > ' '  ) 	fwrite($tv_file, '$areaWidth:                 '  . $areaWidth .  "%;\n");
-if ($marginArea > ' '  ) 	fwrite($tv_file, '$marginArea:                '  . $marginArea .  "%;\n");
+if ($wsaMarginArea > ' '  ) 	fwrite($tv_file, '$marginArea:                '  . $wsaMarginArea .  "%;\n");
 if ($tagListItemWidth > ' '  ) {fwrite($tv_file, '$tagListItemWidth:          '  . $tagListItemWidth .  "%;\n");
 }
 
