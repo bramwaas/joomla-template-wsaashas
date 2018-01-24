@@ -369,6 +369,7 @@ fwrite($st_file, '@import "twbs/navbar.scss";' . "\n");
 fwrite($st_file, '@import "twbs/navs.scss";' . "\n");
 
 fwrite($st_file, '@import "general.scss";' . "\n");
+fwrite($st_file, '@import "media_system_system.scss";' . "\n");
 fwrite($st_file, '@import "system.scss";' . "\n");
 fwrite($st_file, '@import "flickr_badge.scss";' . "\n");
 fwrite($st_file, '@import "joomla_update_icons.scss";' . "\n");
