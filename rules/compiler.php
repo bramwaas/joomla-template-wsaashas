@@ -326,21 +326,8 @@ fwrite($st_file, "// generated  " . date("c")  . "\n//\n");
 fwrite($st_file, "// css        " . $wsaCssFilename  . "\n//\n");
 // standaard bootstrap variables.
 fwrite($st_file, '@import "twbs/variables.scss";' . "\n");
-fwrite($st_file, '@import "system.scss";' . "\n");
-fwrite($st_file, '@import "general.scss";' . "\n");
 fwrite($st_file, '@import "magnificpopup.variables.scss";' . "\n");
 fwrite($st_file, '@import "template_variables.scss";' . "\n");
-fwrite($st_file, '@import "flickr_badge.scss";' . "\n");
-fwrite($st_file, '@import "joomla_update_icons.scss";' . "\n");
-if ($background > ' '  )
-{ 	
-	$pos1 = stripos($background, ".css");
-	if ($pos1 > 0)
-	{
-    $background = substr_replace($background, '.scss', $pos1, 4) ;
-	}
-	fwrite($st_file, '@import "'  . $background .  "\";\n");
-}
 fwrite($st_file, '@import "style' . $templatestyleid . '.var.scss";' . "\n");
 // standaard bootstrap mixins en nav etc.
 fwrite($st_file, '@import "twbs/mixins/border-radius.scss";' . "\n");
@@ -356,6 +343,20 @@ fwrite($st_file, '@import "twbs/mixins/tab-focus.scss";' . "\n");
 fwrite($st_file, '@import "twbs/mixins/vendor-prefixes.scss";' . "\n");
 fwrite($st_file, '@import "twbs/navbar.scss";' . "\n");
 fwrite($st_file, '@import "twbs/navs.scss";' . "\n");
+
+fwrite($st_file, '@import "general.scss";' . "\n");
+fwrite($st_file, '@import "system.scss";' . "\n");
+fwrite($st_file, '@import "flickr_badge.scss";' . "\n");
+fwrite($st_file, '@import "joomla_update_icons.scss";' . "\n");
+if ($background > ' '  )
+{ 	
+	$pos1 = stripos($background, ".css");
+	if ($pos1 > 0)
+	{
+    $background = substr_replace($background, '.scss', $pos1, 4) ;
+	}
+	fwrite($st_file, '@import "'  . $background .  "\";\n");
+}
 //mfp
 fwrite($st_file, '@import "magnificpopup.scss";' . "\n");
 //template style asha-s specifiek
