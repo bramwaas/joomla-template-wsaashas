@@ -365,6 +365,7 @@ fwrite($st_file, '@import "twbs/mixins/nav-vertical-align.scss";' . "\n");
 fwrite($st_file, '@import "twbs/mixins/reset-filter.scss";' . "\n");
 fwrite($st_file, '@import "twbs/mixins/tab-focus.scss";' . "\n");
 fwrite($st_file, '@import "twbs/mixins/vendor-prefixes.scss";' . "\n");
+fwrite($st_file, '@import "twbs/forms.scss";' . "\n");
 fwrite($st_file, '@import "twbs/navbar.scss";' . "\n");
 fwrite($st_file, '@import "twbs/navs.scss";' . "\n");
 
