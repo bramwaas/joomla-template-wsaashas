@@ -649,7 +649,7 @@ ul.menu_img li ul li {
 .modifydate {
   height:20px;
   vertical-align:bottom;
-  .small
+  @extend .small
 }
 .ol-foreground {
   background-color:#f6f6f6;
