@@ -9,7 +9,9 @@ standaard image van body op none gezet via twee variables
 */
 $asBodyBackgroundImage:	  none;
 $asBodyBackground:        #080810   0% 0% repeat-x;
+/* ($start-color: #121c26, $end-color: #080810, $start-percent: 0%, $end-percent: 40%) */
 
 #page_bg {
-@incude	gradient-vertical($start-color: #121c26, $end-color: #080810, $start-percent: 0%, $end-percent: 40%)
+@incude	gradient-vertical
+(#121c26, #080810,  0%,  40%)
 }
