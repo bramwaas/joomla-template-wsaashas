@@ -117,14 +117,19 @@ else
 // Add extra metadata
 $this->setMetaData( 'X-UA-Compatible', 'IE=edge', true ); // http-equiv = true 
 $this->setMetaData( 'viewport', 'width=device-width, initial-scale=1.0' );
+
 // Add Stylesheets
-//$this->addStyleSheet('http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700');
-$this->addStyleSheet('templates/' . $this->template . '/css/' . $wsaCssFilename);
+// template stijl
+$attribs = array('id'=> $wsaCssFilename);
+$this->addStyleSheet('templates/' . $this->template . '/css/' . $wsaCssFilename , array('version'=>'auto'), $attribs);
+
+// Add JavaScript 
 // javascript magnificPopup
-$this->addScript($this->baseurl . '/templates/' . $this->template . '/js/magnificpopup/MagnificPopupV1-1-0.js' , 'text/javascript', true, false);
-// initialisatie magnificPopup.
-$this->addScript($this->baseurl  . '/media/system/js/caption.js' , 'text/javascript', true, false);
+$this->addScript($this->baseurl . '/templates/' . $this->template . '/js/magnificpopup/MagnificPopupV1-1-0.js', array('version'=>'1-1-0'), array('id'=>'MagnificPopupV1-1-0.js', 'defer'=>'defer'));
 // defer caption.js.  	
+$this->addScript($this->baseurl  . '/media/system/js/caption.js' , array('version'=>''), array('id'=>'caption.js', 'defer'=>'defer')); // defer caption.js.  	
+
+// initialisatie magnificPopup.
 $this->addScriptDeclaration('jQuery(document).ready(function() {
   jQuery(\'a[rel*="lightbox"], a[data-wsmodal]\').magnificPopup({
 type: \'image\'
