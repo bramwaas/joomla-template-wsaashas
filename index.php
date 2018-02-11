@@ -56,8 +56,8 @@ $gplusProfile   = htmlspecialchars($this->params->get('gplusProfile'));
 $showTitle  	= htmlspecialchars($this->params->get('showTitle'));
 $background    	= htmlspecialchars($this->params->get('background'));
 $bg0Image    	= htmlspecialchars($this->params->get('bgImage'));
-if ($bg1Image > ' ' and strtolower(substr ( $bg1Image , 0 , 7 )) == 'images/' ) 
- {$bg1Image = '/' . $bg1Image;};
+if ($bg0Image > ' ' and strtolower(substr ( $bg0Image , 0 , 7 )) == 'images/' ) 
+ {$bg0Image = '/' . $bg0Image;};
 $bg0Image_lg    	= htmlspecialchars($this->params->get('bg0Image_lg'));
 if ($bg0Image_lg > ' ' and strtolower(substr ( $bg0Image_lg , 0 , 7 )) == 'images/' )
  {$bg0Image_lg = '/' . $bg0Image_lg;};
