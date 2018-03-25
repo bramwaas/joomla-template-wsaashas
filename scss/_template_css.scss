@@ -872,6 +872,7 @@ width: $wsaIconsMobileWidth; // 100% was  $iconsMobileWidth;
 #page_bg {
   padding:0;
   margin-bottom:0;
+  position: static;
 }
 #page_heading {
   float:left;
