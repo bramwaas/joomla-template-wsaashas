@@ -388,7 +388,7 @@ fwrite($st_file, '@import "magnificpopup.scss";' . "\n");
 //template style asha-s specifiek
 fwrite($st_file, '@import "template_css.scss";' . "\n");
 fwrite($st_file, "body {\n");
-if ($fgColor > ' '  ) fwrite($st_file, 'color:  $asTextColor ;\n');
+if ($fgColor > ' '  ) fwrite($st_file, 'color:  $asTextColor ;' . "\n");
 if ($bg0Color > ' ' ) fwrite($st_file, "background-color:  $bg0Color;\n");
 //if ($bg0Image > ' ' ) fwrite($st_file, "background-image: url($bg0Image);\n"); 
 if ($bg0Size > ' '  ) fwrite($st_file, "background-size: $bg0Size;\n");
