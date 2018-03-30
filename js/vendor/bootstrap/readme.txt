@@ -1,0 +1,1 @@
+Location to overwrite default joomla 4 bootstrap .js files.
