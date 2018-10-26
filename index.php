@@ -26,6 +26,7 @@
   * 30-12-2016 Verschillende aanpassingen tbv srcset bg0Image_lg etc
   * 27-4-2017 naam CSS variabel
   * 21-1-2018 v1.6.0 Namespaces tbv J4 and minmale version j3.8 divers commentaar opgeschoond
+  * 26-10-2018 1.6.5 background images relative paths to facilitate using subdirectories eg for testing ../test/
  */
 
 use Joomla\CMS\Factory;   // this is the same as use Joomla\CMS\Factory as Factory
@@ -56,28 +57,15 @@ $gplusProfile   = htmlspecialchars($this->params->get('gplusProfile'));
 $showTitle  	= htmlspecialchars($this->params->get('showTitle'));
 $background    	= htmlspecialchars($this->params->get('background'));
 $bg0Image    	= htmlspecialchars($this->params->get('bgImage'));
-if ($bg0Image > ' ' and strtolower(substr ( $bg0Image , 0 , 7 )) == 'images/' ) 
- {$bg0Image = '/' . $bg0Image;};
 $bg0Image_lg    	= htmlspecialchars($this->params->get('bg0Image_lg'));
-if ($bg0Image_lg > ' ' and strtolower(substr ( $bg0Image_lg , 0 , 7 )) == 'images/' )
- {$bg0Image_lg = '/' . $bg0Image_lg;};
- $bg0Breakpoint_lg    	= htmlspecialchars($this->params->get('bg0Breakpoint_lg'));
+$bg0Breakpoint_lg    	= htmlspecialchars($this->params->get('bg0Breakpoint_lg'));
 $bg0Image_sm    	= htmlspecialchars($this->params->get('bg0Image_sm'));
- if ($bg0Image_sm > ' ' and strtolower(substr ( $bg0Image_sm , 0 , 7 )) == 'images/' )
- {$bg0Image_sm = '/' . $bg0Image_sm;};
- $bg0Breakpoint_sm    	= htmlspecialchars($this->params->get('bg0Breakpoint_sm'));
+$bg0Breakpoint_sm    	= htmlspecialchars($this->params->get('bg0Breakpoint_sm'));
  
 $bg1Image     	= htmlspecialchars($this->params->get('logo'));
-if ($bg1Image > ' ' and strtolower(substr ( $bg1Image , 0 , 7 )) == 'images/' ) 
- {$bg1Image = '/' . $bg1Image;};
 $bg1Image_lg    	= htmlspecialchars($this->params->get('bg1Image_lg'));
-if ($bg1Image_lg > ' ' and strtolower(substr ( $bg1Image_lg , 0 , 7 )) == 'images/' ) 
- {$bg1Image_lg = '/' . $bg1Image_lg;};
- $bg1Breakpoint_lg    	= htmlspecialchars($this->params->get('bg1Breakpoint_lg'));
-
+$bg1Breakpoint_lg    	= htmlspecialchars($this->params->get('bg1Breakpoint_lg'));
 $bg1Image_sm    	= htmlspecialchars($this->params->get('bg1Image_sm'));
- if ($bg1Image_sm > ' ' and strtolower(substr ( $bg1Image_sm , 0 , 7 )) == 'images/' )
- {$bg1Image_sm = '/' . $bg1Image_sm;};
  $bg1Breakpoint_sm    	= htmlspecialchars($this->params->get('bg1Breakpoint_sm'));
  
 $bg0ImageW    	= htmlspecialchars($this->params->get('bg0ImageW'));
